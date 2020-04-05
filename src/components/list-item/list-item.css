@@ -1,0 +1,71 @@
+.main-box {
+  background-color: powderblue;
+  width: 350px;
+  height: 230px;
+  display: flex;
+  flex-flow: row;
+  margin: 3px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.image-box {
+  width: 230px;
+  background-color: saddlebrown;
+}
+
+.image-box img {
+  width: inherit;
+}
+
+.description-box {
+  width: 120px;
+  border-left: 1px solid black;
+  position: absolute;
+  right: 0;
+}
+
+.description-box h1 {
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 0px;
+  margin: 0;
+  border-bottom: 1px solid black;
+  width: inherit;
+}
+
+.description-box ul {
+  list-style-type: none;
+  width: 100%;
+  background-color: chartreuse;
+  padding: 0;
+  margin: 0;
+}
+
+.description-box ul li {
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 2px;
+}
+
+.description-box p {
+  margin: 0px;
+}
+
+.cart-btn-add {
+  position: absolute;
+  bottom: 3px;
+  right: 10px;
+  width: 100px;
+  height: 30px;
+}
+
+.cart-btn-details {
+  position: absolute;
+  bottom: 3px;
+  right: 115px;
+  width: 100px;
+  height: 30px;
+}
+
+

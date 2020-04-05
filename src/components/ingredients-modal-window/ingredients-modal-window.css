@@ -1,0 +1,10 @@
+.modal-list {
+  background-color: cadetblue;
+  border: 1px solid green;
+  border-radius: 3px;
+}
+
+.hide-details-modal {
+  opacity: 0;
+  transition-duration: 0.4s;
+}

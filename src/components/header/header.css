@@ -1,0 +1,79 @@
+nav {
+  width: 100%;
+  height: 60px;
+  background-color: burlywood;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-panel-items {
+  list-style-type: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:active, nav a:visited {
+  color: black;
+}
+
+.nav-panel-items li {
+  display: inline;
+  padding: 10px 30px;
+  background-color: rgb(170, 237, 240);
+  cursor: pointer;
+  border: 1px solid black;
+  margin: 0 5px;
+  position: relative;
+}
+
+.cart {
+  width: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.cart > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart span:nth-child(1) {
+  font-size: 45px;
+  text-align: center;
+  padding: auto;
+  grid-row: 1 / 3;
+  color: green;
+}
+
+.cart span:nth-child(2) {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(143, 21, 21);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  position: absolute;
+  right: -10px;
+  top: -5px;
+}
+
+.cart span:nth-child(3) {
+  width: 45px;
+  height: 20px;
+  background-color: rgb(158, 234, 236);
+  border-radius: 5px;
+  position: absolute;
+  right: -30px;
+  bottom: 0px;
+}
+
+/* Searching panel */
+

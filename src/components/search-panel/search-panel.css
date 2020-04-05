@@ -1,0 +1,30 @@
+.searching-box {
+  position: relative;
+  border: 2px red solid;
+}
+
+.searching-results {
+  list-style-type: none;
+  position: absolute;
+  top: 10px;
+  background-color: burlywood;
+  z-index: 2;
+}
+
+.hide-list {
+  display: none;
+}
+
+.searching-results li {
+  background-color: grey;
+  border: 3px solid black;
+  margin: 2px;
+  padding: 10px;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.searching-results li:hover {
+  border-color: red;
+  transition-duration: 0.2s;
+}
