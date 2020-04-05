@@ -4,7 +4,7 @@ const itemDetails = (state, action) => {
   if (state === undefined) {
     return {
       item: {},
-      isOpen: false
+      loading: true
     };
   }
 
@@ -12,13 +12,13 @@ const itemDetails = (state, action) => {
     case 'SHOW_ITEM_DETAILS':
       return {
         item: action.payload,
-        isOpen: true
+        loading: false
       };
 
-    case 'CLOSE_POP_UP_DETAILS':
+    case 'CLOSE_ITEM_DETAILS':
       return {
         item: {},
-        isOpen: false
+        loading: true
       };
 
     default: 

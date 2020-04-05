@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ItemDetails from './item-details';
+import Spinner from '../spinner';
 
 class ItemDeatailsContainer extends Component {
 
@@ -7,7 +8,6 @@ class ItemDeatailsContainer extends Component {
     const { itemId, showItemDetails } = this.props;
 
     const item = data.find((item) => item.id === itemId);
-    console.log(item);
     showItemDetails(item);
   };
   
@@ -20,9 +20,12 @@ class ItemDeatailsContainer extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item, onAddedToCart, closeItemDetails, loading } = this.props;
+    if (loading) {
+      return <Spinner />
+    }
     return(
-      <ItemDetails item={item} />
+      <ItemDetails item={item} onAddedToCart={onAddedToCart} closeItemDetails={closeItemDetails} />
     );
   }
 };

@@ -1,14 +1,17 @@
 .searching-box {
   position: relative;
   border: 2px red solid;
+  z-index: 2;
 }
 
 .searching-results {
   list-style-type: none;
   position: absolute;
-  top: 10px;
-  background-color: burlywood;
-  z-index: 2;
+  top: 40px;
+  background-color: rgba(0, 0, 0, 0.699);
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 .hide-list {
@@ -16,15 +19,48 @@
 }
 
 .searching-results li {
-  background-color: grey;
-  border: 3px solid black;
+  padding: 2px 5px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.searching-results li:last-child {
+  border: none;
+}
+
+.show-item {
+  border: 1px solid rgb(179, 255, 0);
   margin: 2px;
-  padding: 10px;
+  padding: 6px 7px;
   cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 1.2em;
+  width: 140px;
+  border-radius: 5px;
+  color: white;
+}
+
+.show-item:hover {
+  border-color: red;
   transition-duration: 0.2s;
 }
 
-.searching-results li:hover {
+.add-item {
+  margin-right: 2px;
+  padding: 4px;
+  border: 1px solid rgb(212, 145, 0);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  transition-duration: 0.5s;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+.add-item:hover {
+  color: rgb(179, 255, 0);
+  transition-duration: 0.5s;
   border-color: red;
-  transition-duration: 0.2s;
 }
