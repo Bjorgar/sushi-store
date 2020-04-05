@@ -60,9 +60,9 @@ const showItemDetails = (item) => {
   }
 };
 
-const closePopUpDetails = () => {
+const closeItemDetails = () => {
   return {
-    type: 'CLOSE_POP_UP_DETAILS'
+    type: 'CLOSE_ITEM_DETAILS'
   }
 };
 
@@ -124,7 +124,7 @@ export {
   itemsLoaded,
   itemsRequested,
   showItemDetails,
-  closePopUpDetails,
+  closeItemDetails,
   transferValue,
   showFoundedItems,
   searchError,

@@ -12,7 +12,6 @@ const App = () => {
     <div>
       <Header />
       <Slider />
-      {/* Something */}
       <IngredientsModalWindow />
       <Switch>
         <Route path="/rools" exact component={RoolsPage} />

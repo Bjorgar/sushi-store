@@ -4,12 +4,11 @@ import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator'
 import withSushistoreService from '../hoc';
 import { connect } from 'react-redux';
-import { transferValue, showFoundedItems, searchError, searchEnded, showDeatailsModal, hideDetailsModal, initialPosition } from '../../actions';
+import { transferValue, showFoundedItems, searchError, searchEnded, showDeatailsModal, hideDetailsModal, initialPosition, itemAddedToCart } from '../../actions';
 import compose from '../utils';
 import FindedItems from './finded-items';
 
 class SearchPanelContainer extends Component {
-
 
   searchingItems = (data) => {
     const { term, showFoundedItems } = this.props;
@@ -33,11 +32,6 @@ class SearchPanelContainer extends Component {
     }
   }
 
-  endSearching = () => {
-    const { searchEnded } = this.props;
-    searchEnded();
-  };
-
   onInitialPosition = (e) => {
     const { initialPosition } = this.props;
     const x = e.pageX;
@@ -47,7 +41,7 @@ class SearchPanelContainer extends Component {
 
   render() {
 
-    const { term, loading, error, isActive, items, showDeatailsModal, hideDetailsModal } = this.props;
+    const { term, loading, error, isActive, items, showDeatailsModal, hideDetailsModal, onAddedToCart, searchEnded } = this.props;
 
     const clazz = (isActive) ? 'searching-results' : 'hide-list';
 
@@ -56,21 +50,21 @@ class SearchPanelContainer extends Component {
                                                 items={items}
                                                 onShowDeatailsModal={showDeatailsModal}
                                                 onHideDetailsModal={hideDetailsModal}
-                                                onInitialPosition={this.onInitialPosition}/>;
+                                                onInitialPosition={this.onInitialPosition}
+                                                onAddedToCart={onAddedToCart}/>;
     
     return (
-      <div className="searching-box">
+      <div className="searching-box"
+        onBlur={searchEnded}>
         <input
           className="searching-input"
           placeholder="Searching"
           value={term}
-          onChange={this.initialSearching} />
-        <div>
-          <ul className={clazz}
-              onBlur={this.endSearching}>
-            {display}
-          </ul>
-        </div>
+          onChange={this.initialSearching}
+          />
+        <ul className={clazz}>
+          {display}
+        </ul>
       </div>
     );
 
@@ -90,6 +84,7 @@ const mapStateToProps = ({ itemsSearch: { items, term, loading, isActive, error 
 });
 
 const mapDistatchToProps = {
+  onAddedToCart: itemAddedToCart,
   transferValue,
   showFoundedItems,
   searchError,

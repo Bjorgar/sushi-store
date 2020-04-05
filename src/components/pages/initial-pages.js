@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import withSushistoreService from '../hoc';
-import { itemsLoaded, catchError, itemAddedToCart, itemsRequested, showItemDetails } from '../../actions';
+import { itemsLoaded, catchError, itemAddedToCart, itemsRequested, showItemDetails, closeItemDetails } from '../../actions';
 import compose from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -33,9 +33,14 @@ const mapItemsDispatchToProps = (dispatch) => bindActionCreators({
   itemsRequested
 }, dispatch);
 
-const mapDetailsStateToProps = ({ itemDetails: { item } }) => ({ item })
+const mapDetailsStateToProps = ({ itemDetails: { item, loading } }) => ({ item, loading })
 
-const mapDetailsDispatchToProps = { showItemDetails, catchError };
+const mapDetailsDispatchToProps = {
+  onAddedToCart: itemAddedToCart,
+  showItemDetails,
+  catchError,
+  closeItemDetails
+ };
 
 // PAGES
 

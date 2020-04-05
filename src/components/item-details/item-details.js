@@ -1,16 +1,18 @@
 import React from 'react';
 import './item-details.css';
-import { connect } from 'react-redux';
-import { closePopUpDetails, itemAddedToCart } from '../../actions';
 import Ingredients from '../ingredients';
+import { withRouter } from 'react-router-dom';
 
-const ItemDetails = ({ item={}, isOpen, closePopUpDetails, onAddedToCart }) => {
+const ItemDetails = ({ item={}, closeItemDetails, onAddedToCart, history }) => {
 
-  const clazz = isOpen ? 'details-background' : 'hiden-details';
+  const closePopUpWindow = () => {
+    history.go(-1);
+    closeItemDetails()
+  };
 
   const { type, id, name, weight, price, image, ingredients } = item;
   return(
-    <div className={clazz}>
+    <div className="details-background">
       <div className="details-body">
         <div className="img-div">
           <img alt="item" src={image} />
@@ -25,7 +27,7 @@ const ItemDetails = ({ item={}, isOpen, closePopUpDetails, onAddedToCart }) => {
           <p>{price}</p>
         </div>
         <button className="d-btn-close"
-          onClick={closePopUpDetails}>close</button>
+          onClick={closePopUpWindow}>close</button>
         <button className="d-btn-add"
           onClick={() => onAddedToCart(id)}>Add to cart</button>
       </div>
@@ -33,11 +35,4 @@ const ItemDetails = ({ item={}, isOpen, closePopUpDetails, onAddedToCart }) => {
   );
 };
 
-const mapStateToProps = ({ itemDetails: { isOpen } }) => ({ isOpen });
-
-const mapDispatchToProps = {
-  onAddedToCart: itemAddedToCart,
-  closePopUpDetails
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemDetails);
+export default withRouter(ItemDetails);

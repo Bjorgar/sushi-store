@@ -10,12 +10,11 @@ const IngredientsModalWindow = ({ type, ingredients, isActive, x, y }) => {
     top: `${y+5}px`,
     left: `${x+5}px`,
     zIndex: 999,
-    opacity: 1
   };
 
   const hideModal = {
     display: 'none'
-  }
+  };
 
   const clazz = (isActive) ? showModal : hideModal;
 
