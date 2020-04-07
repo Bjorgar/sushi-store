@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem  from '../list-item';
 import './items-list.css';
 
-const ItemsList = ({ items, onAddedToCart, onItemDetails }) => {
+const ItemsList = ({ items, onAddedToCart }) => {
   return(
     <main>
       {
@@ -10,8 +10,7 @@ const ItemsList = ({ items, onAddedToCart, onItemDetails }) => {
          return <ListItem
             key={item.id}
             item={item}
-            onAddedToCart={onAddedToCart}
-            onItemDetails={onItemDetails} />
+            onAddedToCart={onAddedToCart} />
        })
       }
     </main>

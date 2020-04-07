@@ -14,7 +14,7 @@ class ItemsListContainer extends Component {
   }
 
   render() {
-    const { items, onAddedToCart, loading, hasError, onItemDetails } = this.props;
+    const { items, onAddedToCart, loading, hasError } = this.props;
 
     if (hasError) {
       return <ErrorIndicator />
@@ -27,8 +27,7 @@ class ItemsListContainer extends Component {
     return(
       <ItemsList
           items={items}
-          onAddedToCart={onAddedToCart}
-          onItemDetails={onItemDetails}/>
+          onAddedToCart={onAddedToCart}/>
     );
   }
 };

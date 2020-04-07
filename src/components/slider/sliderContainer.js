@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import withSushistoreService from '../hoc';
+import { withSushistoreService } from '../hoc';
 import { connect } from 'react-redux';
 import { loadedSlides, showSlide } from '../../actions';
-import compose from '../utils';
+import { compose } from '../utils';
 import Slide from './slide';
 import Dots from './dots';
 import './slider.css';

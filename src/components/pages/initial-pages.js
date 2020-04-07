@@ -1,9 +1,15 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import withSushistoreService from '../hoc';
-import { itemsLoaded, catchError, itemAddedToCart, itemsRequested, showItemDetails, closeItemDetails } from '../../actions';
-import compose from '../utils';
+import { withSushistoreService } from '../hoc';
+import {
+  itemsLoaded,
+  catchError,
+  itemAddedToCart,
+  itemsRequested,
+  showItemDetails,
+  closeItemDetails } from '../../actions';
+import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
 
@@ -44,29 +50,29 @@ const mapDetailsDispatchToProps = {
 
 // PAGES
 
-const RoolsItems = compose(
+const RoolsPage = compose(
   withSushistoreService(mapRoolsMethodToProps),
   connect(mapItemsStateToProps, mapItemsDispatchToProps)
 )(ItemsListContainer);
 
-const SetsItems = compose(
+const SetsPage = compose(
   withSushistoreService(mapSetsMethodToProps),
   connect(mapItemsStateToProps, mapItemsDispatchToProps)
 )(ItemsListContainer);
 
-const RollDetails = compose(
+const RollDetailsPage = compose(
   withSushistoreService(mapRoolsMethodToProps),
   connect(mapDetailsStateToProps, mapDetailsDispatchToProps)
 )(ItemDeatailsContainer);
 
-const SetDetails = compose(
+const SetDetailsPage = compose(
   withSushistoreService(mapSetsMethodToProps),
   connect(mapDetailsStateToProps, mapDetailsDispatchToProps)
 )(ItemDeatailsContainer);
 
 export {
-  RoolsItems,
-  SetsItems,
-  RollDetails,
-  SetDetails
+  RoolsPage,
+  SetsPage,
+  RollDetailsPage,
+  SetDetailsPage
 };

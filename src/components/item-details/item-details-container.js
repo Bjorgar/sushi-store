@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ItemDetails from './item-details';
 import Spinner from '../spinner';
+import { withRouter } from 'react-router-dom';
 
 class ItemDeatailsContainer extends Component {
 
@@ -19,15 +20,55 @@ class ItemDeatailsContainer extends Component {
       .catch((err) => catchError(err));
   }
 
+  ingredientsList = ({type, ingredients}) => {
+
+    if (ingredients === undefined) {
+      return
+    };
+
+    if (type === 'rools') {
+      return(
+        ingredients.map((ingredient) => {
+          const id = `${ingredient.id} + ${ingredient} + DP`;
+          return <li key={id}>{ingredient}</li>
+        })
+      );
+    } else {
+      return(
+        ingredients.map((ingredient) => {
+          const id = `${ingredient.id} + ${ingredient.ingredient} + DP`;
+          return <li key={id}>
+                  <span>
+                    {ingredient.name}
+                  </span>
+                  <span>
+                    <i class="far fa-caret-square-up"></i>
+                  </span>
+                  </li>
+        })
+      );
+    }
+  };
+
+  closePopUpWindow = ({ type }) => {
+    const { history, closeItemDetails } = this.props;
+    history.push(`/${type}/`)
+    closeItemDetails()
+  };
+
   render() {
-    const { item, onAddedToCart, closeItemDetails, loading } = this.props;
+    const { item, onAddedToCart, loading } = this.props;
     if (loading) {
       return <Spinner />
     }
     return(
-      <ItemDetails item={item} onAddedToCart={onAddedToCart} closeItemDetails={closeItemDetails} />
+      <ItemDetails
+        item={item}
+        onAddedToCart={onAddedToCart}
+        ingredientslist={this.ingredientsList(item)}
+        closePopUpWindow={() => this.closePopUpWindow(item)} />
     );
   }
 };
 
-export default ItemDeatailsContainer;
+export default  withRouter(ItemDeatailsContainer);

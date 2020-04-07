@@ -1,3 +1,5 @@
 import withSushistoreService from './with-sushistore-service';
 
-export default withSushistoreService;
+export {
+  withSushistoreService
+};

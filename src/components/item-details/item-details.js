@@ -1,16 +1,9 @@
 import React from 'react';
 import './item-details.css';
-import Ingredients from '../ingredients';
-import { withRouter } from 'react-router-dom';
 
-const ItemDetails = ({ item={}, closeItemDetails, onAddedToCart, history }) => {
+const ItemDetails = ({ item, onAddedToCart, ingredientslist, closePopUpWindow }) => {
 
-  const closePopUpWindow = () => {
-    history.go(-1);
-    closeItemDetails()
-  };
-
-  const { type, id, name, weight, price, image, ingredients } = item;
+  const { id, name, weight, price, image } = item;
   return(
     <div className="details-background">
       <div className="details-body">
@@ -21,7 +14,7 @@ const ItemDetails = ({ item={}, closeItemDetails, onAddedToCart, history }) => {
         <div className="details-div">
           <h2>Состав</h2>
           <ul>
-            <Ingredients ingredients={ingredients} type={type}/>
+            {ingredientslist}
           </ul>
           <p>{weight}</p>
           <p>{price}</p>
@@ -35,4 +28,4 @@ const ItemDetails = ({ item={}, closeItemDetails, onAddedToCart, history }) => {
   );
 };
 
-export default withRouter(ItemDetails);
+export default ItemDetails;

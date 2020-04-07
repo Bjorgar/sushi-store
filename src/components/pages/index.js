@@ -1,10 +1,8 @@
-import { RollDetails, SetDetails } from './initial-pages';
-import RoolsPage from './rools-page';
-import SetsPage from './sets-page';
+import { RoolsPage, SetsPage, RollDetailsPage, SetDetailsPage } from './initial-pages';
 
 export {
   RoolsPage,
   SetsPage,
-  RollDetails,
-  SetDetails
+  RollDetailsPage,
+  SetDetailsPage
 }; 

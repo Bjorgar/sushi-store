@@ -1,3 +1,7 @@
 import compose from './compose';
+import routingToDetailsPage from './routing-to-details-page';
 
-export default compose;
+export {
+  compose,
+  routingToDetailsPage
+};
