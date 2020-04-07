@@ -1,8 +1,10 @@
 import React from 'react';
 import './list-item.css';
 import Ingredients from '../ingredients';
+import { routingToDetailsPage } from '../utils';
+import { withRouter } from 'react-router-dom';
 
-const ListItem = ({ item, onAddedToCart, onItemDetails }) => {
+const ListItem = ({ item, onAddedToCart, history }) => {
 
   const { type, id, name, weight, price, image, ingredients } = item;
 
@@ -26,11 +28,11 @@ const ListItem = ({ item, onAddedToCart, onItemDetails }) => {
       </button>
       <button
         className="cart-btn-details"
-        onClick={() => onItemDetails(id)}>
+        onClick={() => routingToDetailsPage(item, history)}>
           Details
       </button>
     </div>
   );
 };
 
-export default ListItem;
+export default withRouter(ListItem);

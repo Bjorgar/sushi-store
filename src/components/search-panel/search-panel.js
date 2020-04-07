@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import './search-panel.css';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator'
-import withSushistoreService from '../hoc';
+import { withSushistoreService } from '../hoc';
 import { connect } from 'react-redux';
-import { transferValue, showFoundedItems, searchError, searchEnded, showDeatailsModal, hideDetailsModal, initialPosition, itemAddedToCart } from '../../actions';
-import compose from '../utils';
+import {
+  transferValue,
+  showFoundedItems,
+  searchError,
+  searchEnded,
+  showDeatailsModal,
+  hideDetailsModal,
+  initialPosition,
+  itemAddedToCart } from '../../actions';
+import { compose } from '../utils';
 import FindedItems from './finded-items';
 
 class SearchPanelContainer extends Component {
@@ -41,7 +49,7 @@ class SearchPanelContainer extends Component {
 
   render() {
 
-    const { term, loading, error, isActive, items, showDeatailsModal, hideDetailsModal, onAddedToCart, searchEnded } = this.props;
+    const { term, loading, error, isActive, items, showDeatailsModal, hideDetailsModal, onAddedToCart } = this.props;
 
     const clazz = (isActive) ? 'searching-results' : 'hide-list';
 
@@ -54,8 +62,7 @@ class SearchPanelContainer extends Component {
                                                 onAddedToCart={onAddedToCart}/>;
     
     return (
-      <div className="searching-box"
-        onBlur={searchEnded}>
+      <div className="searching-box">
         <input
           className="searching-input"
           placeholder="Searching"
@@ -83,7 +90,7 @@ const mapStateToProps = ({ itemsSearch: { items, term, loading, isActive, error 
   error
 });
 
-const mapDistatchToProps = {
+const mapDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   transferValue,
   showFoundedItems,
@@ -91,10 +98,10 @@ const mapDistatchToProps = {
   searchEnded,
   showDeatailsModal,
   hideDetailsModal,
-  initialPosition
+  initialPosition,
 };
 
 export default compose(
   withSushistoreService(getAllItems),
-  connect(mapStateToProps, mapDistatchToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(SearchPanelContainer);

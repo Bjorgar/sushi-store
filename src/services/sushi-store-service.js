@@ -9,7 +9,7 @@ export default class SushistoreService {
   rools = [
     {
       type: 'rools',
-      id: 0,
+      id: 'bonito',
       name: 'Bonito',
       ingredients: ['Яблоко', 'Авокадо', 'Груша', 'Нори'],
       weight: 240,
@@ -18,7 +18,7 @@ export default class SushistoreService {
     },
     {
       type: 'rools',
-      id: 1,
+      id: 'ebi',
       name: 'Ebi',
       ingredients: ['Рис', 'Лук', 'Помидор', 'Изюм'],
       weight: 200,
@@ -27,7 +27,7 @@ export default class SushistoreService {
     },
     {
       type: 'rools',
-      id: 2,
+      id: 'avocado-gold',
       name: 'Avocado Gold',
       ingredients: ['Кокос', 'Пиво', 'Греча', 'Редис'],
       weight: 300,
@@ -36,7 +36,7 @@ export default class SushistoreService {
     },
     {
       type: 'rools',
-      id: 3,
+      id: 'fila-delux',
       name: 'Fila Delux',
       ingredients: ['Ананас', 'Сыр', 'Угорь', 'Нори'],
       weight: 180,
@@ -45,7 +45,7 @@ export default class SushistoreService {
     },
     {
       type: 'rools',
-      id: 4,
+      id: 'redka-roll',
       name: 'Редька ролл',
       ingredients: ['Нори', 'Огурец', 'Редька', 'Соус'],
       weight: 240,
@@ -57,25 +57,12 @@ export default class SushistoreService {
   sets = [
     {
       type: 'sets',
-      id: 10,
+      id: 'maki-set',
       name: 'Maki Set',
       ingredients: [
-        {
-          id: 3,
-          name: 'Fila Delux',
-          ingredients: ['Ананас', 'Сыр', 'Угорь', 'Нори'],
-          weight: 180,
-          price: 350,
-          image: 'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/67147827_181053132906989_4373458330140540928_n.jpg?_nc_cat=110&_nc_sid=84a396&_nc_ohc=iSuHmmrfXBEAX9P7zMg&_nc_ht=scontent-frx5-1.xx&oh=ab6fc2150b7e47468737c65ceb6c7c84&oe=5E928EF6'
-        },
-        {
-          id: 4,
-          name: 'Редька ролл',
-          ingredients: ['Нори', 'Огурец', 'Редька', 'Соус'],
-          weight: 240,
-          price: 120,
-          image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/86875325_238020813876887_2313589811660718080_n.jpg?_nc_cat=106&_nc_sid=84a396&_nc_ohc=t0_pows5qj4AX_khy4p&_nc_ht=scontent-frt3-1.xx&oh=980878af0415cba325ba95e5e12030d4&oe=5E8E9D16'
-        }
+        this.rools[0],
+        this.rools[1],
+        this.rools[2]        
       ],
       weight: 520,
       price: 240,
@@ -83,25 +70,12 @@ export default class SushistoreService {
     },
     {
       type: 'sets',
-      id: 11,
+      id: 'phaladelphia-set',
       name: 'Philadelphia Set',
       ingredients: [
-        {
-          id: 1,
-          name: 'Ebi',
-          ingredients: ['Рис', 'Лук', 'Помидор', 'Изюм'],
-          weight: 200,
-          price: 100,
-          image: 'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/80635474_211485859863716_3160750094794358784_o.jpg?_nc_cat=105&_nc_sid=84a396&_nc_ohc=FapPfRGvUzwAX9NlDAP&_nc_ht=scontent-frx5-1.xx&oh=7dc1a353f9d356143d47a5e3da780e35&oe=5E91565C'
-        },
-        {
-          id: 2,
-          name: 'Avocado Gold',
-          ingredients: ['Кокос', 'Пиво', 'Греча', 'Редис'],
-          weight: 300,
-          price: 310,
-          image: 'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/78476540_205960817082887_6515414226381570048_o.jpg?_nc_cat=100&_nc_sid=84a396&_nc_ohc=jRacI3SjDQ8AX-Dlqlr&_nc_ht=scontent-frx5-1.xx&oh=a8a941139d30aa2845b3d3524e1b613a&oe=5E92C22E'
-        }
+        this.rools[3],
+        this.rools[4],
+        this.rools[2]        
       ],
       weight: 750,
       price: 350,
@@ -109,25 +83,11 @@ export default class SushistoreService {
     },
     {
       type: 'sets',
-      id: 12,
+      id: 'phila-godzila-set',
       name: 'Phila-Godzila Set',
       ingredients: [
-        {
-          id: 0,
-          name: 'Bonito',
-          ingredients: ['Яблоко', 'Авокадо', 'Груша', 'Нори'],
-          weight: 240,
-          price: 120,
-          image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/86875325_238020813876887_2313589811660718080_n.jpg?_nc_cat=106&_nc_sid=84a396&_nc_ohc=t0_pows5qj4AX_khy4p&_nc_ht=scontent-frt3-1.xx&oh=980878af0415cba325ba95e5e12030d4&oe=5E8E9D16'
-        },
-        {
-          id: 1,
-          name: 'Ebi',
-          ingredients: ['Рис', 'Лук', 'Помидор', 'Изюм'],
-          weight: 200,
-          price: 100,
-          image: 'https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/80635474_211485859863716_3160750094794358784_o.jpg?_nc_cat=105&_nc_sid=84a396&_nc_ohc=FapPfRGvUzwAX9NlDAP&_nc_ht=scontent-frx5-1.xx&oh=7dc1a353f9d356143d47a5e3da780e35&oe=5E91565C'
-        }
+        this.rools[3],
+        this.rools[0]        
       ],
       weight: 1300,
       price: 530,
