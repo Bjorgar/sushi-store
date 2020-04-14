@@ -114,6 +114,19 @@ const initialPosition = (x, y) => {
   };
 };
 
+const openPopUpIngredientDetails = (ingredient) => {
+  return {
+    type: 'OPEN_POP_UP_ING_DETAILS',
+    payload: ingredient
+  };
+};
+
+const closePopUpIngredientDetails = () => {
+  return {
+    type: 'CLOSE_POP_UP_ING_DETAILS'
+  };
+};
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -131,5 +144,7 @@ export {
   searchEnded,
   showDeatailsModal,
   hideDetailsModal,
-  initialPosition
+  initialPosition,
+  openPopUpIngredientDetails,
+  closePopUpIngredientDetails
 };

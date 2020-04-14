@@ -6,24 +6,25 @@ const FindedItems = ({ items, onShowDeatailsModal, onHideDetailsModal, onInitial
 
   return(
     items.map((item) => {
-      return <li>
-                <span
-                  className='show-item'
-                  key={item.id}
-                  onMouseOver={() => onShowDeatailsModal(item)}
-                  onMouseOut={onHideDetailsModal}
-                  onMouseMove={onInitialPosition}
-                  onClick={() => routingToDetailsPage(item, history)}
-                >
-                  {item.name}
-                </span>
-                <span
-                  className="add-item"
-                  onClick={() => onAddedToCart(item.id)}
-                >
-                  <i className="fas fa-cart-plus"></i>
-                </span>
-              </li>
+      return <li
+              key={`search-panel ${item.id}`}
+             >
+              <span
+                className='show-item'
+                onMouseOver={() => onShowDeatailsModal(item)}
+                onMouseOut={onHideDetailsModal}
+                onMouseMove={onInitialPosition}
+                onClick={() => routingToDetailsPage(item, history)}
+              >
+                {item.name}
+              </span>
+              <span
+                className="add-item"
+                onClick={() => onAddedToCart(item.id)}
+              >
+                <i className="fas fa-cart-plus"></i>
+              </span>
+             </li>
       }
     )
   );

@@ -5,6 +5,7 @@ import updateSlider from './slider';
 import updateItemDetails from './item-details';
 import updateSearching from './items-search';
 import updateItemDetailsModal from './item-details-modal';
+import updatePopUpIngredients from './pop-up-ingredients';
 
 const reducer = (state, action) => {
 
@@ -14,7 +15,8 @@ const reducer = (state, action) => {
     slider: updateSlider(state, action),
     itemDetails: updateItemDetails(state, action),
     itemsSearch: updateSearching(state, action),
-    itemDetailsModal: updateItemDetailsModal(state, action)
+    itemDetailsModal: updateItemDetailsModal(state, action),
+    popUpIngredients: updatePopUpIngredients(state, action)
   };
 };
 

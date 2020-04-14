@@ -20,7 +20,7 @@ const itemDetails = (state, action) => {
         item: {},
         loading: true
       };
-
+    
     default: 
       return state.itemDetails;
   }

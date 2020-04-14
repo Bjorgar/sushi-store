@@ -13,7 +13,7 @@ import {
   hideDetailsModal,
   initialPosition,
   itemAddedToCart } from '../../actions';
-import { compose } from '../utils';
+import { compose, onInitialPosition } from '../utils';
 import FindedItems from './finded-items';
 
 class SearchPanelContainer extends Component {
@@ -38,13 +38,18 @@ class SearchPanelContainer extends Component {
         .then((data) => this.searchingItems(data))
         .catch((err) => searchError(err))
     }
-  }
+  };
 
-  onInitialPosition = (e) => {
-    const { initialPosition } = this.props;
-    const x = e.pageX;
-    const y = e.pageY;
-    initialPosition(x, y);
+  componentDidMount = () => {
+    const { searchEnded } = this.props;
+    const searchingBox = document.querySelector('.searching-box');
+    document.addEventListener('click', e => {
+      let target = e.target;
+      if (target === searchingBox || searchingBox.contains(target)) {
+        return
+      }
+      searchEnded();
+    })
   };
 
   render() {
@@ -58,7 +63,7 @@ class SearchPanelContainer extends Component {
                                                 items={items}
                                                 onShowDeatailsModal={showDeatailsModal}
                                                 onHideDetailsModal={hideDetailsModal}
-                                                onInitialPosition={this.onInitialPosition}
+                                                onInitialPosition={onInitialPosition}
                                                 onAddedToCart={onAddedToCart}/>;
     
     return (

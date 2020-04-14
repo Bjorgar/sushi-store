@@ -1,7 +1,7 @@
 import React from 'react';
 import './item-details.css';
 
-const ItemDetails = ({ item, onAddedToCart, ingredientslist, closePopUpWindow }) => {
+const ItemDetails = ({ item, onAddedToCart, ingredientslist, closeDetailsPage }) => {
 
   const { id, name, weight, price, image } = item;
   return(
@@ -20,7 +20,7 @@ const ItemDetails = ({ item, onAddedToCart, ingredientslist, closePopUpWindow })
           <p>{price}</p>
         </div>
         <button className="d-btn-close"
-          onClick={closePopUpWindow}>close</button>
+          onClick={closeDetailsPage}>close</button>
         <button className="d-btn-add"
           onClick={() => onAddedToCart(id)}>Add to cart</button>
       </div>
