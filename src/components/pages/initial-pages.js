@@ -8,7 +8,10 @@ import {
   itemAddedToCart,
   itemsRequested,
   showItemDetails,
-  closeItemDetails } from '../../actions';
+  closeItemDetails,
+  openPopUpIngredientDetails,
+  showDeatailsModal,
+  hideDetailsModal } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -45,7 +48,10 @@ const mapDetailsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   showItemDetails,
   catchError,
-  closeItemDetails
+  closeItemDetails,
+  openPopUpIngredientDetails,
+  showDeatailsModal,
+  hideDetailsModal
  };
 
 // PAGES

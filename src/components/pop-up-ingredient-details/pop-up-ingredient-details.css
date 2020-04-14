@@ -1,0 +1,21 @@
+.pop-up-main {
+  position: absolute;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px black solid;
+  background-color: cadetblue;
+  width: 600px;
+  height: 600px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+}
+
+.pop-up-main-hide {
+  display: none;
+}

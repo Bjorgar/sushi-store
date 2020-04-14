@@ -16,7 +16,7 @@ const ListItem = ({ item, onAddedToCart, history }) => {
       <div className="description-box">
         <h1>{name}</h1>
         <ul>
-          <Ingredients ingredients={ingredients} type={type} />
+          <Ingredients ingredients={ingredients} type={type} pref={'main-page'} />
         </ul>
         <p>weight: {weight}</p>
         <p>price: {price}</p>

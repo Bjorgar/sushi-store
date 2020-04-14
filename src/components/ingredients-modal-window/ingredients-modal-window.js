@@ -21,7 +21,7 @@ const IngredientsModalWindow = ({ type, ingredients, isActive, x, y }) => {
   return(
     <div style={clazz}>
       <ul className="modal-list">
-        <Ingredients type={type} ingredients={ingredients} />
+        <Ingredients type={type} ingredients={ingredients} pref={'searching'} />
       </ul>
     </div>
   ); 
