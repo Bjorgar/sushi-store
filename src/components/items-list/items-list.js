@@ -1,6 +1,5 @@
 import React from 'react';
 import ListItem  from '../list-item';
-import './items-list.css';
 
 const ItemsList = ({ items, onAddedToCart }) => {
   return(

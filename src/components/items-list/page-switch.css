@@ -1,0 +1,31 @@
+.switch-box {
+  position: absolute;
+  margin: auto;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+}
+
+.switch-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border: 2px solid cyan;
+  border-radius: 3px;
+  margin: 3px;
+  background-color: rgba(0, 0, 0, 0.459);
+  color: white;
+  cursor: pointer;
+}
+
+.active-button {
+  background-color: rgba(0, 0, 0, 0.671);
+  border-color: rgb(238, 255, 0);
+}
