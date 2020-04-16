@@ -10,27 +10,34 @@ const ListItem = ({ item, onAddedToCart, history }) => {
 
   return(
     <div className="main-box">
+      <div className="item-name-box"> 
+        <h1 className="item-name" >{name}</h1>
+      </div>
       <div className="image-box">
         <img alt="item" src={image} />
       </div>
       <div className="description-box">
-        <h1>{name}</h1>
+        <h2>Состав</h2>
         <ul>
           <Ingredients ingredients={ingredients} type={type} pref={'main-page'} />
         </ul>
-        <p>weight: {weight}</p>
-        <p>price: {price}</p>
       </div>
-      <button
-        className="cart-btn-add"
-        onClick={() => onAddedToCart(id)}>
-          Add to cart
-      </button>
-      <button
-        className="cart-btn-details"
-        onClick={() => routingToDetailsPage(item, history)}>
-          Details
-      </button>
+      <div className="weigth-price">
+        <p>вес: {weight}г</p>
+        <p>цена: {price}грн</p>
+      </div>
+      <div className="buttons-box">
+        <button
+          className="buttons cart-btn-add"
+          onClick={() => onAddedToCart(id)}>
+            В корзину
+        </button>
+        <button
+          className="buttons cart-btn-details"
+          onClick={() => routingToDetailsPage(item, history)}>
+            Детали
+        </button>
+      </div>
     </div>
   );
 };
