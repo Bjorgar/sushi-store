@@ -1,3 +1,9 @@
+.items-list-main-box {
+  position: relative;
+  background-color: cadetblue;
+  padding-bottom: 100px;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(auto-fill, 380px);
