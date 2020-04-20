@@ -2,7 +2,14 @@ import React from 'react';
 import { routingToDetailsPage } from '../utils';
 import { withRouter } from 'react-router-dom';
 
-const FindedItems = ({ items, onShowDeatailsModal, onHideDetailsModal, onInitialPosition, onAddedToCart, history }) => {
+const FindedItems = ({
+  items,
+  onShowDeatailsModal,
+  onHideDetailsModal,
+  onInitialPosition,
+  onAddedToCart,
+  history,
+  searchEnded }) => {
 
   return(
     items.map((item) => {
@@ -14,7 +21,11 @@ const FindedItems = ({ items, onShowDeatailsModal, onHideDetailsModal, onInitial
                 onMouseOver={() => onShowDeatailsModal(item)}
                 onMouseOut={onHideDetailsModal}
                 onMouseMove={onInitialPosition}
-                onClick={() => routingToDetailsPage(item, history)}
+                onClick={() => {
+                  routingToDetailsPage(item, history);
+                  searchEnded();
+                  onHideDetailsModal();
+                }}
               >
                 {item.name}
               </span>

@@ -2,36 +2,94 @@ import React, { Component } from 'react';
 import ErrorIndicator from '../error-indicator';
 import Spinner from '../spinner';
 import ItemsList from './items-list';
-import PageSwitch from './page-switch'
+import PageSwitch from './page-switch';
+import DisplaySettings from './display-settings';
 import './items-list.css';
 
 class ItemsListContainer extends Component {
 
-  separatedItems = [];
-  size = 12;
+  arrWithItems = [];
   selectedPage = 0;
-
+  
   componentDidMount() {
     const { catchError, itemsRequested, getData } = this.props;
     itemsRequested();
     getData()
-      .then((data) => this.separateItems(data))
+      .then((data) => {
+        this.arrWithItems = [...data];
+        this.separateItems(this.arrWithItems)})
       .catch((err) => catchError(err));
-  }
-
-  separateItems = (data) => {
-    const { itemsLoaded } = this.props;
-    for (let i=0; i < Math.ceil(data.length/this.size); i++) {
-      this.separatedItems.push(data.slice( (i*this.size), (i*this.size) + this.size));
     }
-    itemsLoaded(this.separatedItems[this.selectedPage]);
-  }
+
+  separateItems = (arr) => {
+    const { itemsLoaded, quantity } = this.props;
+    this.arrWithItems = arr;
+    const separatedItems = [];
+
+    while (arr.length) {
+      separatedItems.push(this.arrWithItems.splice(0, quantity))
+    }
+
+    this.arrWithItems = separatedItems;
+    itemsLoaded(this.arrWithItems[this.selectedPage]);
+  };
 
   onPageSelected = (idx) => {
     const { itemsLoaded } = this.props;
     this.selectedPage = idx;
-    itemsLoaded(this.separatedItems[this.selectedPage]);
-  }
+    itemsLoaded(this.arrWithItems[this.selectedPage]);
+  };
+
+  compileArrWithItems = () => {
+    const updatedArrWithItems = [];
+
+    this.arrWithItems.forEach((part) => {
+      part.forEach((item) => {
+        updatedArrWithItems.push(item);
+      });
+    });
+    
+    return updatedArrWithItems;
+  };
+
+  selectQuantity = () => {
+    this.selectedPage = 0;
+    this.separateItems(this.compileArrWithItems());
+  };
+
+  selectOrder = () => {
+    
+    const { order } = this.props;
+
+    switch (order) {
+      case 'возростанию цены':
+        return ( 
+          this.separateItems(
+            this.compileArrWithItems().sort((a, b) => a.price - b.price)
+          )
+        );
+      case 'убыванию цены':
+        return ( 
+          this.separateItems(
+            this.compileArrWithItems().sort((a, b) => b.price - a.price)
+          )
+        );
+      case 'возростанию веса':
+        return ( 
+          this.separateItems(
+            this.compileArrWithItems().sort((a, b) => a.weight - b.weight)
+          )
+        );
+      case 'уменьшению веса':
+        return ( 
+          this.separateItems(
+            this.compileArrWithItems().sort((a, b) => b.weight - a.weight)
+          )
+        );
+      default:
+        return this.arrWithItems;
+    };
+  };
 
   render() {
     const { items, onAddedToCart, loading, hasError } = this.props;
@@ -46,12 +104,15 @@ class ItemsListContainer extends Component {
 
     return(
       <div className="items-list-main-box">
+        <DisplaySettings
+          selectOrder={this.selectOrder}
+          selectQuantity={this.selectQuantity} />
         <ItemsList
             items={items}
             onAddedToCart={onAddedToCart}/>
         <PageSwitch
           selectedPage={this.selectedPage}
-          separatedItems={this.separatedItems}
+          separatedItems={this.arrWithItems}
           onPageSelected={this.onPageSelected}/>
       </div>
     );

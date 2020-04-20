@@ -8,11 +8,11 @@ import {
   transferValue,
   showFoundedItems,
   searchError,
-  searchEnded,
   showDeatailsModal,
   hideDetailsModal,
   initialPosition,
-  itemAddedToCart } from '../../actions';
+  itemAddedToCart,
+  searchEnded } from '../../actions';
 import { compose, onInitialPosition } from '../utils';
 import FindedItems from './finded-items';
 
@@ -40,21 +40,18 @@ class SearchPanelContainer extends Component {
     }
   };
 
-  componentDidMount = () => {
-    const { searchEnded } = this.props;
-    const searchingBox = document.querySelector('.searching-box');
-    document.addEventListener('click', e => {
-      let target = e.target;
-      if (target === searchingBox || searchingBox.contains(target)) {
-        return
-      }
-      searchEnded();
-    })
-  };
-
   render() {
 
-    const { term, loading, error, isActive, items, showDeatailsModal, hideDetailsModal, onAddedToCart } = this.props;
+    const {
+      term,
+      loading,
+      error,
+      isActive,
+      items,
+      showDeatailsModal,
+      hideDetailsModal,
+      onAddedToCart,
+      searchEnded } = this.props;
 
     const clazz = (isActive) ? 'searching-results' : 'hide-list';
 
@@ -64,7 +61,8 @@ class SearchPanelContainer extends Component {
                                                 onShowDeatailsModal={showDeatailsModal}
                                                 onHideDetailsModal={hideDetailsModal}
                                                 onInitialPosition={onInitialPosition}
-                                                onAddedToCart={onAddedToCart}/>;
+                                                onAddedToCart={onAddedToCart}
+                                                searchEnded={searchEnded} />;
     
     return (
       <div className="searching-box">
@@ -79,9 +77,8 @@ class SearchPanelContainer extends Component {
         </ul>
       </div>
     );
-
   }
-}
+};
 
 const getAllItems = (sushistoreService) => ({
   getData: sushistoreService.getAllItems
@@ -100,10 +97,10 @@ const mapDispatchToProps = {
   transferValue,
   showFoundedItems,
   searchError,
-  searchEnded,
   showDeatailsModal,
   hideDetailsModal,
   initialPosition,
+  searchEnded
 };
 
 export default compose(

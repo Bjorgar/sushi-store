@@ -27,11 +27,13 @@ const mapSetsMethodToProps = (sushistoreService) => ({
 
 // CONNECT REDUX
 
-const mapItemsStateToProps = ({ itemsList: { items, loading, hasError } }) => {
+const mapItemsStateToProps = ({ itemsList: { items, loading, hasError }, displaySettings: { quantity, order } }) => {
   return {
     items,
     loading,
-    hasError
+    hasError,
+    quantity,
+    order
   };
 };
 

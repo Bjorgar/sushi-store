@@ -127,6 +127,46 @@ const closePopUpIngredientDetails = () => {
   };
 };
 
+const transferQuantity = (quantity) => {
+  return {
+    type: 'TRANSFER_QUANTITY',
+    payload: quantity
+  };
+};
+
+const transferOrder = (order) => {
+  return {
+    type: 'TRANSFER_ORDER',
+    payload: order
+  };
+};
+
+const showQuantitySettings = () => {
+  return {
+    type: 'SHOW_QUANTITY_SETTINGS'
+  };
+};
+
+const showOrderSettings = () => {
+  return {
+    type: 'SHOW_ORDER_SETTINGS'
+  };
+};
+
+const closeQuantitySettings = () => {
+  return {
+    type: 'CLOSE_QUANTITY_SETTINGS'
+  };
+};
+
+const closeOrderSettings = () => {
+  return {
+    type: 'CLOSE_ORDER_SETTINGS'
+  };
+};
+
+
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -146,5 +186,11 @@ export {
   hideDetailsModal,
   initialPosition,
   openPopUpIngredientDetails,
-  closePopUpIngredientDetails
+  closePopUpIngredientDetails,
+  transferQuantity,
+  transferOrder,
+  showQuantitySettings,
+  showOrderSettings,
+  closeQuantitySettings,
+  closeOrderSettings
 };
