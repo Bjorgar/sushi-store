@@ -1,5 +1,5 @@
 .details-background {
-  background-color: rgba(128, 128, 128, 0.548);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   z-index: 3;
   width: 100%;
@@ -9,59 +9,138 @@
   right: 0;
   left: 0;
   margin: auto;
-  transition-duration: 0.2s;
-}
-
-div.hiden-details {
-  display: none;
-  transition-duration: 0.2s;
 }
 
 .details-body {
   position: absolute;
-  width: 1300px;
-  height: 700px;
+  display: flex;
+  flex-flow: row;
+  width: 1000px;
+  height: 570px;
   margin: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: goldenrod;
-  display: grid;
-  grid-template-columns: 700px 1fr 1fr;
-  grid-template-rows: 100px auto 100px;
-  grid-gap: 5px;
+  background-color: rgb(43, 43, 43);
+  border: 4px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px 5px rgba(255, 0, 0, 0.637);
 }
 
-.details-body>* {
-  background-color: green;
+.details-body {
+  overflow: hidden;
 }
 
-.img-div img {
-  width: 700px;
-  height: 700px;
+.DP-img-div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: inherit;
+  background-color: rgb(43, 43, 43);
+  border-right: white 4px solid;
 }
 
-.img-div {
-  grid-row: 1 / -1;
+.DP-img-div > img {
+  border: white 2px solid;
+  padding: 20px;
 }
 
-.details-name {
-  grid-column: 2 / -1;
+.DP-desc-div {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.DP-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(43, 43, 43);
+  background-color: white;
+  width: 100%;
+  height: 70px;
   margin: 0;
 }
 
-.details-div {
-  grid-column: 2 / -1;
-  grid-row: 2;
+.DP-ing {
+  width: 100%;
 }
 
-.d-btn-add {
-  grid-row: 3;
-  grid-column: 2;
+.DP-ing h2 {
+  text-align: center;
+  color: white;
 }
 
-.d-btn-close {
-  grid-row: 3;
-  grid-column: 3;
+.DP-ing ul {
+  padding: 0;
+  margin: 0;
+}
+
+.DP-ing ul li {
+  list-style-type: none;
+  color: white;
+  padding: 5px 20px;
+  border-bottom: 1px solid white;
+  font-size: 20px;
+}
+
+.DP-ing ul li:last-child {
+  border-bottom: none;
+}
+
+.DP-ing ul .DP-sets-li {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
+.DP-p-div {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  color: rgb(43, 43, 43);
+  font-size: 20px;
+  margin-top: 10px;
+  background-color: white;
+}
+
+.DP-buttons {
+  display: flex;
+  flex-flow: row;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.DP-buttons button {
+  display: block;
+  width: 150px;
+  height: 60px;
+  font-size: 18px;
+  color: white;
+  background-color: rgb(43, 43, 43);
+  border: 1px solid rgb(255, 255, 255);
+  outline: none;
+  cursor: pointer;
+  margin: 25px;
+  transition-duration: 0.3s;
+}
+
+.DP-buttons button:hover {
+  background-color: white;
+  color: rgb(43, 43, 43);
+  transition-duration: 0.3s;
+}
+
+.DP-buttons button:active {
+  border-style: inset;
+  background-color: rgb(197, 197, 197);
+  color:rgb(34, 34, 34);
 }

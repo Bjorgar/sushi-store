@@ -1,5 +1,6 @@
 import React from 'react';
 import './item-details.css';
+import PopUpIngredientDetails from '../pop-up-ingredient-details';
 
 const ItemDetails = ({ item, onAddedToCart, ingredientslist, closeDetailsPage }) => {
 
@@ -7,22 +8,31 @@ const ItemDetails = ({ item, onAddedToCart, ingredientslist, closeDetailsPage })
   return(
     <div className="details-background">
       <div className="details-body">
-        <div className="img-div">
+        <div className="DP-img-div">
+          <PopUpIngredientDetails />
           <img alt="item" src={image} />
         </div>
-        <h1 className="details-name">{name}</h1>
-        <div className="details-div">
-          <h2>Состав</h2>
-          <ul>
-            {ingredientslist}
-          </ul>
-          <p>{weight}</p>
-          <p>{price}</p>
+        <div className="DP-desc-div">
+          <h1 className="DP-name">{name}</h1>
+          <div className="DP-ing">
+            <h2>Состав</h2>
+            <ul>
+              {ingredientslist}
+            </ul>
+            <div className="DP-p-div">
+              <p>вес: {weight}г</p>
+              <p>цена: {price}грн</p>
+            </div>
+          </div>
+          <div className="DP-buttons">
+            <button
+              onClick={() => onAddedToCart(id)}>в корзину
+            </button>
+            <button
+              onClick={closeDetailsPage}>закрыть
+            </button>
+          </div>
         </div>
-        <button className="d-btn-close"
-          onClick={closeDetailsPage}>close</button>
-        <button className="d-btn-add"
-          onClick={() => onAddedToCart(id)}>Add to cart</button>
       </div>
     </div>
   );

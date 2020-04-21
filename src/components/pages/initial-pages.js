@@ -11,7 +11,8 @@ import {
   closeItemDetails,
   openPopUpIngredientDetails,
   showDeatailsModal,
-  hideDetailsModal } from '../../actions';
+  hideDetailsModal,
+  closePopUpIngredientDetails } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -53,7 +54,8 @@ const mapDetailsDispatchToProps = {
   closeItemDetails,
   openPopUpIngredientDetails,
   showDeatailsModal,
-  hideDetailsModal
+  hideDetailsModal,
+  closePopUpIngredientDetails
  };
 
 // PAGES

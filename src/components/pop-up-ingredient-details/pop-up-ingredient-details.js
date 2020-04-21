@@ -12,27 +12,33 @@ const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClos
 
   return(
     <div className={clazz}>
-      <div className="pop-up-img-div">
-        <img alt="roll" src={image} />
+      <h1 className="pop-up-name-div">
+        {name}
+      </h1>
+      <div className="pop-up-ImDesc-div">
+        <div className="pop-up-img-p-div">
+          <img alt="roll" src={image} />
+          <div className="pop-up-p-div">
+            <p>вес: {weight}г</p>
+            <p>цена: {price}грн</p>
+          </div>
+        </div>
+        <div className="pop-up-desc-div">
+          <ul>
+            <Ingredients type={type} ingredients={ingredients} pref={'pop-up'} />
+          </ul>
+        </div>
       </div>
-      <div className="pop-up-description-div">
-        <h1>
-          {name}
-        </h1>
-        <ul>
-          <Ingredients type={type} ingredients={ingredients} pref={'pop-up'} />
-        </ul>
-        <p>price: {price}</p>
-        <p>weight: {weight}</p>
+      <div className="pop-up-btn-div">
         <button
           onClick={() => onAddedToCart(id)} >
-          Add to cart
+          добавить ролл в корзину
+        </button>
+        <button
+          onClick={onClosePopUp} >
+          скрыть ролл
         </button>
       </div>
-      <button
-        onClick={onClosePopUp} >
-        cross
-      </button>
     </div>
   );
 };
