@@ -39,6 +39,12 @@ import kaliforniaLosos from '../images/rools/kalifornia-losos.jpg';
 import kaliforniaUnagi from '../images/rools/kalifornia-unagi.jpg';
 import kaliforniaKrevetka from '../images/rools/kalifornia-krevetka.jpg';
 
+import futomakSet from '../images/sets/futomak-set.jpg';
+import kaliforniaSet from '../images/sets/kalifornia-set.jpg';
+import makiSet from '../images/sets/maki-set.jpg';
+import philadelphiaSet from '../images/sets/philadelphia-set.jpg';
+import philaGodzillaSet from '../images/sets/phila-godzilla-set.jpg';
+
 export default class SushistoreService {
 
   rools = [
@@ -349,7 +355,7 @@ export default class SushistoreService {
       ingredients: this.creatingListFromRoolsForSets('maki-krevetka', 'maki-losos', 'maki-ugor', 'maki-ogurec'),
       weight: 520,
       price: 240,
-      image: 'https://scontent-frt3-2.xx.fbcdn.net/v/t1.0-9/p843x403/89197371_242970820048553_6116221360093003776_o.jpg?_nc_cat=109&_nc_sid=84a396&_nc_ohc=9BsZ2apY9zMAX_4aGCt&_nc_ht=scontent-frt3-2.xx&_nc_tp=6&oh=9ad19eff123f8eede3d88925c5d4718d&oe=5E980538'
+      image: makiSet
     },
     {
       type: 'sets',
@@ -358,7 +364,7 @@ export default class SushistoreService {
       ingredients: this.creatingListFromRoolsForSets('futomak-ugor', 'futomak-krevetka', 'maki-losos', 'maki-krevetka'),
       weight: 1250,
       price: 490,
-      image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/s960x960/84123519_224409221904713_3785324591165997056_o.jpg?_nc_cat=106&_nc_sid=84a396&_nc_ohc=I-_ttgq64sAAX_9H3gC&_nc_ht=scontent-frt3-1.xx&_nc_tp=7&oh=43f2ba83ef3a375d66700cb39fd278ba&oe=5E95A969'
+      image: futomakSet
     },
     {
       type: 'sets',
@@ -367,7 +373,7 @@ export default class SushistoreService {
       ingredients: this.creatingListFromRoolsForSets('philadelphia', 'philadelphia-ugor', 'philadelphia-kopchjonyi-losos'),
       weight: 1300,
       price: 530,
-      image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/p843x403/62087441_172508870428082_2877267890887720960_n.jpg?_nc_cat=108&_nc_sid=84a396&_nc_ohc=wR8vGvpNYy0AX-Mzjjc&_nc_ht=scontent-frt3-1.xx&_nc_tp=6&oh=adac8c72284d03f0c718db37962d7c29&oe=5E99249B'
+      image: philadelphiaSet
     },
     {
       type: 'sets',
@@ -376,7 +382,7 @@ export default class SushistoreService {
       ingredients: this.creatingListFromRoolsForSets('kalifornia-kopchjonyi-losos', 'kalifornia-losos', 'kalifornia-unagi', 'kalifornia-krevetka'),
       weight: 1300,
       price: 530,
-      image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/p843x403/62087441_172508870428082_2877267890887720960_n.jpg?_nc_cat=108&_nc_sid=84a396&_nc_ohc=wR8vGvpNYy0AX-Mzjjc&_nc_ht=scontent-frt3-1.xx&_nc_tp=6&oh=adac8c72284d03f0c718db37962d7c29&oe=5E99249B'
+      image: kaliforniaSet
     },
     {
       type: 'sets',
@@ -385,7 +391,7 @@ export default class SushistoreService {
       ingredients: this.creatingListFromRoolsForSets('philadelphia', 'philadelphia-ugor', 'philadelphia-kopchjonyi-losos', 'kalifornia-krevetka', 'eskolar-white'),
       weight: 1300,
       price: 530,
-      image: 'https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/p843x403/62087441_172508870428082_2877267890887720960_n.jpg?_nc_cat=108&_nc_sid=84a396&_nc_ohc=wR8vGvpNYy0AX-Mzjjc&_nc_ht=scontent-frt3-1.xx&_nc_tp=6&oh=adac8c72284d03f0c718db37962d7c29&oe=5E99249B'
+      image: philaGodzillaSet
     }
   ];
 

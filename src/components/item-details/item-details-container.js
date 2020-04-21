@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import ItemDetails from './item-details';
 import Spinner from '../spinner';
 import { withRouter } from 'react-router-dom';
-import PopUpIngredientDetails from '../pop-up-ingredient-details';
 import { onInitialPosition } from '../utils';
 
 class ItemDeatailsContainer extends Component {
@@ -42,6 +41,7 @@ class ItemDeatailsContainer extends Component {
         ingredients.map((ingredient) => {
           const id = `${ingredient.id} ${ingredient.name} DP`;
           return <li key={id}
+                  className="DP-sets-li"
                   onClick={() => openPopUpIngredientDetails(ingredient)}
                   onMouseOver={() => showDeatailsModal(ingredient)}
                   onMouseOut={hideDetailsModal}
@@ -55,9 +55,10 @@ class ItemDeatailsContainer extends Component {
   };
 
   closeDetailsPage = ({ type }) => {
-    const { history, closeItemDetails } = this.props;
+    const { history, closeItemDetails, closePopUpIngredientDetails } = this.props;
     history.push(`/${type}/`)
     closeItemDetails()
+    closePopUpIngredientDetails();
   };
 
   render() {
@@ -67,7 +68,6 @@ class ItemDeatailsContainer extends Component {
     }
     return(
       <Fragment>
-        <PopUpIngredientDetails />
         <ItemDetails
           item={item}
           onAddedToCart={onAddedToCart}
