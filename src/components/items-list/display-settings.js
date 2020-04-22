@@ -11,12 +11,11 @@ import {
 
 class DisplaySettings extends Component {
 
-  makeClickableElementsAndTransferingData = (element, selectValue, transferValue, closeElement) => {
+  makeClickableElementsAndTransferingData = (element, transferValue, closeElement) => {
     element.forEach((li) => {
       const value = li.innerHTML;
       li.onclick = () => {
         transferValue(value);
-        selectValue();
         closeElement();
       };
     })
@@ -24,8 +23,6 @@ class DisplaySettings extends Component {
  
   componentDidMount() {
     const {
-      selectQuantity,
-      selectOrder,
       transferQuantity,
       transferOrder,
       closeQuantitySettings,
@@ -34,8 +31,8 @@ class DisplaySettings extends Component {
     const quantityLi = document.querySelectorAll('.quantity-li');
     const orderLi = document.querySelectorAll('.order-li');
 
-    this.makeClickableElementsAndTransferingData(quantityLi, selectQuantity, transferQuantity, closeQuantitySettings);
-    this.makeClickableElementsAndTransferingData(orderLi, selectOrder, transferOrder, closeOrderSettings);
+    this.makeClickableElementsAndTransferingData(quantityLi, transferQuantity, closeQuantitySettings);
+    this.makeClickableElementsAndTransferingData(orderLi, transferOrder, closeOrderSettings);
   }
 
   render() {

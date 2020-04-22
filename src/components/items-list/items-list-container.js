@@ -10,7 +10,6 @@ class ItemsListContainer extends Component {
 
   arrWithItems = [];
   arrLength = 0;
-  selectedPage = 0;
   
   componentDidMount() {
     const { catchError, itemsRequested, getData } = this.props;
@@ -23,32 +22,48 @@ class ItemsListContainer extends Component {
       .catch((err) => catchError(err));
   }
 
+  componentDidUpdate(prevProps) {
+    const { selectPageNumber, quantity, order } = this.props;
+    if (quantity !== prevProps.quantity) {
+      selectPageNumber(0);
+      this.separateItems(this.compileArrWithItems(), 0);
+    }
+    if (order !== prevProps.order) {
+      this.selectOrder()
+    } 
+    return
+  }
+
   collectItemsId = (arr) => {
     const { transferItemsId } = this.props;
     const itemsId = [];
+
     arr.forEach((item) => {
       itemsId.push(item.id);
     });
+    
     transferItemsId(itemsId);
     this.separateItems(arr);
   };
   
-  separateItems = (arr) => {
-    const { itemsLoaded, quantity } = this.props;
+  separateItems = (arr, num) => {
+    const { itemsLoaded, quantity, pageNumber } = this.props;
     const separatedItems = [];
+
+    const n = (num === undefined) ? pageNumber: num
 
     while (arr.length) {
       separatedItems.push(arr.splice(0, quantity))
     }
 
     this.arrWithItems = separatedItems;
-    itemsLoaded(this.arrWithItems[this.selectedPage]);
+    itemsLoaded(this.arrWithItems[n]);
   };
 
   onPageSelected = (idx) => {
-    const { itemsLoaded } = this.props;
-    this.selectedPage = idx;
-    itemsLoaded(this.arrWithItems[this.selectedPage]);
+    const { selectPageNumber, itemsLoaded } = this.props;
+    selectPageNumber(idx);
+    itemsLoaded(this.arrWithItems[idx]);
   };
 
   compileArrWithItems = () => {
@@ -65,11 +80,6 @@ class ItemsListContainer extends Component {
     });
       
     return updatedArrWithItems;
-  };
-
-  selectQuantity = () => {
-    this.selectedPage = 0;
-    this.separateItems(this.compileArrWithItems());
   };
 
   selectOrder = () => {
@@ -107,7 +117,7 @@ class ItemsListContainer extends Component {
   };
 
   render() {
-    const { items, onAddedToCart, loading, hasError } = this.props;
+    const { items, onAddedToCart, loading, hasError, pageNumber } = this.props;
 
     if (hasError) {
       return <ErrorIndicator />
@@ -119,14 +129,12 @@ class ItemsListContainer extends Component {
 
     return(
       <div className="items-list-main-box">
-        <DisplaySettings
-          selectOrder={this.selectOrder}
-          selectQuantity={this.selectQuantity} />
+        <DisplaySettings />
         <ItemsList
             items={items}
             onAddedToCart={onAddedToCart}/>
         <PageSwitch
-          selectedPage={this.selectedPage}
+          selectedPage={pageNumber}
           separatedItems={this.arrWithItems}
           onPageSelected={this.onPageSelected}/>
       </div>
