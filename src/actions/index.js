@@ -185,6 +185,13 @@ const transferItemsId = (itemsId) => {
   };
 };
 
+const selectPageNumber = (idx) => {
+  return {
+    type: 'PAGE_NUMBER_SELECTED',
+    payload: idx
+  };
+};
+
 
 export {
   itemAddedToCart,
@@ -214,5 +221,6 @@ export {
   closeOrderSettings,
   setActiveLi,
   deactivateActiveLi,
-  transferItemsId
+  transferItemsId,
+  selectPageNumber
 };
