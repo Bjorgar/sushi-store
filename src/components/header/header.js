@@ -3,14 +3,19 @@ import './header.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchPanelContainer from '../search-panel';
+import { transferItemsType } from '../../actions';
 
-const Header = ({ total, totalCount }) => {
+const Header = ({ total, totalCount, transferItemsType }) => {
   return(
     <nav>
       <SearchPanelContainer />
       <ul className="nav-panel-items">
-        <Link to="/rools/"><li>Rools</li></Link>
-        <Link to="/sets/"><li>Sets</li></Link>
+        <Link to="/rools/">
+          <li onClick={() => transferItemsType('rools')} >Rools</li>
+        </Link>
+        <Link to="/sets/">
+          <li onClick={() => transferItemsType('sets')}>Sets</li>
+        </Link>
       </ul>
       <Link to="/cart/">
         <div className="cart">
@@ -30,4 +35,8 @@ const mapStateToProps = ({ shoppingCart: { total, totalCount } }) => {
   };
 };
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = {
+  transferItemsType
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

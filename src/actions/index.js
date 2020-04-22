@@ -192,6 +192,20 @@ const selectPageNumber = (idx) => {
   };
 };
 
+const transferItemsType = (type) => {
+  return {
+    type: 'TRANSFER_ITEMS_TYPE',
+    payload: type
+  };
+};
+
+const saveItemsType = (type) => {
+  return {
+    type: 'SAVE_ITEMS_TYPE',
+    payload: type
+  }
+};
+
 
 export {
   itemAddedToCart,
@@ -222,5 +236,7 @@ export {
   setActiveLi,
   deactivateActiveLi,
   transferItemsId,
-  selectPageNumber
+  selectPageNumber,
+  transferItemsType,
+  saveItemsType
 };

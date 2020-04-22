@@ -23,13 +23,13 @@ class ItemsListContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { selectPageNumber, quantity, order } = this.props;
+    const { quantity, order } = this.props;
     if (quantity !== prevProps.quantity) {
-      selectPageNumber(0);
+  // When we change quantity, we must show page with 0 idx      
       this.separateItems(this.compileArrWithItems(), 0);
     }
     if (order !== prevProps.order) {
-      this.selectOrder()
+      this.selectOrder();
     } 
     return
   }
@@ -47,23 +47,36 @@ class ItemsListContainer extends Component {
   };
   
   separateItems = (arr, num) => {
-    const { itemsLoaded, quantity, pageNumber } = this.props;
+    const { quantity } = this.props;
     const separatedItems = [];
-
-    const n = (num === undefined) ? pageNumber: num
 
     while (arr.length) {
       separatedItems.push(arr.splice(0, quantity))
     }
-
+    
     this.arrWithItems = separatedItems;
-    itemsLoaded(this.arrWithItems[n]);
+    this.showItemsAtPage(num);
+  };
+
+  showItemsAtPage = (num) => {
+    const { itemsLoaded, pageNumber, itemsType, savedType, saveItemsType, selectPageNumber } = this.props;
+    saveItemsType(itemsType);
+
+    const page = (num === 0 || itemsType !== savedType) ? 0 :
+          (num > 0) ? num :
+          pageNumber;
+
+    if (num !== undefined) {
+      selectPageNumber(num);
+    } else if (itemsType !== savedType) {
+      selectPageNumber(0);
+    }
+
+    itemsLoaded(this.arrWithItems[page]);
   };
 
   onPageSelected = (idx) => {
-    const { selectPageNumber, itemsLoaded } = this.props;
-    selectPageNumber(idx);
-    itemsLoaded(this.arrWithItems[idx]);
+    this.showItemsAtPage(idx);
   };
 
   compileArrWithItems = () => {
