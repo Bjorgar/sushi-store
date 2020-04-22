@@ -11,7 +11,8 @@ import {
   closeItemDetails,
   closePopUpIngredientDetails,
   transferItemsId,
-  selectPageNumber } from '../../actions';
+  selectPageNumber,
+  saveItemsType } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -27,14 +28,16 @@ const mapSetsMethodToProps = (sushistoreService) => ({
 
 // CONNECT REDUX
 
-const mapItemsStateToProps = ({ itemsList: { items, loading, hasError, pageNumber }, displaySettings: { quantity, order } }) => {
+const mapItemsStateToProps = ({ itemsList: { items, loading, hasError, pageNumber, itemsType, savedType }, displaySettings: { quantity, order } }) => {
   return {
     items,
     loading,
     hasError,
     quantity,
     order,
-    pageNumber
+    pageNumber,
+    itemsType,
+    savedType
   };
 };
 
@@ -44,7 +47,8 @@ const mapItemsDispatchToProps = (dispatch) => bindActionCreators({
   catchError,
   itemsRequested,
   transferItemsId,
-  selectPageNumber
+  selectPageNumber,
+  saveItemsType
 }, dispatch);
 
 const mapDetailsStateToProps = ({ itemDetails: { item, loading, itemsId } }) => ({ item, loading, itemsId })
