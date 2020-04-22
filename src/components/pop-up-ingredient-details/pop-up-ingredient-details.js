@@ -1,10 +1,10 @@
 import React from 'react';
 import './pop-up-ingredient-details.css';
 import { connect } from 'react-redux';
-import { itemAddedToCart, closePopUpIngredientDetails } from '../../actions';
+import { itemAddedToCart, closePopUpIngredientDetails, deactivateActiveLi } from '../../actions';
 import Ingredients from '../ingredients';
 
-const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClosePopUp }) => {
+const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClosePopUp, deactivateActiveLi }) => {
 
   const { type, id, image, name, ingredients=[], price, weight } = ingredient;
 
@@ -35,7 +35,9 @@ const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClos
           добавить ролл в корзину
         </button>
         <button
-          onClick={onClosePopUp} >
+          onClick={() => {
+            deactivateActiveLi()
+            onClosePopUp()}} >
           скрыть ролл
         </button>
       </div>
@@ -50,7 +52,8 @@ const mapStateToProps = ({ popUpIngredients: { ingredient, isOpenPopUp } }) => (
 
 const mapDispatchToProps = {
   onAddedToCart: itemAddedToCart,
-  onClosePopUp: closePopUpIngredientDetails
+  onClosePopUp: closePopUpIngredientDetails,
+  deactivateActiveLi
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PopUpIngredientDetails);

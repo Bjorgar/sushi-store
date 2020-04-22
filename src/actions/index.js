@@ -165,6 +165,25 @@ const closeOrderSettings = () => {
   };
 };
 
+const setActiveLi = (id) => {
+  return {
+    type: 'SET_ACTIVE_LI',
+    payload: id
+  };
+};
+
+const deactivateActiveLi = () => {
+  return {
+    type: 'DEACTIVATE_ACTIVE_LI'
+  };
+};
+
+const transferItemsId = (itemsId) => {
+  return {
+    type: 'TRANSFER_ITEMS_ID',
+    payload: itemsId
+  };
+};
 
 
 export {
@@ -192,5 +211,8 @@ export {
   showQuantitySettings,
   showOrderSettings,
   closeQuantitySettings,
-  closeOrderSettings
+  closeOrderSettings,
+  setActiveLi,
+  deactivateActiveLi,
+  transferItemsId
 };

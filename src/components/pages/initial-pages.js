@@ -9,10 +9,8 @@ import {
   itemsRequested,
   showItemDetails,
   closeItemDetails,
-  openPopUpIngredientDetails,
-  showDeatailsModal,
-  hideDetailsModal,
-  closePopUpIngredientDetails } from '../../actions';
+  closePopUpIngredientDetails,
+  transferItemsId } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -42,19 +40,17 @@ const mapItemsDispatchToProps = (dispatch) => bindActionCreators({
   onAddedToCart: itemAddedToCart,
   itemsLoaded,
   catchError,
-  itemsRequested
+  itemsRequested,
+  transferItemsId
 }, dispatch);
 
-const mapDetailsStateToProps = ({ itemDetails: { item, loading } }) => ({ item, loading })
+const mapDetailsStateToProps = ({ itemDetails: { item, loading, itemsId } }) => ({ item, loading, itemsId })
 
 const mapDetailsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   showItemDetails,
   catchError,
   closeItemDetails,
-  openPopUpIngredientDetails,
-  showDeatailsModal,
-  hideDetailsModal,
   closePopUpIngredientDetails
  };
 

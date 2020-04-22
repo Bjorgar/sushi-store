@@ -2,9 +2,16 @@ import React, { Component, Fragment } from 'react';
 import ItemDetails from './item-details';
 import Spinner from '../spinner';
 import { withRouter } from 'react-router-dom';
-import { onInitialPosition } from '../utils';
 
 class ItemDeatailsContainer extends Component {
+
+  renderComponent = () => {
+    const { getData, catchError } = this.props;
+
+    getData()
+      .then((data) => this.extractItem(data))
+      .catch((err) => catchError(err));
+  }
 
   extractItem = (data) => {
     const { itemId, showItemDetails } = this.props;
@@ -14,64 +21,36 @@ class ItemDeatailsContainer extends Component {
   };
   
   componentDidMount() {
-    const { getData, catchError } = this.props;
-
-    getData()
-      .then((data) => this.extractItem(data))
-      .catch((err) => catchError(err));
+    this.renderComponent();
   }
 
-  ingredientsList = ({type, ingredients}) => {
-
-    const { openPopUpIngredientDetails, showDeatailsModal, hideDetailsModal } = this.props;
-
-    if (ingredients === undefined) {
-      return
-    };
-
-    if (type === 'rools') {
-      return(
-        ingredients.map((ingredient) => {
-          const id = `${ingredient} DP`;
-          return <li key={id}>{ingredient}</li>
-        })
-      );
-    } else {
-      return(
-        ingredients.map((ingredient) => {
-          const id = `${ingredient.id} ${ingredient.name} DP`;
-          return <li key={id}
-                  className="DP-sets-li"
-                  onClick={() => openPopUpIngredientDetails(ingredient)}
-                  onMouseOver={() => showDeatailsModal(ingredient)}
-                  onMouseOut={hideDetailsModal}
-                  onMouseMove={onInitialPosition}
-                 >
-                  {ingredient.name}
-                 </li>
-        })
-      );
-    }
-  };
+  componentDidUpdate(prevProps) {
+    if (this.props.itemId !== prevProps.itemId) {
+      this.renderComponent();
+    } 
+    return
+  }
 
   closeDetailsPage = ({ type }) => {
     const { history, closeItemDetails, closePopUpIngredientDetails } = this.props;
-    history.push(`/${type}/`)
-    closeItemDetails()
+    history.push(`/${type}/`);
     closePopUpIngredientDetails();
+    closeItemDetails();
   };
 
   render() {
-    const { item, onAddedToCart, loading } = this.props;
+    const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId } = this.props;
+    console.log(itemsId);
     if (loading) {
       return <Spinner />
     }
     return(
       <Fragment>
         <ItemDetails
+          closePopUpIngredientDetails={closePopUpIngredientDetails}
+          itemsId={itemsId}
           item={item}
           onAddedToCart={onAddedToCart}
-          ingredientslist={this.ingredientsList(item)}
           closeDetailsPage={() => this.closeDetailsPage(item)} />
       </Fragment>
     );

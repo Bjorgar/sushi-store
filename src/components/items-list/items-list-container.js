@@ -9,6 +9,7 @@ import './items-list.css';
 class ItemsListContainer extends Component {
 
   arrWithItems = [];
+  arrLength = 0;
   selectedPage = 0;
   
   componentDidMount() {
@@ -17,17 +18,27 @@ class ItemsListContainer extends Component {
     getData()
       .then((data) => {
         this.arrWithItems = [...data];
-        this.separateItems(this.arrWithItems)})
+        this.arrLength = data.length;
+        this.selectOrder()})
       .catch((err) => catchError(err));
-    }
+  }
 
+  collectItemsId = (arr) => {
+    const { transferItemsId } = this.props;
+    const itemsId = [];
+    arr.forEach((item) => {
+      itemsId.push(item.id);
+    });
+    transferItemsId(itemsId);
+    this.separateItems(arr);
+  };
+  
   separateItems = (arr) => {
     const { itemsLoaded, quantity } = this.props;
-    this.arrWithItems = arr;
     const separatedItems = [];
 
     while (arr.length) {
-      separatedItems.push(this.arrWithItems.splice(0, quantity))
+      separatedItems.push(arr.splice(0, quantity))
     }
 
     this.arrWithItems = separatedItems;
@@ -43,12 +54,16 @@ class ItemsListContainer extends Component {
   compileArrWithItems = () => {
     const updatedArrWithItems = [];
 
+    if (this.arrWithItems.length === this.arrLength) {
+      return this.arrWithItems;
+    }
+
     this.arrWithItems.forEach((part) => {
       part.forEach((item) => {
         updatedArrWithItems.push(item);
       });
     });
-    
+      
     return updatedArrWithItems;
   };
 
@@ -64,30 +79,30 @@ class ItemsListContainer extends Component {
     switch (order) {
       case 'возростанию цены':
         return ( 
-          this.separateItems(
+          this.collectItemsId(
             this.compileArrWithItems().sort((a, b) => a.price - b.price)
           )
         );
       case 'убыванию цены':
         return ( 
-          this.separateItems(
+          this.collectItemsId(
             this.compileArrWithItems().sort((a, b) => b.price - a.price)
           )
         );
       case 'возростанию веса':
         return ( 
-          this.separateItems(
+          this.collectItemsId(
             this.compileArrWithItems().sort((a, b) => a.weight - b.weight)
           )
         );
       case 'уменьшению веса':
         return ( 
-          this.separateItems(
+          this.collectItemsId(
             this.compileArrWithItems().sort((a, b) => b.weight - a.weight)
           )
         );
       default:
-        return this.arrWithItems;
+        return this.collectItemsId(this.arrWithItems);
     };
   };
 
