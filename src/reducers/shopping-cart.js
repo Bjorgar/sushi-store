@@ -33,16 +33,22 @@ const updateCartItems = (cartItems, newItem, idx) => {
 const createItem = (item, itemInCart = {}, quantity, ItemPrice) => {
 
   const {
+    image = item.image,
     id = item.id,
     name = item.name,
+    type = item.type,
+    ingredients = item.ingredients,
     count = 0,
     total = 0,
     price = item.price
   } = itemInCart
 
   return {
+    image,
     id,
     name,
+    type,
+    ingredients,
     count: count + quantity,
     total: total + quantity*ItemPrice,
     price
@@ -51,7 +57,7 @@ const createItem = (item, itemInCart = {}, quantity, ItemPrice) => {
 
 const updateOrder = (state, id, quantity) => {
   const itemId = id;
-  const { shoppingCart: { cartItems, total, totalCount } } = state;
+  const { shoppingCart: { cartItems, itemsPrice, totalCount, deliveryPrice } } = state;
   const item = items.find((item) => item.id === itemId);
   const idx = cartItems.findIndex(({ id }) => id === itemId);
   const itemInCart = cartItems[idx];
@@ -60,9 +66,11 @@ const updateOrder = (state, id, quantity) => {
   const newItem = createItem(item, itemInCart, quantity, ItemPrice);
 
   return {
+    ...state.shoppingCart,
     cartItems: updateCartItems(cartItems, newItem, idx),
-    total: total + quantity*ItemPrice,
-    totalCount: totalCount + quantity
+    itemsPrice: itemsPrice + quantity*ItemPrice,
+    totalCount: totalCount + quantity,
+    totalPrice: (itemsPrice + quantity*ItemPrice) + deliveryPrice
   }
 };
 
@@ -71,22 +79,58 @@ const updateShoppingCart = (state, action) => {
   if (state === undefined) {
     return {
       cartItems: [],
-      total: 0,
+      itemsPrice: 0,
       totalCount: 0,
+      isOpen: false,
+      isDelivery: false,
+      deliveryPrice: 0,
+      totalPrice: 0
     };
   }
 
   switch (action.type) {
     case 'ITEM_ADDED_TO_CART':
-      return updateOrder(state, action.payload, 1)
+      return updateOrder(state, action.payload, 1);
 
     case 'DELETED_ITEM_FROM_CART':
-      return updateOrder(state, action.payload, -1)
+      return updateOrder(state, action.payload, -1);
     
     case 'DELETED_ALL_ITEMS_FROM_CART':
       const item = state.shoppingCart.cartItems.find(({ id }) => id === action.payload)
       return updateOrder(state, action.payload, -item.count);
+
+    case 'CART_OPENED':
+      return {
+        ...state.shoppingCart,
+        isOpen: true
+      };
     
+    case 'CART_CLOSED':
+      return {
+        ...state.shoppingCart,
+        isOpen: false
+      };
+
+    case 'DELIVERY_VALUE_CHANGED':
+      if (!action.payload) {
+        return {
+          ...state.shoppingCart,
+          isDelivery: action.payload,
+          deliveryPrice: 0,
+          totalPrice: state.shoppingCart.itemsPrice
+        }
+      }
+      return {
+        ...state.shoppingCart,
+        isDelivery: action.payload
+      }
+
+    case 'PLACE_VALUE_TRANSFERED':
+      return {
+        ...state.shoppingCart,
+        deliveryPrice: +action.payload,
+        totalPrice: state.shoppingCart.itemsPrice + +action.payload
+      }
     default: 
       return state.shoppingCart
   }

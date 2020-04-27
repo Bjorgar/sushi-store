@@ -206,6 +206,31 @@ const saveItemsType = (type) => {
   }
 };
 
+const openShoppingCart = () => {
+  return {
+    type: 'CART_OPENED'
+  };
+};
+
+const closeShoppingCart = () => {
+  return {
+    type: 'CART_CLOSED'
+  };
+};
+
+const changeDeliveryValue = (value) => {
+  return {
+    type: 'DELIVERY_VALUE_CHANGED',
+    payload: value
+  };
+};
+
+const transferPlaceValue = (value) => {
+  return {
+    type: 'PLACE_VALUE_TRANSFERED',
+    payload: value
+  }
+}
 
 export {
   itemAddedToCart,
@@ -238,5 +263,9 @@ export {
   transferItemsId,
   selectPageNumber,
   transferItemsType,
-  saveItemsType
+  saveItemsType,
+  openShoppingCart,
+  closeShoppingCart,
+  changeDeliveryValue,
+  transferPlaceValue
 };
