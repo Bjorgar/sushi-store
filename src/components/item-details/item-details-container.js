@@ -40,7 +40,7 @@ class ItemDeatailsContainer extends Component {
 
   render() {
     const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId } = this.props;
-    console.log(itemsId);
+    
     if (loading) {
       return <Spinner />
     }

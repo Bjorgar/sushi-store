@@ -53,6 +53,7 @@ class App extends Component {
         <Header />
         <Slider />
         <IngredientsModalWindow />
+        <SushiCart />
         <Switch>
           <Route path="/rools" exact component={RoolsPage} />
           <Route path="/rools/:id" 
@@ -66,7 +67,6 @@ class App extends Component {
                   const { id } = match.params;
                   return <SetDetailsPage itemId={id} />
                 }} />
-          <Route path="/cart" component={SushiCart} />
         </Switch>
       </div>
     );

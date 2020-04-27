@@ -1,81 +1,53 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './sushi-cart.css';
 import { connect } from 'react-redux';
-import { itemAddedToCart, deletedItemFromCart, deletedAllItemsFromCart } from '../../actions';
-import { bindActionCreators } from 'redux';
+import { closeShoppingCart, changeDeliveryValue } from '../../actions';
+import CartWithItems from './cart-with-items';
 
-const SushiCart = ({ items, total, onIncrease, onDecrease, onDelete }) => {
-  const renderRow = (item, idx) => {
-    const { id, name, count, total } = item;
-    return(
-      <tr key={id}>
-        <td>{idx + 1}</td>
-        <td>{name}</td>
-        <td>{count}</td>
-        <td>${total}</td>
-        <td>
-          <button
-            onClick={() => onIncrease(id)}
-            className="btn">
-            + 1
-          </button>
-          <button
-            onClick={() => onDecrease(id)}
-            className="btn btn-outline-success btn-sm float-right">
-            - 1
-          </button>
-          <button
-            onClick={() => onDelete(id)}
-            className="btn btn-outline-warning btn-sm float-right">
-            Delete
-          </button>
-        </td>
-      </tr>
-    );
-  };
+const EmptyCart = () => {
+  return(
+    <Fragment>
+      <h2>Ваша корзина пуста</h2>
+      <div className="back-to-shopping-div">
+        <button className="back-to-shopping-btn">вернуться к покупкам</button>
+      </div>
+    </Fragment>
+  );
+};
+
+const SushiCart = ({ totalCount, onClose, isOpen, changeDeliveryValue }) => {
+
+  if (totalCount === 0) { 
+    changeDeliveryValue(false);
+  }
+
+  const display = (totalCount === 0) ? <EmptyCart /> : <CartWithItems />;
+
+  const clazz = (isOpen) ? 'shopping-cart' : 'shopping-cart-hide';
 
   return(
-    <div className="shopping-cart-table">
-      <h2>Your order</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Item</th>
-            <th>Count</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            items.map(renderRow)
-          }
-        </tbody>
-      </table>
-      
-      <div className="total">
-        Total: ${total}
+    <div className={clazz}>
+      <div className="cart-background">
+        {display}
+        <button
+          onClick={onClose}
+          className="close-btn">
+          <i className="fas fa-times"></i>
+        </button>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ shoppingCart: { cartItems, total } }) => {
+const mapStateToProps = ({ shoppingCart: { cartItems, totalCount, isOpen } }) => {
 
   return {
-    total,
+    totalCount,
+    isOpen,
     items: cartItems
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    onIncrease: itemAddedToCart,
-    onDecrease: deletedItemFromCart,
-    onDelete: deletedAllItemsFromCart,
-  }, dispatch)
-};
+const mapDispatchToProps = { onClose: closeShoppingCart, changeDeliveryValue };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SushiCart);
-
