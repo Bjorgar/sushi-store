@@ -3,9 +3,11 @@ import './header.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchPanelContainer from '../search-panel';
-import { transferItemsType, openShoppingCart } from '../../actions';
+import { transferItemsType } from '../../actions';
+import CartWidget from '../cart-widget';
 
-const Header = ({ totalPrice, totalCount, transferItemsType, openShoppingCart }) => {
+const Header = ({ transferItemsType }) => {
+
   return(
     <nav>
       <SearchPanelContainer />
@@ -17,27 +19,13 @@ const Header = ({ totalPrice, totalCount, transferItemsType, openShoppingCart })
           <li onClick={() => transferItemsType('sets')}>Sets</li>
         </Link>
       </ul>
-        <div
-          className="cart"
-          onClick={openShoppingCart}>
-          <span><i className="fas fa-shopping-cart"></i></span>
-          <span>{totalCount}</span>
-          <span>{totalPrice}</span>
-        </div>
+      <CartWidget />
     </nav>
   );
 };
 
-const mapStateToProps = ({ shoppingCart: { totalPrice, totalCount } }) => {
-  return {
-    totalPrice,
-    totalCount
-  };
-};
-
 const mapDispatchToProps = {
-  transferItemsType,
-  openShoppingCart
+  transferItemsType
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);

@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'd_Kallisto';
+  src: url(../../fonts/d_Kallisto.otf);
+}
+
+body * {
+  font-family: d_Kallisto, Verdana, Geneva, Tahoma, sans-serif;
+}

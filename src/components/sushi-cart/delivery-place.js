@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './delivery-place.css';
-import { transferPlaceValue } from '../../actions';
+import { transferPlaceValue, transferSelectedPlace, openCloseSelectList } from '../../actions';
 
 class DeliveryPlace extends Component {
 
+
+  componentDidMount() {
+    const labels = document.querySelectorAll('.label-select');
+    const { transferSelectedPlace } = this.props;
+
+    labels.forEach((label) => {
+      label.addEventListener('click', (e) => {
+        const place = e.target.textContent;
+        transferSelectedPlace(place);
+      })
+    })
+  }
 
   selectPlace = (e) => {
     const { transferPlaceValue } = this.props;
@@ -12,38 +24,79 @@ class DeliveryPlace extends Component {
     transferPlaceValue(value);
   }
 
+  unCheckInput = () => {
+    const checkedInput = document.querySelector('input:checked');
+    if (!checkedInput) {
+      return
+    }
+    console.log(checkedInput);
+    checkedInput.checked = false
+  }
+
   render() {
 
-    const { isDelivery, deliveryPrice } = this.props;
+    const { isDelivery, selectedPlace, isOpenSelectList, openCloseSelectList } = this.props;
+
+    if (!isDelivery) {
+      this.unCheckInput();
+    }
 
     const clazz = (isDelivery) ? 'select-place' : 'select-place-hide';
+
+    const selListClazz = (isOpenSelectList) ? '' : 'select-form-hide';
+
+    const selArrowClazz = (isOpenSelectList) ? 'select-arrow-down' : 'select-arrow-up';
 
     return(
       <div className={clazz}>
         <p>Раён доставки:</p>
-        <select
-          onChange={this.selectPlace}
-          value={deliveryPrice}>
-          <option defaultChecked value="0">выберите раён</option>
-          <option value="30">Центр города</option>
-          <option value="70">Малая Жмеринка</option>
-          <option value="50">р-н Поле Чудес</option>
-          <option value="100">с. Леляки</option>
-          <option value="50">р-н ТЕЦ</option>
-          <option value="50">р-н Корчевка</option>
-          <option value="70">р-н Сектор</option>
-          <option value="40">р-н Постройки</option>
-          <option value="80">р-н 5й км</option>
-        </select>
+
+        <div className="select-div">
+          <h2
+          className="select-h2"
+          onClick={() => openCloseSelectList(!isOpenSelectList)}
+          >{selectedPlace} <i className={`fas fa-chevron-down ${selArrowClazz}`}></i></h2>
+          <form
+            onChange={this.selectPlace}
+            className={`select-form ${selListClazz}`}>
+
+            <input id="selectPlace0" type="radio" value="30" name="selectPlace"/>
+            <label htmlFor="selectPlace0" className="label-select">Центр города</label>
+
+            <input id="selectPlace1" type="radio" value="70" name="selectPlace"/>
+            <label htmlFor="selectPlace1" className="label-select">Малая Жмеринка</label>
+
+            <input id="selectPlace2" type="radio" value="50" name="selectPlace"/>
+            <label htmlFor="selectPlace2" className="label-select">р-н Поле Чудес</label>
+
+            <input id="selectPlace3" type="radio" value="100" name="selectPlace"/>
+            <label htmlFor="selectPlace3" className="label-select">с. Леляки</label>
+
+            <input id="selectPlace4" type="radio" value="50" name="selectPlace"/>
+            <label htmlFor="selectPlace4" className="label-select">р-н ТЕЦ</label>
+
+            <input id="selectPlace5" type="radio" value="50" name="selectPlace"/>
+            <label htmlFor="selectPlace5" className="label-select">р-н Корчевка</label>
+
+            <input id="selectPlace6" type="radio" value="70" name="selectPlace"/>
+            <label htmlFor="selectPlace6" className="label-select">р-н Сектор</label>
+
+            <input id="selectPlace7" type="radio" value="40" name="selectPlace"/>
+            <label htmlFor="selectPlace7" className="label-select">р-н Постройки</label>
+
+            <input id="selectPlace8" type="radio" value="80" name="selectPlace"/>
+            <label htmlFor="selectPlace8" className="label-select">р-н 5й км</label>
+          </form>
+        </div>
       </div>
     );
   };
 };
 
 const mapStateToProps = ({
-  shoppingCart: { isDelivery, deliveryPrice } }) => ({
-    isDelivery, deliveryPrice });
+  shoppingCart: { isDelivery, selectedPlace, isOpenSelectList } }) => ({
+    isDelivery, selectedPlace, isOpenSelectList });
 
-const mapDispatchToProps = { transferPlaceValue };
+const mapDispatchToProps = { transferPlaceValue, transferSelectedPlace, openCloseSelectList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeliveryPlace);

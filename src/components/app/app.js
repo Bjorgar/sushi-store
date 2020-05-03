@@ -9,16 +9,19 @@ import { connect } from 'react-redux';
 import {
   searchEnded,
   closeQuantitySettings,
-  closeOrderSettings } from '../../actions';
+  closeOrderSettings,
+  openCloseSelectList } from '../../actions';
+import './main.css';
 
 class App extends Component {
 
   clickEvent = (e) => {
-    const { searchEnded, closeQuantitySettings, closeOrderSettings } = this.props;
+    const { searchEnded, closeQuantitySettings, closeOrderSettings, openCloseSelectList } = this.props;
 
     const searchingBox = document.querySelector('.searching-box');
     const quantitySettings = document.querySelector('.quantity-div');
     const orderSettings = document.querySelector('.order-div');
+    const deliveryBox = document.querySelector('.select-div');
 
     const target = e.target;
     
@@ -39,6 +42,12 @@ class App extends Component {
       searchEnded();
       closeQuantitySettings();
       closeOrderSettings();
+    }
+
+    if (target === deliveryBox || deliveryBox.contains(target)) {
+      return;
+    } else {
+      openCloseSelectList(false);
     }
   };
 
@@ -76,7 +85,8 @@ class App extends Component {
 const mapDispatchToProps = {
   searchEnded,
   closeQuantitySettings,
-  closeOrderSettings
+  closeOrderSettings,
+  openCloseSelectList
 };
 
 export default connect(null, mapDispatchToProps)(App);

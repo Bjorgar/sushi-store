@@ -229,8 +229,28 @@ const transferPlaceValue = (value) => {
   return {
     type: 'PLACE_VALUE_TRANSFERED',
     payload: value
-  }
-}
+  };
+};
+
+const transferSelectedPlace = (place) => {
+  return {
+    type: 'PLACE_SELECTED',
+    payload: place
+  };
+};
+
+const openCloseSelectList = (boolean) => {
+  return {
+    type: 'CHANGED_SELECT_LIST_VISIBLE',
+    payload: boolean
+  };
+};
+
+const showHidePopUpCartViewer = () => {
+  return {
+    type: 'CHANGED_CART_VIEWER_VISIBILITY'
+  };
+};
 
 export {
   itemAddedToCart,
@@ -267,5 +287,8 @@ export {
   openShoppingCart,
   closeShoppingCart,
   changeDeliveryValue,
-  transferPlaceValue
+  transferPlaceValue,
+  transferSelectedPlace,
+  openCloseSelectList,
+  showHidePopUpCartViewer
 };
