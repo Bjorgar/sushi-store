@@ -18,25 +18,33 @@
 }
 
 .cart-background {
+  display: flex;
+  flex-flow: column;
   position: relative;
   width: auto;
   height: auto;
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 10px;
-  border: 3px solid white;
+  border: 3px solid rgb(255, 208, 0);
   border-radius: 0px 30px 0px 30px;
   width: 1000px;
   max-width: 1000px;
-  overflow: hidden;
   padding-bottom: 100px;
+  max-height: 75%;
 }
 
-.cart-background h2 {
+.order-title {
+  margin-top: 0;
   text-align: right;
   font-size: 35px;
   padding-right: 50px;
   margin-bottom: 50px;
+}
+
+.order-list {
+  flex-basis: auto;
+  overflow-y: auto;
 }
 
 .row-div {
@@ -48,6 +56,7 @@
   border-bottom: 1px solid white;
   margin-bottom: 20px;
   padding-bottom: 15px;
+  padding-top: 7px;
 }
 
 .row-div:last-child {
@@ -160,6 +169,57 @@
   border-color: transparent;
 }
 
+.delivery-div {
+  height: 100px;
+  min-height: 100px;
+}
+
+.delivery-check-form label {
+  width: 280px;
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  transition-duration: 0.2s;
+}
+
+.delivery-checkbox {
+  display: none;
+}
+
+.delivery-checkbox + label::after {
+  content: '';
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid white;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20px;
+}
+
+.delivery-checkbox:checked + label::after {
+  background-image: url(../../images/others/check-solid.svg);
+  box-shadow: 0px 0px 7px 1px rgb(255, 208, 0);
+  border: 1px solid rgb(255, 208, 0);
+  transition-duration: 0.2s;
+}
+
+.delivery-checkbox + label:hover::after {
+  border: 1px solid rgb(255, 208, 0);
+  transition-duration: 0.2s;
+}
+
+.delivery-checkbox + label:active::after {
+  border: 1px solid rgb(255, 208, 0);
+  background-color: rgba(255, 208, 0, 0.5);
+  transition-duration: 0.2s;
+}
+
 /* total - items -deliery price styles */
 
 .total {
@@ -187,6 +247,16 @@
 
 .idt-price-hide {
   display: none;
+}
+
+.close-btn-background {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 26px;
+  height: 150px;
+  width: 150px;
 }
 
 .close-btn {
@@ -245,4 +315,10 @@
   border-color: rgb(48, 240, 0);
   box-shadow: 0px 0px 10px 1px rgb(48, 240, 0);
   transition-duration: 0.2s;
+}
+
+/* scroll-bar */
+
+::-webkit-scrollbar {
+  background-color: green;
 }

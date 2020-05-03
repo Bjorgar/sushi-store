@@ -19,6 +19,11 @@ class CartWithItems extends Component {
     changeDeliveryValue(value);
   };
 
+  componentWillUnmount() {
+    const { changeDeliveryValue } = this.props;
+    changeDeliveryValue(false);
+  }
+
   render() {
 
     const {
@@ -69,9 +74,7 @@ class CartWithItems extends Component {
           </div>
           <div>
             <button
-              onClick={() => {
-                onDelete(id);
-                changeDeliveryValue(false)}}
+              onClick={() => onDelete(id)}
               className="delete-btn">
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -82,18 +85,23 @@ class CartWithItems extends Component {
 
     return(
       <Fragment>
-        <h2>Ваш заказ</h2>
-          {
-            items.map(renderRow)
-          }
-        <div className="delivery">
-          <form>
-            <label>
+        <h2 className="order-title">Ваш заказ</h2>
+          <div className="order-list">
+            {
+              items.map(renderRow)
+            }
+          </div>
+        <div className="delivery-div">
+          <form className="delivery-check-form">
+            <input
+              id="del-check"
+              className="delivery-checkbox"
+              type="checkbox"
+              checked={isDelivery}
+              onChange={this.onChangeDeliveryValue}
+            />
+            <label htmlFor="del-check">
               Заказать доставку:
-              <input
-                type="checkbox"
-                checked={isDelivery}
-                onChange={this.onChangeDeliveryValue}/>
             </label>
           </form>
           <DeliveryPlace />

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './sushi-cart.css';
 import { connect } from 'react-redux';
-import { closeShoppingCart, changeDeliveryValue } from '../../actions';
+import { closeShoppingCart } from '../../actions';
 import CartWithItems from './cart-with-items';
 
 const EmptyCart = () => {
@@ -15,11 +15,7 @@ const EmptyCart = () => {
   );
 };
 
-const SushiCart = ({ totalCount, onClose, isOpen, changeDeliveryValue }) => {
-
-  if (totalCount === 0) { 
-    changeDeliveryValue(false);
-  }
+const SushiCart = ({ totalCount, onClose, isOpen }) => {
 
   const display = (totalCount === 0) ? <EmptyCart /> : <CartWithItems />;
 
@@ -29,11 +25,13 @@ const SushiCart = ({ totalCount, onClose, isOpen, changeDeliveryValue }) => {
     <div className={clazz}>
       <div className="cart-background">
         {display}
-        <button
-          onClick={onClose}
-          className="close-btn">
-          <i className="fas fa-times"></i>
-        </button>
+        <div className="close-btn-background">
+          <button
+            onClick={onClose}
+            className="close-btn">
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -48,6 +46,6 @@ const mapStateToProps = ({ shoppingCart: { cartItems, totalCount, isOpen } }) =>
   }
 };
 
-const mapDispatchToProps = { onClose: closeShoppingCart, changeDeliveryValue };
+const mapDispatchToProps = { onClose: closeShoppingCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SushiCart);

@@ -84,7 +84,11 @@ const updateShoppingCart = (state, action) => {
       isOpen: false,
       isDelivery: false,
       deliveryPrice: 0,
-      totalPrice: 0
+      totalPrice: 0,
+      isSelectListActive: false,
+      selectedPlace: 'выберите район',
+      isOpenSelectList: false,
+      isCartViewerVisible: false
     };
   }
 
@@ -116,6 +120,7 @@ const updateShoppingCart = (state, action) => {
         return {
           ...state.shoppingCart,
           isDelivery: action.payload,
+          selectedPlace: 'выберите район',
           deliveryPrice: 0,
           totalPrice: state.shoppingCart.itemsPrice
         }
@@ -123,14 +128,33 @@ const updateShoppingCart = (state, action) => {
       return {
         ...state.shoppingCart,
         isDelivery: action.payload
-      }
+      };
 
     case 'PLACE_VALUE_TRANSFERED':
       return {
         ...state.shoppingCart,
         deliveryPrice: +action.payload,
         totalPrice: state.shoppingCart.itemsPrice + +action.payload
-      }
+      };
+
+    case 'PLACE_SELECTED':
+      return {
+        ...state.shoppingCart,
+        selectedPlace: action.payload
+      };
+
+    case 'CHANGED_SELECT_LIST_VISIBLE':
+      return {
+        ...state.shoppingCart,
+        isOpenSelectList: action.payload
+      };
+
+    case 'CHANGED_CART_VIEWER_VISIBILITY':
+      return {
+        ...state.shoppingCart,
+        isCartViewerVisible: !state.shoppingCart.isCartViewerVisible
+      };
+    
     default: 
       return state.shoppingCart
   }
