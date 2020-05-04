@@ -1,48 +1,96 @@
 .carousel-box {
   position: relative;
-  height: auto;
+  max-width: 1200px;
 }
 
 .dots-box {
   position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 50px;
+  margin: auto;
+  width: 250px;
+  height: 40px;
   display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 40px 40px 0px 0px;
 }
 
 .dots {
   width: 20px;
   height: 20px;
-  background-color: rgb(221, 217, 0);
-  border: 2px solid rgb(7, 150, 66);
+  background-color: rgba(255, 27, 27, 0.7);
+  border: 1px solid rgb(255, 27, 27);
   cursor: pointer;
-  margin: 10px;
-  border-radius: 4px;
-  box-shadow: 2px 2px 3px 0px rgb(255, 255, 255);
+  margin: 7px;
+  border-radius: 3px;
+  transition-duration: 0.2s;
+}
+
+.dots:hover {
+  box-shadow: 0px 0px 7px 2px rgb(255, 208, 0);
+  background-color: rgba(255, 208, 0, 0.7);
+  border: 1px solid rgb(255, 208, 0);
+  transition-duration: 0.2s;
 }
 
 .active-dot {
-  background-color: rgb(221, 133, 0);
-  border: 2px solid rgb(107, 150, 7);  
-  box-shadow: 2px 2px 3px 0px rgb(44, 213, 255);
+  border: 1px solid rgb(48, 240, 0);
+  box-shadow: 0px 0px 7px 2px rgb(48, 240, 0);
+  background-color: rgba(48, 240, 0, 0.7);
+  pointer-events: none;
+  transition-duration: 0.2s;
 }
 
 .slider-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: inherit;
 }
 
 .slide {
-  width: 900px;
-  height: inherit;
+  display: flex;
 }
 
 .slide img {
   height: auto;
   width: 100%;
+}
+
+.left-arr-slider, .right-arr-slider {
+  font-size: 50px;
+  margin: auto;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 90px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.left-arr-slider i, .right-arr-slider i {
+  margin: 0;
+  transition-duration: 0.2s;
+}
+
+.right-arr-slider {
+ right: 0px; 
+}
+
+.left-arr-slider:active, .right-arr-slider:active {
+  background-color: rgba(207, 207, 207, 0.4);
+  transition-duration: 0.1s;
+}
+
+.left-arr-slider:hover i {
+  margin-left: -25px;
+  transition-duration: 0.2s;
+}
+
+.right-arr-slider:hover i {
+  margin-right: -25px;
+  transition-duration: 0.2s;
 }

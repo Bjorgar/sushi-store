@@ -8,15 +8,17 @@ const Slide = ({ displayedSlide, leafingSlide }) => {
   return(
     <div className="slider-box">
       <button
+        className="left-arr-slider"
         onClick={() => leafingSlide(slideId, 'dec')}>
-        <i className="far fa-arrow-alt-circle-left"></i>
+        <i className="fas fa-chevron-left"></i>
       </button>
       <div className="slide">
         <img alt="slide" src={slideSrc}/>
       </div>
       <button
+        className="right-arr-slider"
         onClick={() => leafingSlide(slideId, 'inc')}>
-        <i className="far fa-arrow-alt-circle-right"></i>
+        <i className="fas fa-chevron-right"></i>
       </button>
     </div>
   );

@@ -68,7 +68,7 @@ class SearchPanelContainer extends Component {
       <div className="searching-box">
         <input
           className="searching-input"
-          placeholder="Searching"
+          placeholder="поиск..."
           value={term}
           onChange={this.initialSearching}
           />

@@ -13,10 +13,18 @@ const Header = ({ transferItemsType }) => {
       <SearchPanelContainer />
       <ul className="nav-panel-items">
         <Link to="/rools/">
-          <li onClick={() => transferItemsType('rools')} >Rools</li>
+          <li
+            className="nav-panel-items-li"
+            onClick={() => transferItemsType('rools')}>
+            Роллы
+          </li>
         </Link>
         <Link to="/sets/">
-          <li onClick={() => transferItemsType('sets')}>Sets</li>
+          <li
+            className="nav-panel-items-li li-last"
+            onClick={() => transferItemsType('sets')}>
+            Сеты
+          </li>
         </Link>
       </ul>
       <CartWidget />

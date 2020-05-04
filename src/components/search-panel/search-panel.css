@@ -1,17 +1,31 @@
 .searching-box {
   position: relative;
-  border: 2px red solid;
   z-index: 2;
+}
+
+.searching-input {
+  border-radius: 10px;
+  border: 2px red solid;
+  outline: none;
+  height: 40px;
+  color: white;
+  background-color: transparent;
+  padding-left: 7px;
+  font-size: 20px;
+}
+
+.searching-input::placeholder {
+  color: white;
 }
 
 .searching-results {
   list-style-type: none;
   position: absolute;
-  top: 40px;
-  background-color: rgba(0, 0, 0, 0.699);
+  top: 60px;
+  background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
-  width: auto;
+  width: 100%;
 }
 
 .hide-list {
@@ -19,8 +33,7 @@
 }
 
 .searching-results li {
-  padding: 2px 5px;
-  width: 200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,13 +45,16 @@
 }
 
 .show-item {
+  display: inline-flex;
+  align-items: center;
   border: 1px solid rgb(179, 255, 0);
   margin: 2px;
-  padding: 6px 7px;
+  padding: 0px 5px;
+  height: 50px;
   cursor: pointer;
   transition-duration: 0.2s;
-  font-size: 1.2em;
-  width: 140px;
+  font-size: 1em;
+  width: 70%;
   border-radius: 5px;
   color: white;
 }
@@ -49,8 +65,12 @@
 }
 
 .add-item {
-  margin-right: 2px;
-  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  margin-right: 5px;
   border: 1px solid rgb(212, 145, 0);
   border-radius: 5px;
   color: rgb(255, 255, 255);
