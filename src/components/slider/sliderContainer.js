@@ -10,7 +10,7 @@ import './slider.css';
 class SliderContainer extends Component {
 
   slideNum = 1;
-  interval = 2000;
+  interval = 200000;
 
   componentDidMount() {
     const { loadedSlides, getData } = this.props;
