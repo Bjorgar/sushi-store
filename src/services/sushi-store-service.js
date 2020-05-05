@@ -45,6 +45,17 @@ import makiSet from '../images/sets/maki-set.jpg';
 import philadelphiaSet from '../images/sets/philadelphia-set.jpg';
 import philaGodzillaSet from '../images/sets/phila-godzilla-set.jpg';
 
+import udonMoreprodukty from '../images/noodles/udon-moreprodukty.jpg';
+import udonKurica from '../images/noodles/udon-kurica.jpg';
+import risovaiaMoreprodukty from '../images/noodles/risovaia-moreprodukty.jpg';
+import risovaiaKurica from '../images/noodles/risovaia-kurica.jpg';
+import udonOvoshchi from '../images/noodles/udon-ovoshchi.jpg';
+import risovaiaOvoshchi from '../images/noodles/risovaia-ovoshchi.jpg';
+
+import salatTaiskii from '../images/salads/salat-taiskii.jpg';
+import salatHiiashiVakame from '../images/salads/salat-hiiashi-vakame.jpg';
+import salatKrevetka from '../images/salads/salat-krevetka.jpg';
+
 export default class SushistoreService {
 
   rools = [
@@ -395,6 +406,93 @@ export default class SushistoreService {
     }
   ];
 
+  noodles = [
+    {
+      type: 'noodles',
+      id: 'udon-moreprodukty',
+      name: 'Лапша Удон с морепродуктами',
+      ingredients: ['Лапша Удон', 'Мидии', 'Креветки', 'Кальмары', 'Броколи', 'Морковь', 'Стручковая фасоль', 'Зеленый лук', 'Соус Устричный', 'Соус Торикацу'],
+      weight: 370,
+      price: 103,
+      image: udonMoreprodukty
+    },
+    {
+      type: 'noodles',
+      id: 'udon-kurica',
+      name: 'Лапша Удон с курицей',
+      ingredients: ['Лапша Удон', 'Куриное филе', 'Броколи', 'Морковь', 'Перец болгарский', 'Репчатый лук', 'Соус Устричный'],
+      weight: 365,
+      price: 85,
+      image: udonKurica
+    },
+    {
+      type: 'noodles',
+      id: 'risovaia-moreprodukty',
+      name: 'Лапша рисовая с морепродуктами',
+      ingredients: ['Лапша рисовая', 'Мидии', 'Креветки', 'Кальмары', 'Броколи', 'Морковь', 'Стручковая фасоль', 'Зеленый лук', 'Соус Шрирача', 'Соус к рисовой лапше'],
+      weight: 375,
+      price: 105,
+      image: risovaiaMoreprodukty
+    },
+    {
+      type: 'noodles',
+      id: 'risovaia-kurica',
+      name: 'Лапша рисовая с курицей',
+      ingredients: ['Лапша рисовая', 'Куриное филе', 'Грибы шиитаке', 'Морковь', 'Перец болгарский', 'Репчатый лук', 'Соус Устричный', 'Зеленый лук'],
+      weight: 330,
+      price: 90,
+      image: risovaiaKurica
+    },
+    {
+      type: 'noodles',
+      id: 'udon-ovoshchi',
+      name: 'Лапша Удон с овощами',
+      ingredients: ['Лапша Удон', 'Морковь', 'Броколи', 'Перец болгарский', 'Репчатый лук', 'Соус Устричный', 'Чеснок'],
+      weight: 250,
+      price: 65,
+      image: udonOvoshchi
+    },
+    {
+      type: 'noodles',
+      id: 'risovaia-ovoshchi',
+      name: 'Лапша рисовая с овощами',
+      ingredients: ['Лапша рисовая', 'Морковь', 'Имбирь', 'Перец болгарский', 'Репчатый лук', 'Соус Устричный', 'Чеснок', 'Кунжут', 'Зеленый лук'],
+      weight: 250,
+      price: 60,
+      image: risovaiaOvoshchi
+    },
+  ];
+
+  salads = [
+    {
+      type: 'salads',
+      id: 'salat-taiskii',
+      name: 'Салат Тайский',
+      ingredients: ['Салат Айсберг', 'Салат Лоло Роса', 'Куриное филе', 'Помидоры', 'Сухари панко', 'Медово-горчичный соус'],
+      weight: 160,
+      price: 73,
+      image: salatTaiskii
+    },
+    {
+      type: 'salads',
+      id: 'salat-hiiashi-vakame',
+      name: 'Салат Хияши Вакамэ',
+      ingredients: ['Водоросли Хияши Вакамэ', 'Жаренный кунжут', 'Соус ореховый'],
+      weight: 130,
+      price: 58,
+      image: salatHiiashiVakame
+    },
+    {
+      type: 'salads',
+      id: 'salat-krevetka',
+      name: 'Салат с креветкой',
+      ingredients: ['Салат Айсберг', 'Лолло Бионда', 'Фризе', 'Креветка', 'Соус ореховый', 'Соус Унаги'],
+      weight: 140,
+      price: 85,
+      image: salatKrevetka
+    },
+  ];
+
   slides = [
     {
       id: 1,
@@ -434,6 +532,22 @@ export default class SushistoreService {
     });
   };
 
+  getNoodles = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.noodles)
+      }, 700);
+    });
+  };
+
+  getSalads = () => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.salads)
+      }, 700);
+    });
+  };
+
   getSlides = () => {
     return this.slides;
   };
@@ -441,7 +555,7 @@ export default class SushistoreService {
   getAllItems = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve([...this.sets, ...this.rools])
+        resolve([...this.sets, ...this.rools, ...this.noodles, ...this.salads])
       }, 700);
     });
   };

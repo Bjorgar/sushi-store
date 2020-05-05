@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import SushiCart from '../sushi-cart';
 import Header from '../header';
-import Slider from '../slider';
-import { RoolsPage, SetsPage, RollDetailsPage, SetDetailsPage } from '../pages';
+import {
+  RoolsPage,
+  SetsPage,
+  NoodlesPage,
+  SaladsPage,
+  RollDetailsPage,
+  SetDetailsPage,
+  NoodlesDetailsPage,
+  SaladDetailsPage } from '../pages';
 import { Switch, Route } from 'react-router-dom';
 import IngredientsModalWindow from '../ingredients-modal-window';
 import { connect } from 'react-redux';
@@ -12,6 +19,7 @@ import {
   closeOrderSettings,
   openCloseSelectList } from '../../actions';
 import './main.css';
+import UpsaleNavigateBloc from '../upsale-navigate-block';
 
 class App extends Component {
 
@@ -55,27 +63,32 @@ class App extends Component {
     document.addEventListener('click', (e) => this.clickEvent(e));
   }
 
+  routingTo = (match, Wrapped) => {
+    const { id } = match.params;
+    return <Wrapped itemId={id} />
+  };
+
   render() {
 
     return (
       <div>
         <Header />
-        <Slider />
+        <UpsaleNavigateBloc />
         <IngredientsModalWindow />
         <SushiCart />
         <Switch>
           <Route path="/rools" exact component={RoolsPage} />
           <Route path="/rools/:id" 
-                render={({ match }) => {
-                  const { id } = match.params;
-                  return <RollDetailsPage itemId={id} />
-                }} />
+                 render={({ match }) => this.routingTo(match, RollDetailsPage)} />
           <Route path="/sets" exact component={SetsPage} />
           <Route path="/sets/:id" 
-                render={({ match }) => {
-                  const { id } = match.params;
-                  return <SetDetailsPage itemId={id} />
-                }} />
+                render={({ match }) => this.routingTo(match, SetDetailsPage)} />
+          <Route path="/noodles" exact component={NoodlesPage} />
+          <Route path="/noodles/:id" 
+                render={({ match }) => this.routingTo(match, NoodlesDetailsPage)} />
+          <Route path="/salads" exact component={SaladsPage} />
+          <Route path="/salads/:id" 
+                render={({ match }) => this.routingTo(match, SaladDetailsPage)} />
         </Switch>
       </div>
     );

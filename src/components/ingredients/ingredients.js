@@ -2,7 +2,7 @@ import React from 'react';
 
 const Ingredients = ({ type, ingredients, pref }) => {
 
-  if (type === 'rools') {
+  if (type !== 'sets') {
     return(
       ingredients.map((ingredient) => {
         const id = `${ingredient} ${pref}`;

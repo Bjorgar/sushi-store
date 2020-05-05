@@ -22,7 +22,7 @@ class ItemDetailsIngredientsList extends Component {
     return
   };
 
-  if (type === 'rools') {
+  if (type !== 'sets') {
     return(
       ingredients.map((ingredient) => {
         const id = `${ingredient} DP`;

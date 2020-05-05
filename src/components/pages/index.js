@@ -1,8 +1,20 @@
-import { RoolsPage, SetsPage, RollDetailsPage, SetDetailsPage } from './initial-pages';
+import {   
+  RoolsPage,
+  SetsPage,
+  NoodlesPage,
+  SaladsPage,
+  RollDetailsPage,
+  SetDetailsPage,
+  NoodlesDetailsPage,
+  SaladDetailsPage } from './initial-pages';
 
 export {
   RoolsPage,
   SetsPage,
+  NoodlesPage,
+  SaladsPage,
   RollDetailsPage,
-  SetDetailsPage
+  SetDetailsPage,
+  NoodlesDetailsPage,
+  SaladDetailsPage
 }; 

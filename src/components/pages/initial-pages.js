@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import { withSushistoreService } from '../hoc';
 import {
   itemsLoaded,
@@ -26,9 +25,20 @@ const mapSetsMethodToProps = (sushistoreService) => ({
   getData: sushistoreService.getSets
 });
 
+const mapNoodlesMethodToProps = (sushistoreService) => ({
+  getData: sushistoreService.getNoodles
+});
+
+const mapSaladsMethodToProps = (sushistoreService) => ({
+  getData: sushistoreService.getSalads
+});
+
 // CONNECT REDUX
 
-const mapItemsStateToProps = ({ itemsList: { items, loading, hasError, pageNumber, itemsType, savedType }, displaySettings: { quantity, order } }) => {
+const mapItemsStateToProps = ({
+   itemsList: { items, loading, hasError, pageNumber, itemsType, savedType },
+   displaySettings: { quantity, order } }) => {
+
   return {
     items,
     loading,
@@ -63,29 +73,47 @@ const mapDetailsDispatchToProps = {
 
 // PAGES
 
-const RoolsPage = compose(
-  withSushistoreService(mapRoolsMethodToProps),
-  connect(mapItemsStateToProps, mapItemsDispatchToProps)
-)(ItemsListContainer);
+const createItemsPage = (mapMethodToProps) => {
+  return(
+    compose(
+      withSushistoreService(mapMethodToProps),
+      connect(mapItemsStateToProps, mapItemsDispatchToProps)
+    )(ItemsListContainer)
+  );
+};
 
-const SetsPage = compose(
-  withSushistoreService(mapSetsMethodToProps),
-  connect(mapItemsStateToProps, mapItemsDispatchToProps)
-)(ItemsListContainer);
+const createDetailsPage = (mapMethodToProps) => {
+  return(
+    compose(
+      withSushistoreService(mapMethodToProps),
+      connect(mapDetailsStateToProps, mapDetailsDispatchToProps)
+    )(ItemDeatailsContainer)
+  );
+};
 
-const RollDetailsPage = compose(
-  withSushistoreService(mapRoolsMethodToProps),
-  connect(mapDetailsStateToProps, mapDetailsDispatchToProps)
-)(ItemDeatailsContainer);
+const RoolsPage = createItemsPage(mapRoolsMethodToProps);
 
-const SetDetailsPage = compose(
-  withSushistoreService(mapSetsMethodToProps),
-  connect(mapDetailsStateToProps, mapDetailsDispatchToProps)
-)(ItemDeatailsContainer);
+const SetsPage = createItemsPage(mapSetsMethodToProps);
+
+const NoodlesPage = createItemsPage(mapNoodlesMethodToProps);
+
+const SaladsPage = createItemsPage(mapSaladsMethodToProps);
+
+const RollDetailsPage = createDetailsPage(mapRoolsMethodToProps);
+
+const SetDetailsPage = createDetailsPage(mapSetsMethodToProps);
+
+const NoodlesDetailsPage = createDetailsPage(mapNoodlesMethodToProps);
+
+const SaladDetailsPage = createDetailsPage(mapSaladsMethodToProps);
 
 export {
   RoolsPage,
   SetsPage,
+  NoodlesPage,
+  SaladsPage,
   RollDetailsPage,
-  SetDetailsPage
+  SetDetailsPage,
+  NoodlesDetailsPage,
+  SaladDetailsPage
 };

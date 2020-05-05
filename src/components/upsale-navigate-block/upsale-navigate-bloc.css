@@ -1,0 +1,75 @@
+.upsale-navigate-bloc {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row;
+}
+
+.navigate-btns {
+  height: inherit;
+  flex: 1;
+  background-color: khaki;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2px;
+}
+
+.navigate-btns > a {
+  text-decoration: none;
+}
+
+.navigate-btn {
+  height: 100%;
+  width: 100%;
+  background-color: lightblue;
+  cursor: pointer;
+  font-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition-duration: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+  color: white;
+}
+
+.rolls {
+  background-image: url(../../images/btns/rolls.jpg);
+}
+
+.sets {
+  background-image: url(../../images/btns/sets.jpg);
+}
+
+.salads {
+  background-image: url(../../images/btns/salads.jpg);
+}
+
+.noodles {
+  background-image: url(../../images/btns/noodles.jpg);
+}
+
+.navigate-btn:hover {
+  background-size: 110%;
+  transition-duration: 0.2s;
+}
+
+.navigate-btn:hover .background-nav {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  height: 20%;
+  transition-duration: 0.2s;
+}

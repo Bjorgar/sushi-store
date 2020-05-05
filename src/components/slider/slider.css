@@ -1,6 +1,6 @@
 .carousel-box {
   position: relative;
-  max-width: 1200px;
+  flex: 2;
 }
 
 .dots-box {

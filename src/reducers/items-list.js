@@ -7,7 +7,6 @@ const updateItemsList = (state, action) => {
       loading: true,
       hasError: null,
       pageNumber: 0,
-      itemsType: '',
       savedType: ''
     };
   }
@@ -41,12 +40,6 @@ const updateItemsList = (state, action) => {
       return {
         ...state.itemsList,
         pageNumber: action.payload
-      }
-
-    case 'TRANSFER_ITEMS_TYPE':
-      return {
-        ...state.itemsList,
-        itemsType: action.payload
       }
 
     case 'SAVE_ITEMS_TYPE':

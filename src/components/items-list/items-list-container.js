@@ -5,6 +5,7 @@ import ItemsList from './items-list';
 import PageSwitch from './page-switch';
 import DisplaySettings from './display-settings';
 import './items-list.css';
+import { withRouter } from 'react-router-dom';
 
 class ItemsListContainer extends Component {
 
@@ -59,16 +60,19 @@ class ItemsListContainer extends Component {
   };
 
   showItemsAtPage = (num) => {
-    const { itemsLoaded, pageNumber, itemsType, savedType, saveItemsType, selectPageNumber } = this.props;
-    saveItemsType(itemsType);
+    const { itemsLoaded, pageNumber, savedType, saveItemsType, selectPageNumber, location } = this.props;
 
-    const page = (num === 0 || itemsType !== savedType) ? 0 :
+    const type = location.pathname
+
+    saveItemsType(type);
+
+    const page = (num === 0 || type !== savedType) ? 0 :
           (num > 0) ? num :
           pageNumber;
 
     if (num !== undefined) {
       selectPageNumber(num);
-    } else if (itemsType !== savedType) {
+    } else if (type !== savedType) {
       selectPageNumber(0);
     }
 
@@ -155,4 +159,4 @@ class ItemsListContainer extends Component {
   }
 };
 
-export default ItemsListContainer;
+export default withRouter(ItemsListContainer);

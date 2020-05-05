@@ -1,9 +1,7 @@
 import React from 'react';
 import './header.css';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SearchPanelContainer from '../search-panel';
-import { transferItemsType } from '../../actions';
 import CartWidget from '../cart-widget';
 
 const Header = ({ transferItemsType }) => {
@@ -14,16 +12,26 @@ const Header = ({ transferItemsType }) => {
       <ul className="nav-panel-items">
         <Link to="/rools/">
           <li
-            className="nav-panel-items-li"
-            onClick={() => transferItemsType('rools')}>
+            className="nav-panel-items-li">
             Роллы
           </li>
         </Link>
         <Link to="/sets/">
           <li
-            className="nav-panel-items-li li-last"
-            onClick={() => transferItemsType('sets')}>
+            className="nav-panel-items-li">
             Сеты
+          </li>
+        </Link>
+        <Link to="/noodles/">
+          <li
+            className="nav-panel-items-li">
+            Лапша
+          </li>
+        </Link>
+        <Link to="/salads/">
+          <li
+            className="nav-panel-items-li li-last">
+            Салаты
           </li>
         </Link>
       </ul>
@@ -32,8 +40,4 @@ const Header = ({ transferItemsType }) => {
   );
 };
 
-const mapDispatchToProps = {
-  transferItemsType
-};
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

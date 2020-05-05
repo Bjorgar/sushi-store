@@ -1,12 +1,8 @@
 
 const routingToDetailsPage = ({ type, id }, history) => {
   
-  if (type === 'rools') {
-    history.push(`/rools/${id}`)
-  } else {
-    history.push(`/sets/${id}`)
-  }
-
+    history.push(`/${type}/${id}`)
+  
 }
 
 export default routingToDetailsPage;
