@@ -245,6 +245,13 @@ const showHidePopUpCartViewer = () => {
   };
 };
 
+const transferDistance = (distance) => {
+  return {
+    type: 'DISTANCE_TO_BOTTOM_TRANSFERED',
+    payload: distance
+  };
+};
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -282,5 +289,6 @@ export {
   transferPlaceValue,
   transferSelectedPlace,
   openCloseSelectList,
-  showHidePopUpCartViewer
+  showHidePopUpCartViewer,
+  transferDistance
 };

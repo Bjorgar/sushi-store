@@ -11,7 +11,7 @@ const ListItem = ({ item, onAddedToCart, history }) => {
   return(
     <div className="main-box">
       <div className="item-name-box"> 
-        <h1 className="item-name" >{name}</h1>
+        <h1 className="item-name">{name}</h1>
       </div>
       <div className="image-box">
         <img alt="item" src={image} />

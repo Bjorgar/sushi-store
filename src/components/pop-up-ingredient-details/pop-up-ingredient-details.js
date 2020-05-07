@@ -8,10 +8,10 @@ const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClos
 
   const { type, id, image, name, ingredients=[], price, weight } = ingredient;
 
-  const clazz = (isOpenPopUp) ? 'pop-up-main' : 'pop-up-main-hide';
+  const clazz = (isOpenPopUp) ? '' : 'pop-up-main-hide';
 
   return(
-    <div className={clazz}>
+    <div className={`pop-up-main ${clazz}`}>
       <h1 className="pop-up-name-div">
         {name}
       </h1>
@@ -32,13 +32,13 @@ const PopUpIngredientDetails = ({ ingredient, isOpenPopUp, onAddedToCart, onClos
       <div className="pop-up-btn-div">
         <button
           onClick={() => onAddedToCart(id)} >
-          добавить ролл в корзину
+          <i className="fas fa-cart-arrow-down"></i>
         </button>
         <button
           onClick={() => {
             deactivateActiveLi()
             onClosePopUp()}} >
-          скрыть ролл
+          <i className="fas fa-times"></i>
         </button>
       </div>
     </div>

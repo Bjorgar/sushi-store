@@ -5,7 +5,11 @@ import { routingToDetailsPage } from '../utils';
 import { withRouter } from 'react-router-dom';
 import ItemDetailsIngredientsList from './item-details-ingredients-list';
 
-const ItemDetails = ({ item, onAddedToCart, closeDetailsPage, itemsId, history, closePopUpIngredientDetails }) => {
+const ItemDetails = ({ item, onAddedToCart, closeDetailsPage, itemsId, history, closePopUpIngredientDetails, getItemsId }) => {
+
+  if (itemsId === null) {
+    getItemsId();
+  };
 
   const setItem = (id, action) => {
     const actualIdx = itemsId.findIndex((itemId) => itemId === id);
@@ -33,23 +37,27 @@ const ItemDetails = ({ item, onAddedToCart, closeDetailsPage, itemsId, history, 
           <img alt="item" src={image} />
         </div>
         <div className="DP-desc-div">
-          <h1 className="DP-name">{name}</h1>
+          <div className="DP-name-div">
+            <h1 className="DP-name">{name}</h1>
+          </div>
           <div className="DP-ing">
             <h2>Состав</h2>
-            <ul>
-              <ItemDetailsIngredientsList item={item}/>
-            </ul>
-            <div className="DP-p-div">
-              <p>вес: {weight}г</p>
-              <p>цена: {price}грн</p>
-            </div>
+            <ItemDetailsIngredientsList item={item}/>
+          </div>
+          <div className="DP-p-div">
+            <p>вес: {weight}г</p>
+            <p>цена: {price}грн</p>
           </div>
           <div className="DP-buttons">
             <button
-              onClick={() => onAddedToCart(id)}>в корзину
+              className="DP-add-to-cart-btn"
+              onClick={() => onAddedToCart(id)}>
+              <i className="fas fa-cart-arrow-down"></i>
             </button>
             <button
-              onClick={closeDetailsPage}>закрыть
+              className="DP-close-btn"
+              onClick={closeDetailsPage}>
+              <i className="fas fa-times"></i>
             </button>
           </div>
         </div>

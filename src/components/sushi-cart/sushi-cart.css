@@ -23,11 +23,11 @@
   position: relative;
   width: auto;
   height: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  background-image: url(../../images/others/dp-fon.jpg);
+  background-color: rgb(231, 231, 231);
+  color: rgb(20, 20, 20);
   padding: 10px;
-  border: 3px solid rgb(255, 208, 0);
-  border-radius: 0px 30px 0px 30px;
+  border: 3px solid rgba(0, 0, 0, 0.623);
   width: 1000px;
   max-width: 1000px;
   padding-bottom: 100px;
@@ -35,7 +35,7 @@
 }
 
 .order-title {
-  margin-top: 0;
+  margin-top: 10;
   text-align: right;
   font-size: 35px;
   padding-right: 50px;
@@ -53,7 +53,7 @@
   grid-template-columns: 1fr 1fr 1fr 100px;
   justify-items: center;
   align-items: center;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(20, 20, 20);
   margin-bottom: 20px;
   padding-bottom: 15px;
   padding-top: 7px;
@@ -66,11 +66,11 @@
 .cart-item-img {
   height: 130px;
   border-radius: 10px;
-  box-shadow: 0px 0px 7px 2px rgb(255, 255, 255);
+  box-shadow: 0px 0px 7px 2px rgb(0, 0, 0);
 }
 
 .cart-item-name {
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -91,10 +91,10 @@
   align-items: center;
   justify-content: center;
   background: none;
-  color: white;
+  color: rgb(20, 20, 20);
   padding: 0;
   margin: 0;
-  border-color: white;
+  border-color: rgb(20, 20, 20);
   border-style: solid;
 }
 
@@ -126,24 +126,23 @@
 
 .btn-minus:hover {
   color: rgb(255, 208, 0);
-  box-shadow: -2px 0px 7px 1px rgb(255, 208, 0);
   transition-duration: 0.2s;
-  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-plus:hover {
   color: rgb(48, 240, 0);
-  box-shadow: 2px 0px 7px 1px rgb(48, 240, 0);
   transition-duration: 0.2s;
-  border-color: transparent;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .btn-count-total {
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 5px;
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   height: 30px;
   border-radius: 30px;
 }
@@ -153,17 +152,17 @@
   height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid black;
   outline: none;
   background: none;
-  color: white;
+  color: black;
   font-size: 25px;
   transition-duration: 0.2s;
 }
 
 .delete-btn:hover {
   color: rgb(255, 27, 27);
-  box-shadow: 0px 0px 7px 2px rgb(255, 27, 27);
+  background-color: rgba(0, 0, 0, 0.7);
   border: none;
   transition-duration: 0.2s;
   border-color: transparent;
@@ -172,6 +171,9 @@
 .delivery-div {
   height: 100px;
   min-height: 100px;
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
 }
 
 .delivery-check-form label {
@@ -194,7 +196,7 @@
   height: 1.5em;
   flex-shrink: 0;
   flex-grow: 0;
-  border: 1px solid white;
+  border: 2px solid rgb(20, 20, 20);
   border-radius: 0.25em;
   margin-right: 0.5em;
   background-repeat: no-repeat;
@@ -204,32 +206,34 @@
 
 .delivery-checkbox:checked + label::after {
   background-image: url(../../images/others/check-solid.svg);
-  box-shadow: 0px 0px 7px 1px rgb(255, 208, 0);
-  border: 1px solid rgb(255, 208, 0);
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.7);
   transition-duration: 0.2s;
+  box-shadow: 0px 0px 3px 2px black;
 }
 
 .delivery-checkbox + label:hover::after {
-  border: 1px solid rgb(255, 208, 0);
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.7);
   transition-duration: 0.2s;
 }
 
 .delivery-checkbox + label:active::after {
-  border: 1px solid rgb(255, 208, 0);
-  background-color: rgba(255, 208, 0, 0.5);
+  border: 2px solid white;
+  background-color: rgba(0, 0, 0, 0.9);
   transition-duration: 0.2s;
 }
 
 /* total - items -deliery price styles */
 
 .total {
+  color: white;
   position: absolute;
   right: 0;
   bottom: 0;
   font-size: 25px;
-  background-color: rgba(255, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 220px;
-  border-radius: 15px 0px 0px 0px;
 }
 
 .idt-price {
@@ -254,15 +258,14 @@
   position: absolute;
   top: 0;
   right: 0;
-  border-top-right-radius: 26px;
   height: 150px;
   width: 150px;
 }
 
 .close-btn {
  position: absolute; 
- top: -17px;
- right: -32px;
+ top: -20px;
+ right: -35px;
  width: 85px;
  height: 55px;
  font-size: 22px;
@@ -302,7 +305,7 @@
   width: 400px;
   height: 40px;
   color: white;
-  background: none;
+  background: rgba(0, 0, 0, 0.7);
   border: 2px solid white;
   outline: none;
   font-size: 20px;
@@ -312,13 +315,8 @@
 }
 
 .back-to-shopping-btn:hover {
-  border-color: rgb(48, 240, 0);
-  box-shadow: 0px 0px 10px 1px rgb(48, 240, 0);
+  border-color: rgb(20, 20, 20);
+  color: rgb(20, 20, 20);
+  background-color: rgba(255, 255, 255, 0.7);
   transition-duration: 0.2s;
-}
-
-/* scroll-bar */
-
-::-webkit-scrollbar {
-  background-color: green;
 }

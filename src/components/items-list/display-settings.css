@@ -1,19 +1,23 @@
 .display-settings-main {
-  top: 5px;
-  right: 10px;
   display: flex;
   flex-flow: row;
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 7px 1px rgba(255, 0, 0, 0.5);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.items-kind {
+  font-size: 40px;
+  margin-bottom: 18px;
+  margin-right: 40px;
 }
 
 .DS-h2 {
   border-bottom: transparent 5px solid;
   padding: 0 3px;
-  color: white;
+  color: rgb(20, 20, 20);
 }
 
 .select-div {
@@ -22,24 +26,30 @@
 }
 
 .quantity-div {
-  width: 73px;
+  width: 80px;
 }
 
 .order-div {
-  width: 213px;
+  width: 242px;
 }
 
 .DS-ul {
   position: absolute;
-  background-color: seashell;
+  background-color: rgb(20, 20, 20);
   z-index: 2;
   padding: 0;
-  width: 100%;
+  width: calc(100% + 1px);
   margin-top: 0;
+  transform: perspective(600px) rotateX(0deg);;
+  transform-origin: top;
+  transition-duration: 0.2s;
+  opacity: 1;
 }
 
 .DS-ul-hide {
-  display: none;
+  transform: perspective(600px) rotateX(-90deg);
+  opacity: 0.3;
+  transition-duration: 0.2s;
 }
 
 .button-div {
@@ -47,8 +57,11 @@
   position: relative;
   height: 25px;
   width: 100%;
-  background-color: seashell;
-  border-bottom: rgb(177, 55, 55) 5px solid;
+  font-size: 15px;
+  color: rgb(20, 20, 20);
+  border-top: 1px solid rgb(20, 20, 20);
+  border-left: 1px solid rgb(20, 20, 20);
+  border-bottom: rgb(20, 20, 20) 5px solid;
   cursor: pointer;
 }
 
@@ -62,13 +75,29 @@
 
 .arrow {
   position: absolute;
+  display: flex;
+  justify-content: center;
   width: 35px;
   height: 35px;
-  background-color: rgb(177, 55, 55);
+  background-color: rgb(20, 20, 20);
   right: 0;
   bottom: 0;
-  background-image: url(../../images/others/arr-down.png);
-  background-size: contain;
+  color: white;
+  font-size: 33px;
+}
+
+.arrow > i {
+  margin-top: 5px;
+}
+
+.arr-up {
+  transform: scaleY(1);
+  transition-duration: 0.2s;
+}
+
+.arr-down {
+  transform: scaleY(-1);
+  transition-duration: 0.2s;
 }
 
 .DS-ul li {
@@ -77,15 +106,15 @@
   list-style-type: none;
   height: 25px;
   padding: 0px 10px;
-  background-color: rgb(177, 55, 55);
   color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
   transition-duration: 0.3s;
   cursor: pointer;
 }
 
 .DS-ul li:hover {
-  background-color: rgb(82, 24, 24);
+  background-color: white;
+  color: rgb(20, 20, 20);
   transition-duration: 0.3s;
 }
 

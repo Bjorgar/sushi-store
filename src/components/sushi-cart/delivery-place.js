@@ -5,7 +5,6 @@ import { transferPlaceValue, transferSelectedPlace, openCloseSelectList } from '
 
 class DeliveryPlace extends Component {
 
-
   componentDidMount() {
     const labels = document.querySelectorAll('.label-select');
     const { transferSelectedPlace } = this.props;
@@ -29,36 +28,35 @@ class DeliveryPlace extends Component {
     if (!checkedInput) {
       return
     }
-    console.log(checkedInput);
     checkedInput.checked = false
   }
 
   render() {
-
-    const { isDelivery, selectedPlace, isOpenSelectList, openCloseSelectList } = this.props;
+    const { isDelivery, selectedPlace, isOpenSelectList, openCloseSelectList, distance } = this.props;
 
     if (!isDelivery) {
       this.unCheckInput();
     }
 
-    const clazz = (isDelivery) ? 'select-place' : 'select-place-hide';
+    const formDirection = (distance > 235) ? '' : 'select-form-up';
+
+    const clazz = (isDelivery) ? '' : 'select-place-hide';
 
     const selListClazz = (isOpenSelectList) ? '' : 'select-form-hide';
 
     const selArrowClazz = (isOpenSelectList) ? 'select-arrow-down' : 'select-arrow-up';
 
     return(
-      <div className={clazz}>
-        <p>Раён доставки:</p>
+      <div className={`select-place ${clazz}`}>
 
         <div className="select-div">
           <h2
           className="select-h2"
           onClick={() => openCloseSelectList(!isOpenSelectList)}
-          >{selectedPlace} <i className={`fas fa-chevron-down ${selArrowClazz}`}></i></h2>
+          >{selectedPlace} <i className={`fas fa-arrows-alt-v ${selArrowClazz}`}></i></h2>
           <form
             onChange={this.selectPlace}
-            className={`select-form ${selListClazz}`}>
+            className={`select-form ${formDirection} ${selListClazz}`}>
 
             <input id="selectPlace0" type="radio" value="30" name="selectPlace"/>
             <label htmlFor="selectPlace0" className="label-select">Центр города</label>
@@ -94,8 +92,8 @@ class DeliveryPlace extends Component {
 };
 
 const mapStateToProps = ({
-  shoppingCart: { isDelivery, selectedPlace, isOpenSelectList } }) => ({
-    isDelivery, selectedPlace, isOpenSelectList });
+  shoppingCart: { isDelivery, selectedPlace, isOpenSelectList, distance } }) => ({
+    isDelivery, selectedPlace, isOpenSelectList, distance });
 
 const mapDispatchToProps = { transferPlaceValue, transferSelectedPlace, openCloseSelectList };
 

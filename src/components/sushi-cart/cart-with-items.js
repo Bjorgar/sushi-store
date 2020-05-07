@@ -8,7 +8,8 @@ import {
   deletedAllItemsFromCart,
   showDeatailsModal,
   hideDetailsModal,
-  changeDeliveryValue } from '../../actions';
+  changeDeliveryValue,
+  transferDistance } from '../../actions';
 
 
 class CartWithItems extends Component {
@@ -23,6 +24,24 @@ class CartWithItems extends Component {
     const { changeDeliveryValue } = this.props;
     changeDeliveryValue(false);
   }
+
+  checkDistance = () => {
+    const { transferDistance } = this.props;
+    const distanceToTop = document.querySelector('.delivery-div').getBoundingClientRect().bottom;
+    const windowHeigtn = window.innerHeight;
+    
+    const distance = windowHeigtn - distanceToTop;
+
+    transferDistance(distance);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { items, isOpen } = this.props;
+    if (items !== prevProps.items || isOpen !== prevProps.isOpen) {
+      this.checkDistance();
+    }
+    return;
+  };
 
   render() {
 
@@ -70,7 +89,7 @@ class CartWithItems extends Component {
                 <i className="fas fa-plus"></i>
               </button>
             </div>
-            <div className="btn-count-total">{total}грн</div>
+            <div className="btn-count-total">{total} грн</div>
           </div>
           <div>
             <button
@@ -140,7 +159,8 @@ const mapDispatchToProps = {
   onDelete: deletedAllItemsFromCart,
   showDeatailsModal,
   hideDetailsModal,
-  changeDeliveryValue
+  changeDeliveryValue,
+  transferDistance
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartWithItems);

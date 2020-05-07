@@ -1,13 +1,12 @@
 .items-list-main-box {
   position: relative;
   padding-bottom: 100px;
-  background-color: rgb(41, 41, 41);
 }
 
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 260px);
-  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, 270px);
+  grid-gap: 10px;
   justify-items: center;
   justify-content: center;
 }
