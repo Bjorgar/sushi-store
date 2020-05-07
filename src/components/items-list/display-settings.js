@@ -43,22 +43,28 @@ class DisplaySettings extends Component {
       showQuantitySettings,
       showOrderSettings,
       isActiveQuantitySettings,
-      isActiveOrderSettings } = this.props;
+      isActiveOrderSettings,
+      itemsKind } = this.props;
 
-    const quantityUlClass = (isActiveQuantitySettings) ? 'DS-ul' : 'DS-ul-hide';
-    const orderUlClass = (isActiveOrderSettings) ? 'DS-ul' : 'DS-ul-hide';
+    const quantityUlClass = (isActiveQuantitySettings) ? '' : 'DS-ul-hide';
+    const orderUlClass = (isActiveOrderSettings) ? '' : 'DS-ul-hide';
+    const arrQuantityClass = (isActiveQuantitySettings) ? 'arr-down' : 'arr-up';
+    const arrOrderClass = (isActiveOrderSettings) ? 'arr-down' : 'arr-up';
 
   return(
       <div className="display-settings-main">
+        <div className="items-kind">{itemsKind}</div>
         <h2 className="DS-h2">товара на странице:</h2>
         <div className="select-div quantity-div">
           <div
             onClick={() => showQuantitySettings()}
             className="button-div butd-q" >
             <h3>{quantity}</h3>
-            <div className="arrow"></div>
+            <div className="arrow">
+              <i className={`fas fa-chevron-down ${arrQuantityClass}`}></i>
+            </div>
           </div>
-          <ul className={quantityUlClass}>
+          <ul className={`DS-ul ${quantityUlClass}`}>
             <li className="quantity-li">6</li>
             <li className="quantity-li">12</li>
             <li className="quantity-li">18</li>
@@ -73,9 +79,11 @@ class DisplaySettings extends Component {
             onClick={() => showOrderSettings()}
             className="button-div butd-o">
             <h3>{order}</h3>
-            <div className="arrow"></div>
+            <div className="arrow">
+              <i className={`fas fa-chevron-down ${arrOrderClass}`}></i>
+            </div>
           </div>
-          <ul className={orderUlClass}>
+          <ul className={`DS-ul ${orderUlClass}`}>
             <li className="order-li">возростанию цены</li>
             <li className="order-li">убыванию цены</li>
             <li className="order-li">возростанию веса</li>

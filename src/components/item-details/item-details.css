@@ -1,5 +1,5 @@
 .details-background {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(184, 184, 184, 0.7);
   position: fixed;
   z-index: 3;
   width: 100%;
@@ -16,13 +16,13 @@
 }
 
 .details-body {
-  display: flex;
-  flex-flow: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 1000px;
   height: 570px;
-  background-color: rgb(43, 43, 43);
+  background-image: url(../../images/others/dp-fon.jpg);
   border: 4px solid rgb(255, 255, 255);
-  box-shadow: 0px 0px 20px 5px rgba(255, 0, 0, 0.637);
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.7);
 }
 
 .details-body {
@@ -34,13 +34,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 500px;
   height: inherit;
-  background-color: rgb(43, 43, 43);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .DP-img-div > img {
-  border: white 2px solid;
   padding: 20px;
 }
 
@@ -49,23 +47,34 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  flex-grow: 1;
-  border-left: white 7px solid;  
+  border-left: 7px solid transparent;
+}
+
+.DP-name-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(43, 43, 43);
+  width: 100%;
+  height: 80px;
+  font-size: 27px;
+  margin: 0;
 }
 
 .DP-name {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(43, 43, 43);
-  background-color: white;
-  width: 100%;
-  height: 70px;
+  text-align: center;
+  height: 80px;
+  font-size: 27px;
   margin: 0;
 }
 
 .DP-ing {
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .DP-ing h2 {
@@ -73,42 +82,52 @@
   color: white;
 }
 
-.DP-ing ul {
+.DP-ul {
   padding: 0;
+  height: 260px;
+  margin: 0;
+  overflow-y: auto;
 }
 
-.DP-ing ul li {
+.DP-ul-sets {
+  overflow: visible;
+}
+
+.DP-li {
   list-style-type: none;
   color: white;
   padding: 5px 20px;
   border-bottom: 1px solid white;
   font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .DP-ing ul li:first-child {
   border-top: 1px solid white;
 }
 
-.DP-sets-li {
+.DP-li-sets {
   cursor: pointer;
   transition-duration: 0.3s;
-  background-color: rgb(43, 43, 43);
+  background-color: rgba(0, 0, 0, 0.4)
 }
 
-.DP-sets-li:hover {
+.DP-li-sets:hover {
   margin-left: -3px;
-  background-color: rgb(189, 69, 69);
+  background-color: rgba(255, 208, 0, 0.3);
   transition-duration: 0.3s;
 }
 
 .active-li {
   margin-left: -7px;
-  background-color: rgb(185, 35, 35);
+  background-color: rgb(255, 208, 0);
+  color: rgb(20, 20, 20);
 }
 
 .active-li:hover {
   margin-left: -7px;
-  background-color: rgb(185, 35, 35);
+  background-color: rgb(255, 208, 0);
+  color: rgb(20, 20, 20);
 }
 
 .DP-p-div {
@@ -118,10 +137,8 @@
   flex-flow: row;
   align-items: center;
   justify-content: space-around;
-  color: rgb(43, 43, 43);
+  color: rgb(20, 20, 20);
   font-size: 20px;
-  margin-top: 10px;
-  background-color: white;
 }
 
 .DP-buttons {
@@ -129,34 +146,47 @@
   flex-flow: row;
   flex-grow: 1;
   width: 100%;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .DP-buttons button {
   display: block;
-  width: 150px;
-  height: 60px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
   font-size: 18px;
   color: white;
-  background-color: rgb(43, 43, 43);
+  font-size: 45px;
   border: 1px solid rgb(255, 255, 255);
   outline: none;
   cursor: pointer;
-  margin: 25px;
   transition-duration: 0.3s;
 }
 
-.DP-buttons button:hover {
-  background-color: white;
-  color: rgb(43, 43, 43);
-  transition-duration: 0.3s;
+.DP-add-to-cart-btn {
+  background-color: rgba(48, 240, 0, 0.2);
+}
+
+.DP-close-btn {
+  background-color: rgba(255, 27, 27, 0.2);
+}
+
+.DP-add-to-cart-btn:hover {
+  background-color: transparent;
+  color: rgb(48, 240, 0);
+  border-color: rgb(48, 240, 0);
+}
+
+.DP-close-btn:hover {
+  background-color: transparent;
+  color: rgb(255, 27, 27);
+  border-color: rgb(255, 27, 27);
 }
 
 .DP-buttons button:active {
-  border-style: inset;
-  background-color: rgb(197, 197, 197);
-  color:rgb(34, 34, 34);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .switch-btn {

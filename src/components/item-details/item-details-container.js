@@ -25,18 +25,33 @@ class ItemDeatailsContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { deactivateActiveLi } = this.props;
     if (this.props.itemId !== prevProps.itemId) {
       this.renderComponent();
+      deactivateActiveLi();
     } 
     return
   }
 
   closeDetailsPage = ({ type }) => {
-    const { history, closeItemDetails, closePopUpIngredientDetails } = this.props;
+    const { history, closeItemDetails, closePopUpIngredientDetails, deactivateActiveLi } = this.props;
     history.push(`/${type}/`);
     closePopUpIngredientDetails();
     closeItemDetails();
+    deactivateActiveLi();
   };
+
+  getItemsId = () => {
+    const { getData, transferItemsId, catchError } = this.props;
+
+    getData()
+      .then((data) => {
+        const itemsId = [];
+        data.forEach((item) => itemsId.push(item.id));
+        transferItemsId(itemsId);
+      })
+      .catch((err) => catchError(err))
+  }
 
   render() {
     const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId } = this.props;
@@ -51,7 +66,8 @@ class ItemDeatailsContainer extends Component {
           itemsId={itemsId}
           item={item}
           onAddedToCart={onAddedToCart}
-          closeDetailsPage={() => this.closeDetailsPage(item)} />
+          closeDetailsPage={() => this.closeDetailsPage(item)}
+          getItemsId={this.getItemsId} />
       </Fragment>
     );
   }

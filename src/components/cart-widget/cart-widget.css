@@ -1,3 +1,27 @@
+@-webkit-keyframes pulsing {
+  0% {
+    color: black;
+  }
+  50% {
+    color: rgb(255, 208, 0);
+  }
+  100% {
+    color: black;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    color: black;
+  }
+  50% {
+    color: rgb(255, 208, 0);
+  }
+  100% {
+    color: black;
+  }
+}
+
 .cart-widget-main {
   position: relative;
 }
@@ -7,66 +31,70 @@
   margin-right: 50px;
   margin-left: 10px;
   display: grid;
+  grid-gap: 1px;
   grid-template-columns: 30px 28px 55px;
   grid-template-rows: 40px 28px;
-  grid-gap: 3px;
 }
 
 .cart > * {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid white;
 }
 
 .cart-icon {
   font-size: 30px;
-  color: rgb(48, 240, 0);
+  color: rgb(20, 20, 20);
+  background-color: white;
   grid-column: 2 / 4;
   cursor: pointer;
   transition-duration: 0.2s;
-  border-top-right-radius: 7px;
 }
 
 .cart-icon:hover {
-  border-color: rgb(48, 240, 27);
-  box-shadow: 0px 0px 7px 2px rgb(48, 240, 0);
+  color: rgb(48, 240, 27);
+  background-color: rgba(0, 0, 0, 0.3);
   transition-duration: 0.2s;
 }
 
 .total-count {
-  color: rgb(255, 27, 27);
+  color: rgb(20, 20, 20);
+  background-color: white;
   grid-column: 2;
   grid-row: 2;
 }
 
 .total-price {
-  color: white;
+  color: rgb(20, 20, 20);
+  background-color: white;
   grid-column: 3;
   grid-row: 2;
-  border-bottom-right-radius: 7px;
 }
 
 .pop-up-viewer-btn {
+  border: none;
   grid-column: 1;
   grid-row: 1 / 3;
   outline: none;
   font-size: 25px;
-  color: rgb(255, 208, 0);
+  color: rgb(20, 20, 20);
+  background-color: white;
   cursor: pointer;
   transition-duration: 0.2s;
-  border-radius: 7px 0px 0px 7px;
+  animation: pulsing 2s infinite;
 }
 
 .pop-up-viewer-btn-unactice {
   color: rgb(184, 184, 184);
-  border: 1px solid rgb(184, 184, 184);
+  background-color: rgba(0, 0, 0, 0.3);
   pointer-events: none;
+  animation: none;
 }
 
 .pop-up-viewer-btn:hover {
-  border-color: rgb(255, 208, 0);
-  box-shadow: 0px 0px 7px 2px rgb(255, 208, 0);
+  color: rgb(255, 208, 0);
+  background-color: rgba(0, 0, 0, 0.3);
   transition-duration: 0.2s;
+  animation: none;
 }

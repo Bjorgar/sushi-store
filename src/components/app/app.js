@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SushiCart from '../sushi-cart';
 import Header from '../header';
 import {
+  MainPage,
   RoolsPage,
   SetsPage,
   NoodlesPage,
@@ -77,6 +78,7 @@ class App extends Component {
         <IngredientsModalWindow />
         <SushiCart />
         <Switch>
+          <Route path="/"  exact component={MainPage} />
           <Route path="/rools" exact component={RoolsPage} />
           <Route path="/rools/:id" 
                  render={({ match }) => this.routingTo(match, RollDetailsPage)} />

@@ -1,4 +1,5 @@
-import {   
+import {
+  MainPage,   
   RoolsPage,
   SetsPage,
   NoodlesPage,
@@ -9,6 +10,7 @@ import {
   SaladDetailsPage } from './initial-pages';
 
 export {
+  MainPage,
   RoolsPage,
   SetsPage,
   NoodlesPage,

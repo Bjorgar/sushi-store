@@ -11,11 +11,15 @@ import {
   closePopUpIngredientDetails,
   transferItemsId,
   selectPageNumber,
-  saveItemsType } from '../../actions';
+  saveItemsType,
+  deactivateActiveLi } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
 
+const mapAllMethodToProps = (sushistoreService) => ({
+  getData: sushistoreService.getAllItems
+});
 
 const mapRoolsMethodToProps = (sushistoreService) => ({
   getData: sushistoreService.getRools
@@ -68,7 +72,9 @@ const mapDetailsDispatchToProps = {
   showItemDetails,
   catchError,
   closeItemDetails,
-  closePopUpIngredientDetails
+  closePopUpIngredientDetails,
+  deactivateActiveLi,
+  transferItemsId
  };
 
 // PAGES
@@ -91,6 +97,8 @@ const createDetailsPage = (mapMethodToProps) => {
   );
 };
 
+const MainPage = createItemsPage(mapAllMethodToProps)
+
 const RoolsPage = createItemsPage(mapRoolsMethodToProps);
 
 const SetsPage = createItemsPage(mapSetsMethodToProps);
@@ -108,6 +116,7 @@ const NoodlesDetailsPage = createDetailsPage(mapNoodlesMethodToProps);
 const SaladDetailsPage = createDetailsPage(mapSaladsMethodToProps);
 
 export {
+  MainPage,
   RoolsPage,
   SetsPage,
   NoodlesPage,

@@ -88,7 +88,8 @@ const updateShoppingCart = (state, action) => {
       isSelectListActive: false,
       selectedPlace: 'выберите район',
       isOpenSelectList: false,
-      isCartViewerVisible: false
+      isCartViewerVisible: false,
+      distance: null
     };
   }
 
@@ -154,6 +155,12 @@ const updateShoppingCart = (state, action) => {
         ...state.shoppingCart,
         isCartViewerVisible: !state.shoppingCart.isCartViewerVisible
       };
+
+    case 'DISTANCE_TO_BOTTOM_TRANSFERED':
+      return {
+        ...state.shoppingCart,
+        distance: action.payload
+      }
     
     default: 
       return state.shoppingCart

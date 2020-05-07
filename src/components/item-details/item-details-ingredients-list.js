@@ -24,28 +24,36 @@ class ItemDetailsIngredientsList extends Component {
 
   if (type !== 'sets') {
     return(
-      ingredients.map((ingredient) => {
-        const id = `${ingredient} DP`;
-        return <li key={id}>{ingredient}</li>
-      })
+      <ul className="DP-ul">
+        {
+          ingredients.map((ingredient) => {
+            const id = `${ingredient} DP`;
+            return <li className="DP-li" key={id}>{ingredient}</li>
+          })
+        }
+      </ul>
     );
   } else {
     return(
-      ingredients.map((ingredient) => {
-        const clazz = (activeLi === ingredient.id) ? 'active-li' : '';
-        const id = `${ingredient.id} ${ingredient.name} DP`;
-        return <li key={id}
-                className={`DP-sets-li ${clazz}`}
-                onClick={() => {
-                  setActiveLi(ingredient.id);
-                  openPopUpIngredientDetails(ingredient)}}
-                onMouseOver={() => showDeatailsModal(ingredient)}
-                onMouseOut={hideDetailsModal}
-                onMouseMove={onInitialPosition}
-               >
-                {ingredient.name}
-               </li>
-      })
+      <ul className="DP-ul DP-ul-sets"> 
+        {
+          ingredients.map((ingredient) => {
+            const clazz = (activeLi === ingredient.id) ? 'active-li' : '';
+            const id = `${ingredient.id} ${ingredient.name} DP`;
+            return <li key={id}
+                    className={`DP-li DP-li-sets ${clazz}`}
+                    onClick={() => {
+                      setActiveLi(ingredient.id);
+                      openPopUpIngredientDetails(ingredient)}}
+                    onMouseOver={() => showDeatailsModal(ingredient)}
+                    onMouseOut={hideDetailsModal}
+                    onMouseMove={onInitialPosition}
+                  >
+                    {ingredient.name}
+                  </li>
+          })
+        }
+      </ul>
     );
   }
   }

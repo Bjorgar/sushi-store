@@ -6,7 +6,7 @@ const itemDetails = (state, action) => {
       item: {},
       loading: true,
       activeLi: null,
-      itemsId: []
+      itemsId: null
     };
   }
 

@@ -1,18 +1,9 @@
 .select-place {
+  margin-top: 1px;
   position: relative;
-  display: block;
-  width: 100%;
-  height: 80px;
   display: flex;
   flex-flow: row;
   align-items: center;
-}
-
-.select-place > p {
-  font-size: 17px;
-  border-bottom: 2px solid rgb(216, 23, 23);
-  margin-right: 5px;
-  margin-bottom: 15px;
 }
 
 .select-place-hide {
@@ -32,17 +23,17 @@
   margin: 0;
   height: 30px;
   cursor: pointer;
-  border: cyan 1px solid;
-  box-shadow: 0px 0px 7px 2px cyan;
+  background-color: white;
+  border: black 1px solid;
 }
 
 .select-arrow-down {
-  transform: scaleY(-1);
+  transform: rotate(-180deg);
   transition-duration: 0.2s;
 }
 
 .select-arrow-up {
-  transform: scaleY(1);
+  transform: rotate(180deg);
   transition-duration: 0.2s;
 }
 
@@ -56,6 +47,11 @@
   transition-duration: 0.2s;
 }
 
+.select-form-up {
+  transform-origin: bottom;
+  bottom: 30px;
+}
+
 .select-form-hide {
   transform: scaleY(0);
   transition-duration: 0.2s;
@@ -66,21 +62,22 @@
 }
 
 .select-form > input:checked + label {
-  border: 1px solid rgb(48, 240, 0);
-  box-shadow: 0px 0px 7px 2px rgb(48, 240, 0);
+  margin-left: -8px;
+  margin-right: 8px;
   z-index: 2;
 }
 
 .label-select {
-  border: 1px solid rgb(255, 208, 0);
-  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-bottom: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.8);
   transition-duration: 0.2s;
   padding: 5px 10px;
   cursor: pointer;
 }
 
 .label-select:hover {
-  transform: scale(1.1);
+  color: rgb(20, 20, 20);
+  background-color: white;
   transition-duration: 0.2s;
-  box-shadow: 0px 0px 7px 2px rgb(255, 208, 0);
 }

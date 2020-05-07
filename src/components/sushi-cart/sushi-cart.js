@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import { closeShoppingCart } from '../../actions';
 import CartWithItems from './cart-with-items';
 
-const EmptyCart = () => {
+const EmptyCart = ({ closeShoppingCart }) => {
   return(
     <Fragment>
       <h2>Ваша корзина пуста</h2>
       <div className="back-to-shopping-div">
-        <button className="back-to-shopping-btn">вернуться к покупкам</button>
+        <button
+          onClick={closeShoppingCart}
+          className="back-to-shopping-btn">вернуться к покупкам
+        </button>
       </div>
     </Fragment>
   );
@@ -17,7 +20,7 @@ const EmptyCart = () => {
 
 const SushiCart = ({ totalCount, onClose, isOpen }) => {
 
-  const display = (totalCount === 0) ? <EmptyCart /> : <CartWithItems />;
+  const display = (totalCount === 0) ? <EmptyCart closeShoppingCart={onClose} /> : <CartWithItems />;
 
   const clazz = (isOpen) ? 'shopping-cart' : 'shopping-cart-hide';
 

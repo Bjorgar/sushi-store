@@ -26,7 +26,7 @@ class ItemsListContainer extends Component {
   componentDidUpdate(prevProps) {
     const { quantity, order } = this.props;
     if (quantity !== prevProps.quantity) {
-  // When we change quantity, we must show page with 0 idx      
+    // When we change quantity, we must show page with 0 idx      
       this.separateItems(this.compileArrWithItems(), 0);
     }
     if (order !== prevProps.order) {
@@ -134,7 +134,13 @@ class ItemsListContainer extends Component {
   };
 
   render() {
-    const { items, onAddedToCart, loading, hasError, pageNumber } = this.props;
+    const { items, onAddedToCart, loading, hasError, pageNumber, location } = this.props;
+
+    const itemsKind = (location.pathname === '/') ? 'Всё меню' :
+      (location.pathname === '/rools/') ? 'Роллы' :
+      (location.pathname === '/sets/') ? 'Сеты' :
+      (location.pathname === '/noodles/') ? 'Лапша' :
+      (location.pathname === '/salads/') ? 'Салаты' : '';
 
     if (hasError) {
       return <ErrorIndicator />
@@ -146,7 +152,7 @@ class ItemsListContainer extends Component {
 
     return(
       <div className="items-list-main-box">
-        <DisplaySettings />
+        <DisplaySettings itemsKind={itemsKind} />
         <ItemsList
             items={items}
             onAddedToCart={onAddedToCart}/>
