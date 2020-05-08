@@ -1,16 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ItemDetails from './item-details';
 import Spinner from '../spinner';
 import { withRouter } from 'react-router-dom';
+import { routingToDetailsPage } from '../utils';
+import './item-details.css';
+import ErrorIndicator from '../error-indicator';
 
 class ItemDeatailsContainer extends Component {
 
   renderComponent = () => {
-    const { getData, catchError } = this.props;
+    const { getData, catchDetailsError, detailsRequested } = this.props;
 
+    detailsRequested();
     getData()
       .then((data) => this.extractItem(data))
-      .catch((err) => catchError(err));
+      .catch((err) => catchDetailsError(err));
   }
 
   extractItem = (data) => {
@@ -42,7 +46,7 @@ class ItemDeatailsContainer extends Component {
   };
 
   getItemsId = () => {
-    const { getData, transferItemsId, catchError } = this.props;
+    const { getData, transferItemsId, catchDetailsError } = this.props;
 
     getData()
       .then((data) => {
@@ -50,25 +54,60 @@ class ItemDeatailsContainer extends Component {
         data.forEach((item) => itemsId.push(item.id));
         transferItemsId(itemsId);
       })
-      .catch((err) => catchError(err))
+      .catch((err) => catchDetailsError(err))
   }
 
-  render() {
-    const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId } = this.props;
-    
-    if (loading) {
-      return <Spinner />
+  setItem = (id, action) => {
+    const { history, item, itemsId } = this.props;
+    const actualIdx = itemsId.findIndex((itemId) => itemId === id);
+    let setIdx;
+
+    if (action === 'inc') {
+      setIdx = (actualIdx === (itemsId.length - 1)) ? 0 : actualIdx + 1;
+    } else if (action === 'dec') {
+      setIdx = (actualIdx === 0) ? itemsId.length - 1 : actualIdx - 1;
     }
+
+    routingToDetailsPage(
+      {
+        type: item.type,
+        id: itemsId[setIdx]
+      }, history)
+  };
+
+  render() {
+    const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId, error } = this.props;
+    
+    const viewComponent = (error) ? <ErrorIndicator /> :
+      (loading) ? <Spinner /> :
+      <ItemDetails
+      itemsId={itemsId}
+      item={item}
+      onAddedToCart={onAddedToCart}
+      closeDetailsPage={() => this.closeDetailsPage(item)}
+      getItemsId={this.getItemsId} /> ;
+      
+
     return(
-      <Fragment>
-        <ItemDetails
-          closePopUpIngredientDetails={closePopUpIngredientDetails}
-          itemsId={itemsId}
-          item={item}
-          onAddedToCart={onAddedToCart}
-          closeDetailsPage={() => this.closeDetailsPage(item)}
-          getItemsId={this.getItemsId} />
-      </Fragment>
+      <div className="details-background">
+        <div className="details-body">
+          {viewComponent}
+        </div>
+        <button
+          onClick={() => {
+          this.setItem(item.id, 'dec');
+          closePopUpIngredientDetails()}}
+          className="switch-btn switch-btn-left">
+          <i className="fas fa-chevron-left"></i>
+        </button>
+        <button
+          onClick={() => {
+          this.setItem(item.id, 'inc')
+          closePopUpIngredientDetails()}}
+          className="switch-btn switch-btn-right">
+          <i className="fas fa-chevron-right"></i>
+        </button>
+      </div>
     );
   }
 };

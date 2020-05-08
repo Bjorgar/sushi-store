@@ -1,115 +1,57 @@
 
-@keyframes ldio-axm9tqg7xot {
-  0% {
-    opacity: 1;
-    backface-visibility: hidden;
-    transform: translateZ(0) scale(1.05,1.05);
-  } 100% {
-    opacity: 0;
-    backface-visibility: hidden;
-    transform: translateZ(0) scale(1,1);
-  }
+@keyframes ldio-dumkwfp3l2e {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
 }
-.ldio-axm9tqg7xot div > div {
+
+.ldio-dumkwfp3l2e div {
+  left: 118.34px;
+  top: 57.339999999999996px;
   position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #4c7bbb;
-  animation: ldio-axm9tqg7xot 2.127659574468085s linear infinite;
-}.ldio-axm9tqg7xot div:nth-child(1) > div {
-  left: 74px;
-  top: 41px;
-  animation-delay: -1.914893617021277s;
-}
-.ldio-axm9tqg7xot > div:nth-child(1) {
+  animation: ldio-dumkwfp3l2e linear 1s infinite;
+  background: #0a0a0a;
+  width: 7.32px;
+  height: 26.84px;
+  border-radius: 0px / 0px;
+  transform-origin: 3.66px 64.66px;
+}.ldio-dumkwfp3l2e div:nth-child(1) {
   transform: rotate(0deg);
-  transform-origin: 83px 50px;
-}.ldio-axm9tqg7xot div:nth-child(2) > div {
-  left: 68px;
-  top: 60px;
-  animation-delay: -1.7021276595744683s;
-}
-.ldio-axm9tqg7xot > div:nth-child(2) {
-  transform: rotate(36deg);
-  transform-origin: 77px 69px;
-}.ldio-axm9tqg7xot div:nth-child(3) > div {
-  left: 51px;
-  top: 72px;
-  animation-delay: -1.4893617021276597s;
-}
-.ldio-axm9tqg7xot > div:nth-child(3) {
-  transform: rotate(72deg);
-  transform-origin: 60px 81px;
-}.ldio-axm9tqg7xot div:nth-child(4) > div {
-  left: 31px;
-  top: 72px;
-  animation-delay: -1.2765957446808514s;
-}
-.ldio-axm9tqg7xot > div:nth-child(4) {
-  transform: rotate(108deg);
-  transform-origin: 40px 81px;
-}.ldio-axm9tqg7xot div:nth-child(5) > div {
-  left: 14px;
-  top: 60px;
-  animation-delay: -1.0638297872340428s;
-}
-.ldio-axm9tqg7xot > div:nth-child(5) {
-  transform: rotate(144deg);
-  transform-origin: 23px 69px;
-}.ldio-axm9tqg7xot div:nth-child(6) > div {
-  left: 8px;
-  top: 41px;
-  animation-delay: -0.8510638297872342s;
-}
-.ldio-axm9tqg7xot > div:nth-child(6) {
+  animation-delay: -0.8333333333333334s;
+  background: #0a0a0a;
+}.ldio-dumkwfp3l2e div:nth-child(2) {
+  transform: rotate(60deg);
+  animation-delay: -0.6666666666666666s;
+  background: #0a0a0a;
+}.ldio-dumkwfp3l2e div:nth-child(3) {
+  transform: rotate(120deg);
+  animation-delay: -0.5s;
+  background: #0a0a0a;
+}.ldio-dumkwfp3l2e div:nth-child(4) {
   transform: rotate(180deg);
-  transform-origin: 17px 50px;
-}.ldio-axm9tqg7xot div:nth-child(7) > div {
-  left: 14px;
-  top: 22px;
-  animation-delay: -0.6382978723404257s;
-}
-.ldio-axm9tqg7xot > div:nth-child(7) {
-  transform: rotate(216deg);
-  transform-origin: 23px 31px;
-}.ldio-axm9tqg7xot div:nth-child(8) > div {
-  left: 31px;
-  top: 10px;
-  animation-delay: -0.4255319148936171s;
-}
-.ldio-axm9tqg7xot > div:nth-child(8) {
-  transform: rotate(252deg);
-  transform-origin: 40px 19px;
-}.ldio-axm9tqg7xot div:nth-child(9) > div {
-  left: 51px;
-  top: 10px;
-  animation-delay: -0.21276595744680854s;
-}
-.ldio-axm9tqg7xot > div:nth-child(9) {
-  transform: rotate(288deg);
-  transform-origin: 60px 19px;
-}.ldio-axm9tqg7xot div:nth-child(10) > div {
-  left: 68px;
-  top: 22px;
+  animation-delay: -0.3333333333333333s;
+  background: #0a0a0a;
+}.ldio-dumkwfp3l2e div:nth-child(5) {
+  transform: rotate(240deg);
+  animation-delay: -0.16666666666666666s;
+  background: #0a0a0a;
+}.ldio-dumkwfp3l2e div:nth-child(6) {
+  transform: rotate(300deg);
   animation-delay: 0s;
+  background: #0a0a0a;
 }
-.ldio-axm9tqg7xot > div:nth-child(10) {
-  transform: rotate(324deg);
-  transform-origin: 77px 31px;
-}
-.loadingio-spinner-spin-fcldqpztuuu {
-  width: 69px;
-  height: 69px;
+.loadingio-spinner-spinner-c60ali2nmpb {
+  width: 244px;
+  height: 244px;
   display: inline-block;
   overflow: hidden;
-  background: #ffffff;
+  background: none;
 }
-.ldio-axm9tqg7xot {
+.ldio-dumkwfp3l2e {
   width: 100%;
   height: 100%;
   position: relative;
-  transform: translateZ(0) scale(0.69);
+  transform: translateZ(0) scale(1);
   backface-visibility: hidden;
   transform-origin: 0 0; /* see note above */
 }
+.ldio-dumkwfp3l2e div { box-sizing: content-box; }

@@ -252,6 +252,19 @@ const transferDistance = (distance) => {
   };
 };
 
+const detailsRequested = () => {
+  return {
+    type: 'FETCH_DETAILS_REQUEST'
+  };
+};
+
+const catchDetailsError = (err) => {
+  return {
+    type: 'FETCH_DETAILS_FAILURE',
+    payload: err
+  };
+};
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -290,5 +303,7 @@ export {
   transferSelectedPlace,
   openCloseSelectList,
   showHidePopUpCartViewer,
-  transferDistance
+  transferDistance,
+  detailsRequested,
+  catchDetailsError
 };

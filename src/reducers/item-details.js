@@ -5,8 +5,9 @@ const itemDetails = (state, action) => {
     return {
       item: {},
       loading: true,
+      error: false,
       activeLi: null,
-      itemsId: null
+      itemsId: null,
     };
   }
 
@@ -15,8 +16,24 @@ const itemDetails = (state, action) => {
       return {
         ...state.itemDetails,
         item: action.payload,
-        loading: false
+        loading: false,
+        error: false
       };
+
+    case 'FETCH_DETAILS_REQUEST':
+      return {
+        ...state.itemDetails,
+        loading: true,
+        error: false
+      };
+
+    case 'FETCH_DETAILS_FAILURE':
+      return {
+        ...state.itemDetails,
+        item: [],
+        loading: true,
+        error: true
+      }
 
     case 'CLOSE_ITEM_DETAILS':
       return {

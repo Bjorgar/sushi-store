@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { withSushistoreService } from '../hoc';
 import {
   itemsLoaded,
   catchError,
   itemAddedToCart,
   itemsRequested,
+  detailsRequested,
   showItemDetails,
   closeItemDetails,
   closePopUpIngredientDetails,
   transferItemsId,
   selectPageNumber,
   saveItemsType,
-  deactivateActiveLi } from '../../actions';
+  deactivateActiveLi,
+  catchDetailsError } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -55,7 +56,7 @@ const mapItemsStateToProps = ({
   };
 };
 
-const mapItemsDispatchToProps = (dispatch) => bindActionCreators({
+const mapItemsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   itemsLoaded,
   catchError,
@@ -63,18 +64,21 @@ const mapItemsDispatchToProps = (dispatch) => bindActionCreators({
   transferItemsId,
   selectPageNumber,
   saveItemsType
-}, dispatch);
+};
 
-const mapDetailsStateToProps = ({ itemDetails: { item, loading, itemsId } }) => ({ item, loading, itemsId })
+const mapDetailsStateToProps = ({
+  itemDetails: { item, loading, itemsId, error } }) => ({ item, loading, itemsId, error })
 
 const mapDetailsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   showItemDetails,
+  detailsRequested,
   catchError,
   closeItemDetails,
   closePopUpIngredientDetails,
   deactivateActiveLi,
-  transferItemsId
+  transferItemsId,
+  catchDetailsError
  };
 
 // PAGES

@@ -1,10 +1,17 @@
 import React from 'react';
+import './error-indicator.css';
+import rollError from '../../images/others/roll-error.png';
 
 
 const ErrorIndicator = () => {
 
   return (
-    <h1>Error!!!</h1>
+    <div className="error-main">
+      <img src={rollError} alt="error" />
+      <h2>Произошла ошибка!</h2>
+      <p>Без паники!</p>
+      <p>Уже занимаемся проблемой</p>
+    </div>
   );
 };
 
