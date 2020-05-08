@@ -221,3 +221,12 @@
 .switch-btn-left:hover i {
   margin-left: -20px;
 }
+
+.details-background .loadingio-spinner-spinner-c60ali2nmpb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}

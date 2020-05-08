@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ErrorIndicator from '../error-indicator';
 import Spinner from '../spinner';
 import ItemsList from './items-list';
@@ -142,16 +142,9 @@ class ItemsListContainer extends Component {
       (location.pathname === '/noodles/') ? 'Лапша' :
       (location.pathname === '/salads/') ? 'Салаты' : '';
 
-    if (hasError) {
-      return <ErrorIndicator />
-    }
-
-    if (loading) {
-      return <Spinner />
-    }
-
-    return(
-      <div className="items-list-main-box">
+    const viewComponent = (hasError) ? <ErrorIndicator /> :
+      (loading) ? <Spinner /> :
+      <Fragment>
         <DisplaySettings itemsKind={itemsKind} />
         <ItemsList
             items={items}
@@ -160,6 +153,11 @@ class ItemsListContainer extends Component {
           selectedPage={pageNumber}
           separatedItems={this.arrWithItems}
           onPageSelected={this.onPageSelected}/>
+      </Fragment>
+
+    return(
+      <div className="items-list-main-box">
+        {viewComponent}
       </div>
     );
   }

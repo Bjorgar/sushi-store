@@ -10,3 +10,11 @@ main {
   justify-items: center;
   justify-content: center;
 }
+
+.items-list-main-box .loadingio-spinner-spinner-c60ali2nmpb {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 10px;
+}
