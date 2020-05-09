@@ -89,7 +89,8 @@ const updateShoppingCart = (state, action) => {
       selectedPlace: 'выберите район',
       isOpenSelectList: false,
       isCartViewerVisible: false,
-      distance: null
+      distance: null,
+      orderStep: 0
     };
   }
 
@@ -160,8 +161,14 @@ const updateShoppingCart = (state, action) => {
       return {
         ...state.shoppingCart,
         distance: action.payload
-      }
+      };
     
+    case 'ORDER_STEP_CHANGED':
+      return {
+        ...state.shoppingCart,
+        orderStep: action.payload
+      };
+
     default: 
       return state.shoppingCart
   }

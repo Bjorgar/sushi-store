@@ -5,13 +5,7 @@ import ItemDetailsIngredientsList from './item-details-ingredients-list';
 const ItemDetails = ({
   item,
   onAddedToCart,
-  closeDetailsPage,
-  itemsId,
-  getItemsId }) => {
-
-  if (itemsId === null) {
-    getItemsId();
-  };
+  closeDetailsPage }) => {
 
   const { id, name, weight, price, image } = item;
   return(

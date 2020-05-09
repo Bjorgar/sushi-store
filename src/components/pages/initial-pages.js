@@ -9,11 +9,12 @@ import {
   showItemDetails,
   closeItemDetails,
   closePopUpIngredientDetails,
-  transferItemsId,
+  transferItemsData,
   selectPageNumber,
   saveItemsType,
   deactivateActiveLi,
-  catchDetailsError } from '../../actions';
+  catchDetailsError,
+  transferListType } from '../../actions';
 import { compose } from '../utils';
 import ItemsListContainer from '../items-list';
 import ItemDeatailsContainer from '../item-details';
@@ -41,10 +42,9 @@ const mapSaladsMethodToProps = (sushistoreService) => ({
 // CONNECT REDUX
 
 const mapItemsStateToProps = ({
-   itemsList: { items, loading, hasError, pageNumber, itemsType, savedType },
-   displaySettings: { quantity, order } }) => {
-
-  return {
+  itemsList: { items, loading, hasError, pageNumber, itemsType, savedType },
+  displaySettings: { quantity, order } }) =>
+  ({
     items,
     loading,
     hasError,
@@ -53,21 +53,29 @@ const mapItemsStateToProps = ({
     pageNumber,
     itemsType,
     savedType
-  };
-};
+  });
 
 const mapItemsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   itemsLoaded,
   catchError,
   itemsRequested,
-  transferItemsId,
+  transferItemsData,
   selectPageNumber,
-  saveItemsType
+  saveItemsType,
+  transferListType
 };
 
 const mapDetailsStateToProps = ({
-  itemDetails: { item, loading, itemsId, error } }) => ({ item, loading, itemsId, error })
+  itemsList: { listType },
+  itemDetails: { item, loading, itemsData, error } }) =>
+  ({
+    item,
+    loading,
+    itemsData,
+    error,
+    listType
+  });
 
 const mapDetailsDispatchToProps = {
   onAddedToCart: itemAddedToCart,
@@ -77,7 +85,7 @@ const mapDetailsDispatchToProps = {
   closeItemDetails,
   closePopUpIngredientDetails,
   deactivateActiveLi,
-  transferItemsId,
+  transferItemsData,
   catchDetailsError
  };
 

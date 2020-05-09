@@ -7,7 +7,7 @@ const itemDetails = (state, action) => {
       loading: true,
       error: false,
       activeLi: null,
-      itemsId: null,
+      itemsData: null,
     };
   }
 
@@ -54,10 +54,10 @@ const itemDetails = (state, action) => {
         activeLi: null
       };
     
-    case 'TRANSFER_ITEMS_ID':
+    case 'TRANSFER_ITEMS_DATA':
       return {
         ...state.itemDetails,
-        itemsId: action.payload
+        itemsData: action.payload
       };
 
     default: 

@@ -9,7 +9,8 @@ import {
   showDeatailsModal,
   hideDetailsModal,
   changeDeliveryValue,
-  transferDistance } from '../../actions';
+  transferDistance,
+  switchOrderStep } from '../../actions';
 
 
 class CartWithItems extends Component {
@@ -19,11 +20,6 @@ class CartWithItems extends Component {
     const value = e.target.checked;
     changeDeliveryValue(value);
   };
-
-  componentWillUnmount() {
-    const { changeDeliveryValue } = this.props;
-    changeDeliveryValue(false);
-  }
 
   checkDistance = () => {
     const { transferDistance } = this.props;
@@ -36,13 +32,13 @@ class CartWithItems extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { items, isOpen } = this.props;
-    if (items !== prevProps.items || isOpen !== prevProps.isOpen) {
+    const { items, isOpen, isDelivery} = this.props;
+    if (items !== prevProps.items || isOpen !== prevProps.isOpen || isDelivery !== prevProps.isDelivery) {
       this.checkDistance();
     }
-    return;
-  };
-
+    return
+  }
+  
   render() {
 
     const {
@@ -55,7 +51,8 @@ class CartWithItems extends Component {
       showDeatailsModal,
       hideDetailsModal,
       itemsPrice,
-      deliveryPrice } = this.props;
+      deliveryPrice,
+      switchOrderStep } = this.props;
 
     
     const clazz = (isDelivery) ? 'idt-price' : 'idt-price-hide';
@@ -104,7 +101,7 @@ class CartWithItems extends Component {
 
     return(
       <Fragment>
-        <h2 className="order-title">Ваш заказ</h2>
+        <h2 className="h2-title">Ваш заказ</h2>
           <div className="order-list">
             {
               items.map(renderRow)
@@ -136,6 +133,11 @@ class CartWithItems extends Component {
             <p>итого</p><p>{totalPrice}</p>
           </div>
         </div>
+        <button
+          onClick={() => switchOrderStep(1)}
+          className="cart-btn-next cwi-btn">
+          Далее
+        </button>
       </Fragment>
     );
   }
@@ -160,7 +162,8 @@ const mapDispatchToProps = {
   showDeatailsModal,
   hideDetailsModal,
   changeDeliveryValue,
-  transferDistance
+  transferDistance,
+  switchOrderStep
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartWithItems);
