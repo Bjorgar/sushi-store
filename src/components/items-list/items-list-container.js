@@ -21,7 +21,20 @@ class ItemsListContainer extends Component {
         this.arrLength = data.length;
         this.selectOrder()})
       .catch((err) => catchError(err));
+
+    
+    this.checkListType()
   }
+
+  checkListType = () => {
+    const { location, transferListType } = this.props;
+    
+    if (location.pathname === '/') {
+      transferListType('main');
+    } else {
+      transferListType('other');
+    }
+  };
 
   componentDidUpdate(prevProps) {
     const { quantity, order } = this.props;
@@ -35,15 +48,15 @@ class ItemsListContainer extends Component {
     return
   }
 
-  collectItemsId = (arr) => {
-    const { transferItemsId } = this.props;
-    const itemsId = [];
+  collectItemsData = (arr) => {
+    const { transferItemsData } = this.props;
+    const itemsData = [];
 
     arr.forEach((item) => {
-      itemsId.push(item.id);
+      itemsData.push({ itemType: item.type, itemId: item.id });
     });
     
-    transferItemsId(itemsId);
+    transferItemsData(itemsData);
     this.separateItems(arr);
   };
   
@@ -106,30 +119,30 @@ class ItemsListContainer extends Component {
     switch (order) {
       case 'возростанию цены':
         return ( 
-          this.collectItemsId(
+          this.collectItemsData(
             this.compileArrWithItems().sort((a, b) => a.price - b.price)
           )
         );
       case 'убыванию цены':
         return ( 
-          this.collectItemsId(
+          this.collectItemsData(
             this.compileArrWithItems().sort((a, b) => b.price - a.price)
           )
         );
       case 'возростанию веса':
         return ( 
-          this.collectItemsId(
+          this.collectItemsData(
             this.compileArrWithItems().sort((a, b) => a.weight - b.weight)
           )
         );
       case 'уменьшению веса':
         return ( 
-          this.collectItemsId(
+          this.collectItemsData(
             this.compileArrWithItems().sort((a, b) => b.weight - a.weight)
           )
         );
       default:
-        return this.collectItemsId(this.arrWithItems);
+        return this.collectItemsData(this.arrWithItems);
     };
   };
 

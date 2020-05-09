@@ -7,6 +7,7 @@ import updateSearching from './items-search';
 import updateItemDetailsModal from './item-details-modal';
 import updatePopUpIngredients from './pop-up-ingredients';
 import updataDisplaySettings from './display-settings';
+import updateClientInfo from './client-info';
 
 const reducer = (state, action) => {
 
@@ -18,7 +19,8 @@ const reducer = (state, action) => {
     itemsSearch: updateSearching(state, action),
     itemDetailsModal: updateItemDetailsModal(state, action),
     popUpIngredients: updatePopUpIngredients(state, action),
-    displaySettings: updataDisplaySettings(state, action)
+    displaySettings: updataDisplaySettings(state, action),
+    clientInfo: updateClientInfo(state, action)
   };
 };
 

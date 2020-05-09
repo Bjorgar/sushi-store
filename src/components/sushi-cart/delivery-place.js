@@ -5,16 +5,41 @@ import { transferPlaceValue, transferSelectedPlace, openCloseSelectList } from '
 
 class DeliveryPlace extends Component {
 
+  checkingInput = (labels, selectedPlace) => {
+    const form = document.querySelector('.select-form');
+    const inputs = form.querySelectorAll('input');
+    let checkedLabel;
+    let uncheckedInput;
+
+    labels.forEach((label) => {
+      if (label.textContent === selectedPlace) {
+        checkedLabel = label;
+      }
+    });
+
+    inputs.forEach((input) => {
+      if (input.id === checkedLabel.htmlFor) {
+        uncheckedInput = input;
+      }
+    });
+
+    uncheckedInput.checked = true;
+  };
+
   componentDidMount() {
     const labels = document.querySelectorAll('.label-select');
-    const { transferSelectedPlace } = this.props;
+    const { transferSelectedPlace, selectedPlace } = this.props;
 
     labels.forEach((label) => {
       label.addEventListener('click', (e) => {
         const place = e.target.textContent;
         transferSelectedPlace(place);
       })
-    })
+    });
+
+    if (selectedPlace !== 'выберите район') {
+      this.checkingInput(labels, selectedPlace);
+    };
   }
 
   selectPlace = (e) => {

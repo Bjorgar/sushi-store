@@ -38,55 +38,58 @@ class ItemDeatailsContainer extends Component {
   }
 
   closeDetailsPage = ({ type }) => {
-    const { history, closeItemDetails, closePopUpIngredientDetails, deactivateActiveLi } = this.props;
-    history.push(`/${type}/`);
+    const { history, closeItemDetails, closePopUpIngredientDetails, deactivateActiveLi, listType } = this.props;
+    if (listType === 'main') {
+      history.push('/');
+    } else {
+      history.push(`/${type}/`);
+    }
     closePopUpIngredientDetails();
     closeItemDetails();
     deactivateActiveLi();
   };
 
-  getItemsId = () => {
-    const { getData, transferItemsId, catchDetailsError } = this.props;
+  collectItemsData = () => {
+    const { getData, transferItemsData, catchDetailsError } = this.props;
 
     getData()
       .then((data) => {
-        const itemsId = [];
-        data.forEach((item) => itemsId.push(item.id));
-        transferItemsId(itemsId);
+        const itemsData = [];
+        data.forEach((item) => itemsData.push({itemType:item.type, itemId:item.id}));
+        transferItemsData(itemsData);
       })
       .catch((err) => catchDetailsError(err))
   }
 
   setItem = (id, action) => {
-    const { history, item, itemsId } = this.props;
-    const actualIdx = itemsId.findIndex((itemId) => itemId === id);
+    const { history, itemsData } = this.props;
+    const actualIdx = itemsData.findIndex((partOfArr) => partOfArr.itemId === id);
     let setIdx;
 
     if (action === 'inc') {
-      setIdx = (actualIdx === (itemsId.length - 1)) ? 0 : actualIdx + 1;
+      setIdx = (actualIdx === (itemsData.length - 1)) ? 0 : actualIdx + 1;
     } else if (action === 'dec') {
-      setIdx = (actualIdx === 0) ? itemsId.length - 1 : actualIdx - 1;
+      setIdx = (actualIdx === 0) ? itemsData.length - 1 : actualIdx - 1;
     }
 
     routingToDetailsPage(
       {
-        type: item.type,
-        id: itemsId[setIdx]
+        type: itemsData[setIdx].itemType,
+        id: itemsData[setIdx].itemId
       }, history)
   };
 
   render() {
-    const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsId, error } = this.props;
+    const { item, onAddedToCart, loading, closePopUpIngredientDetails, itemsData, error } = this.props;
     
+    if (itemsData === null) { this.collectItemsData() };
+
     const viewComponent = (error) ? <ErrorIndicator /> :
       (loading) ? <Spinner /> :
       <ItemDetails
-      itemsId={itemsId}
       item={item}
       onAddedToCart={onAddedToCart}
-      closeDetailsPage={() => this.closeDetailsPage(item)}
-      getItemsId={this.getItemsId} /> ;
-      
+      closeDetailsPage={() => this.closeDetailsPage(item)} /> ;
 
     return(
       <div className="details-background">

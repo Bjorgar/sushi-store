@@ -178,10 +178,10 @@ const deactivateActiveLi = () => {
   };
 };
 
-const transferItemsId = (itemsId) => {
+const transferItemsData = (itemsData) => {
   return {
-    type: 'TRANSFER_ITEMS_ID',
-    payload: itemsId
+    type: 'TRANSFER_ITEMS_DATA',
+    payload: itemsData
   };
 };
 
@@ -265,6 +265,51 @@ const catchDetailsError = (err) => {
   };
 };
 
+const switchOrderStep = (step) => {
+  return {
+    type: 'ORDER_STEP_CHANGED',
+    payload: step
+  };
+};
+
+const transferListType = (type) => {
+  return {
+    type: 'LIST_TYPE_TRANSFERED',
+    payload: type
+  };
+};
+
+const transferUserData = (name, phone) => {
+  return {
+    type: 'USER_DATA_TRANSFERED',
+    payloadClientName: name,
+    payloadClientPhone: phone
+  };
+};
+
+const transferHandleInput = (name, value) => {
+  return {
+    type: 'HANDLE_INPUT_TRANSFERED',
+    payloadInputName: name,
+    payloadInputValue: value
+  }
+}
+
+const transferValidation = (validateField, value) => {
+  return {
+    type: 'VALIDATION_TRANSFERED',
+    payloadValidateFielf: validateField,
+    payloadValidateValue: value
+  };
+};
+
+const transferFormValid = (value) => {
+  return {
+    type: 'FORM_VALIDATION_TRANSFERED',
+    payload: value
+  };
+};
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -293,7 +338,7 @@ export {
   closeOrderSettings,
   setActiveLi,
   deactivateActiveLi,
-  transferItemsId,
+  transferItemsData,
   selectPageNumber,
   saveItemsType,
   openShoppingCart,
@@ -305,5 +350,11 @@ export {
   showHidePopUpCartViewer,
   transferDistance,
   detailsRequested,
-  catchDetailsError
+  catchDetailsError,
+  switchOrderStep,
+  transferListType,
+  transferUserData,
+  transferHandleInput,
+  transferValidation,
+  transferFormValid
 };
