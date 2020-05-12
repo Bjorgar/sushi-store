@@ -73,9 +73,9 @@ const transferValue = (term) => {
   };
 };
 
-const showFoundedItems = (items) => {
+const showFoundItems = (items) => {
   return {
-    type: 'ITEMS_FOUNDED',
+    type: 'ITEMS_FOUND',
     payload: items
   };
 };
@@ -141,27 +141,17 @@ const transferOrder = (order) => {
   };
 };
 
-const showQuantitySettings = () => {
+const openCloseQuantitySettings = (boolean) => {
   return {
-    type: 'SHOW_QUANTITY_SETTINGS'
+    type: 'VISIBILITY_QUANTITY_SETTINGS_CHANGED',
+    payload: boolean
   };
 };
 
-const showOrderSettings = () => {
+const openCloseOrderSettings = (boolean) => {
   return {
-    type: 'SHOW_ORDER_SETTINGS'
-  };
-};
-
-const closeQuantitySettings = () => {
-  return {
-    type: 'CLOSE_QUANTITY_SETTINGS'
-  };
-};
-
-const closeOrderSettings = () => {
-  return {
-    type: 'CLOSE_ORDER_SETTINGS'
+    type: 'VISIBILITY_ORDER_SETTINGS_CHANGED',
+    payload: boolean
   };
 };
 
@@ -207,7 +197,7 @@ const openShoppingCart = () => {
 
 const closeShoppingCart = () => {
   return {
-    type: 'CART_CLOSED'
+    type: 'CART_HIDED'
   };
 };
 
@@ -310,6 +300,19 @@ const transferFormValid = (value) => {
   };
 };
 
+const wipeCartData = () => {
+  return {
+    type: 'WIPE_CART_DATA_REQUESTED',
+  };
+};
+
+const openCloseAttentionWindow = (boolean) => {
+  return {
+    type: 'ATTENTION_WINDOW_CHANGED',
+    payload: boolean
+  };
+};
+
 export {
   itemAddedToCart,
   deletedItemFromCart,
@@ -322,7 +325,7 @@ export {
   showItemDetails,
   closeItemDetails,
   transferValue,
-  showFoundedItems,
+  showFoundItems,
   searchError,
   searchEnded,
   showDeatailsModal,
@@ -332,10 +335,8 @@ export {
   closePopUpIngredientDetails,
   transferQuantity,
   transferOrder,
-  showQuantitySettings,
-  showOrderSettings,
-  closeQuantitySettings,
-  closeOrderSettings,
+  openCloseQuantitySettings,
+  openCloseOrderSettings,
   setActiveLi,
   deactivateActiveLi,
   transferItemsData,
@@ -356,5 +357,7 @@ export {
   transferUserData,
   transferHandleInput,
   transferValidation,
-  transferFormValid
+  transferFormValid,
+  wipeCartData,
+  openCloseAttentionWindow
 };

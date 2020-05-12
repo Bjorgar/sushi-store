@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './delivery-place.css';
-import { transferPlaceValue, transferSelectedPlace, openCloseSelectList } from '../../actions';
+import { transferPlaceValue, transferSelectedPlace, openCloseSelectList } from '../../../actions';
 
 class DeliveryPlace extends Component {
 

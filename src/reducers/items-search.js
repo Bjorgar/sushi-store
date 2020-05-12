@@ -20,7 +20,7 @@ const updateSearching = (state, actoin) => {
         items: []
       };
     
-    case 'ITEMS_FOUNDED':
+    case 'ITEMS_FOUND':
       return {
         ...state.itemsSearch,
         loading: false,
@@ -31,21 +31,21 @@ const updateSearching = (state, actoin) => {
     
     case 'SEARCHING_FAILURE':
       return {
+        ...state.itemsSearch,
         loading: false,
         error: actoin.payload,
         items: [],
-        isActive: true,
-        ...state.itemsSearch
+        isActive: true
       }
 
     case 'SEARCH_ENDED':
       return {
         term: '',
-        loading: false,
+        loading: true,
         isActive: false,
         items: [],
         error: false
-      };      
+      };
     
     default:
       return state.itemsSearch;

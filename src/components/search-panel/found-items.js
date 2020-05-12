@@ -2,7 +2,7 @@ import React from 'react';
 import { routingToDetailsPage } from '../utils';
 import { withRouter } from 'react-router-dom';
 
-const FindedItems = ({
+const FoundedItems = ({
   items,
   onShowDeatailsModal,
   onHideDetailsModal,
@@ -41,4 +41,4 @@ const FindedItems = ({
   );
 };
 
-export default withRouter(FindedItems);
+export default withRouter(FoundedItems);

@@ -20,26 +20,16 @@ const updateDisplaySettings = (state, action) => {
         ...state.displaySettings,
         order: action.payload
       };
-    case 'SHOW_QUANTITY_SETTINGS':
+    case 'VISIBILITY_QUANTITY_SETTINGS_CHANGED':
       return {
         ...state.displaySettings,
-        isActiveQuantitySettings: !state.displaySettings.isActiveQuantitySettings
+        isActiveQuantitySettings: action.payload
       };
-    case 'SHOW_ORDER_SETTINGS':
+    case 'VISIBILITY_ORDER_SETTINGS_CHANGED':
       return {
         ...state.displaySettings,
-        isActiveOrderSettings: !state.displaySettings.isActiveOrderSettings
+        isActiveOrderSettings: action.payload
       };
-      case 'CLOSE_QUANTITY_SETTINGS':
-        return {
-          ...state.displaySettings,
-          isActiveQuantitySettings: false
-        };
-      case 'CLOSE_ORDER_SETTINGS':
-        return {
-          ...state.displaySettings,
-          isActiveOrderSettings: false
-        };
     
     default: 
       return state.displaySettings

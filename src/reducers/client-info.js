@@ -34,11 +34,21 @@ const updateClientInfo = (state, action) => {
       };
 
     case 'FORM_VALIDATION_TRANSFERED':
-      console.log(action.payload);
       return {
         ...state.clientInfo,
         formValid: action.payload
       }
+
+    case 'WIPE_CART_DATA_REQUESTED':
+      return {
+        nameField: '',
+        phoneField: '',
+        nameValid: '',
+        phoneValid: '',
+        formValid: false,
+        clientName: '',
+        clientPhone: ''
+      };
 
     default:
       return state.clientInfo

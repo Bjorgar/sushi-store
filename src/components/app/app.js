@@ -13,55 +13,14 @@ import {
   SaladDetailsPage } from '../pages';
 import { Switch, Route } from 'react-router-dom';
 import IngredientsModalWindow from '../ingredients-modal-window';
-import { connect } from 'react-redux';
-import {
-  searchEnded,
-  closeQuantitySettings,
-  closeOrderSettings,
-  openCloseSelectList } from '../../actions';
 import './main.css';
 import UpsaleNavigateBloc from '../upsale-navigate-block';
+import { mouseClickEvent } from '../utils';
 
 class App extends Component {
 
-  clickEvent = (e) => {
-    const { searchEnded, closeQuantitySettings, closeOrderSettings, openCloseSelectList } = this.props;
-
-    const searchingBox = document.querySelector('.searching-box');
-    const quantitySettings = document.querySelector('.quantity-div');
-    const orderSettings = document.querySelector('.order-div');
-    const deliveryBox = document.querySelector('.select-div');
-
-    const target = e.target;
-    
-    if (!searchingBox || !quantitySettings || !orderSettings) {
-      return
-    }
-
-    if (target === searchingBox || searchingBox.contains(target)) {
-      closeQuantitySettings();
-      closeOrderSettings();
-    } else if (target === quantitySettings || quantitySettings.contains(target)) {
-      searchEnded();
-      closeOrderSettings();
-    } else if (target === orderSettings || orderSettings.contains(target)) {
-      searchEnded();
-      closeQuantitySettings();
-    } else {
-      searchEnded();
-      closeQuantitySettings();
-      closeOrderSettings();
-    }
-
-    if (target === deliveryBox || deliveryBox.contains(target)) {
-      return;
-    } else {
-      openCloseSelectList(false);
-    }
-  };
-
   componentDidMount() {
-    document.addEventListener('click', (e) => this.clickEvent(e));
+    document.addEventListener('click', (e) => mouseClickEvent(e));
   }
 
   routingTo = (match, Wrapped) => {
@@ -97,11 +56,4 @@ class App extends Component {
   }
 };
 
-const mapDispatchToProps = {
-  searchEnded,
-  closeQuantitySettings,
-  closeOrderSettings,
-  openCloseSelectList
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;

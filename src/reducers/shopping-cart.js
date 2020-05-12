@@ -90,7 +90,8 @@ const updateShoppingCart = (state, action) => {
       isOpenSelectList: false,
       isCartViewerVisible: false,
       distance: null,
-      orderStep: 0
+      orderStep: 0,
+      isAttention: false
     };
   }
 
@@ -111,10 +112,10 @@ const updateShoppingCart = (state, action) => {
         isOpen: true
       };
     
-    case 'CART_CLOSED':
+    case 'CART_HIDED':
       return {
         ...state.shoppingCart,
-        isOpen: false
+        isOpen: 'hide'
       };
 
     case 'DELIVERY_VALUE_CHANGED':
@@ -167,6 +168,30 @@ const updateShoppingCart = (state, action) => {
       return {
         ...state.shoppingCart,
         orderStep: action.payload
+      };
+
+    case 'ATTENTION_WINDOW_CHANGED':
+      return {
+        ...state.shoppingCart,
+        isAttention: action.payload
+      }
+
+    case 'WIPE_CART_DATA_REQUESTED':
+      return {
+        cartItems: [],
+        itemsPrice: 0,
+        totalCount: 0,
+        isOpen: false,
+        isDelivery: false,
+        deliveryPrice: 0,
+        totalPrice: 0,
+        isSelectListActive: false,
+        selectedPlace: 'выберите район',
+        isOpenSelectList: false,
+        isCartViewerVisible: false,
+        distance: null,
+        orderStep: 0,
+        isAttention: false
       };
 
     default: 
