@@ -6,21 +6,54 @@
   left: 0;
   width: 100%;
   display: flex;
-  flex-flow: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition-duration: 0.2s;
 }
 
 .shopping-cart-hide {
+  background: none;
+  transition-duration: 0.2s;
+  pointer-events: none;
+}
+
+.shopping-cart-close {
   display: none;
 }
 
+.help-background {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+}
+
+.shopping-cart-hide .help-background {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 90%;
+  left: 45%;
+  transform: scale(0);
+  opacity: 0;
+  transition-duration: 0.2s;
+}
+
 .cart-background {
+  position: relative;
   display: flex;
   flex-flow: column;
-  position: relative;
   width: auto;
   height: auto;
   background-image: url(../../images/others/dp-fon.jpg);
@@ -32,6 +65,9 @@
   max-width: 1000px;
   padding-bottom: 100px;
   max-height: 75%;
+  transform: scale(1);
+  opacity: 1;
+  transition-duration: 0.2s;
 }
 
 .h2-title {
@@ -255,42 +291,30 @@
 }
 
 .close-btn-background {
-  overflow: hidden;
   position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
   top: 0;
   right: 0;
-  height: 150px;
-  width: 150px;
+  height: 25px;
+  width: 90px;
 }
 
 .close-btn {
- position: absolute; 
- top: -20px;
- right: -35px;
- width: 85px;
- height: 55px;
- font-size: 22px;
- background-color: rgb(182, 18, 18);
- color: white;
- border: none;
- outline: none;
- cursor: pointer;
- transform: rotate(45deg);
- overflow: hidden;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-.close-btn i {
-  position: absolute;
-  transform: rotate(-45deg);
-  bottom: 5;
-  left: 0;
-  right: 0;
-  transition-duration: 0.2s;
+.hide {
+  color: rgb(255, 208, 0);
 }
 
-.close-btn:hover i {
-  transform: rotate(135deg);
-  transition-duration: 0.2s;
+.wipe {
+  color: rgb(255, 27, 27);
 }
 
 .back-to-shopping-div {

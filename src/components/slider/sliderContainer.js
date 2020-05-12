@@ -10,7 +10,7 @@ import './slider.css';
 class SliderContainer extends Component {
 
   slideNum = 1;
-  interval = 200000;
+  interval = 2000;
 
   componentDidMount() {
     const { loadedSlides, getData } = this.props;
@@ -20,13 +20,12 @@ class SliderContainer extends Component {
 
     this.runSlideshow();
     this.slideShowInterval();
-
   }
 
   runSlideshow = () => {
     const { showSlide, slides } = this.props;
-    const num = (this.slideNum === slides.length) ? 1
-                  : this.slideNum + 1;
+    const num =
+      (this.slideNum === slides.length) ? 1 : this.slideNum + 1;
                     
     showSlide(this.slideNum);
     
@@ -91,15 +90,15 @@ const mapStateToProps = ({ slider: { slides, displayedSlide } }) => {
    }
 };
 
-const mapDispatchToProps = {
-  loadedSlides,
-  showSlide
-};
-
 const mapSlidesToProps = (sushistoreService) => {
   return {
     getData: sushistoreService.getSlides
   };
+};
+
+const mapDispatchToProps = {
+  loadedSlides,
+  showSlide
 };
 
 export default compose(

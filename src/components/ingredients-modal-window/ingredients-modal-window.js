@@ -9,7 +9,7 @@ const IngredientsModalWindow = ({ type, ingredients, isActive, x, y }) => {
     position: 'absolute',
     top: `${y+5}px`,
     left: `${x+5}px`,
-    zIndex: 999,
+    zIndex: 999
   };
 
   const hideModal = {

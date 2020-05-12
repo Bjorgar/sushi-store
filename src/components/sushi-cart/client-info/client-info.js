@@ -6,7 +6,7 @@ import {
   switchOrderStep,
   transferHandleInput,
   transferValidation,
-  transferFormValid } from '../../actions';
+  transferFormValid } from '../../../actions';
 
 class ClientInfo extends Component {
 

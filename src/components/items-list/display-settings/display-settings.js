@@ -4,19 +4,17 @@ import { connect } from 'react-redux';
 import {
   transferQuantity,
   transferOrder,
-  showQuantitySettings,
-  showOrderSettings,
-  closeQuantitySettings,
-  closeOrderSettings } from '../../actions';
+  openCloseQuantitySettings,
+  openCloseOrderSettings } from '../../../actions';
 
 class DisplaySettings extends Component {
 
-  makeClickableElementsAndTransferingData = (element, transferValue, closeElement) => {
+  makeClickableElementsAndTransferingData = (element, transferValue, openCloseElement) => {
     element.forEach((li) => {
       const value = li.innerHTML;
       li.onclick = () => {
         transferValue(value);
-        closeElement();
+        openCloseElement(false);
       };
     })
   };
@@ -25,14 +23,14 @@ class DisplaySettings extends Component {
     const {
       transferQuantity,
       transferOrder,
-      closeQuantitySettings,
-      closeOrderSettings } = this.props;
+      openCloseQuantitySettings,
+      openCloseOrderSettings } = this.props;
 
     const quantityLi = document.querySelectorAll('.quantity-li');
     const orderLi = document.querySelectorAll('.order-li');
 
-    this.makeClickableElementsAndTransferingData(quantityLi, transferQuantity, closeQuantitySettings);
-    this.makeClickableElementsAndTransferingData(orderLi, transferOrder, closeOrderSettings);
+    this.makeClickableElementsAndTransferingData(quantityLi, transferQuantity, openCloseQuantitySettings);
+    this.makeClickableElementsAndTransferingData(orderLi, transferOrder, openCloseOrderSettings);
   }
 
   render() {
@@ -40,8 +38,8 @@ class DisplaySettings extends Component {
     const {
       quantity,
       order,
-      showQuantitySettings,
-      showOrderSettings,
+      openCloseQuantitySettings,
+      openCloseOrderSettings,
       isActiveQuantitySettings,
       isActiveOrderSettings,
       itemsKind } = this.props;
@@ -57,7 +55,7 @@ class DisplaySettings extends Component {
         <h2 className="DS-h2">товара на странице:</h2>
         <div className="select-div quantity-div">
           <div
-            onClick={() => showQuantitySettings()}
+            onClick={() => openCloseQuantitySettings(true)}
             className="button-div butd-q" >
             <h3>{quantity}</h3>
             <div className="arrow">
@@ -76,7 +74,7 @@ class DisplaySettings extends Component {
         <h2 className="DS-h2">сортировать по:</h2>
         <div className="select-div order-div">
           <div
-            onClick={() => showOrderSettings()}
+            onClick={() => openCloseOrderSettings(true)}
             className="button-div butd-o">
             <h3>{order}</h3>
             <div className="arrow">
@@ -104,10 +102,8 @@ const mapStateToProps = ({ displaySettings:
 const mapDispatchToProps = {
   transferQuantity,
   transferOrder,
-  showQuantitySettings,
-  showOrderSettings,
-  closeQuantitySettings,
-  closeOrderSettings
+  openCloseQuantitySettings,
+  openCloseOrderSettings
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplaySettings);

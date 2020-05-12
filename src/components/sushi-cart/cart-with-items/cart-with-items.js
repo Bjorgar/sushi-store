@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { onInitialPosition } from '../utils';
-import DeliveryPlace from './delivery-place';
+import { onInitialPosition } from '../../utils';
+import DeliveryPlace from '../delivery-place';
 import {
   itemAddedToCart,
   deletedItemFromCart,
@@ -10,7 +10,7 @@ import {
   hideDetailsModal,
   changeDeliveryValue,
   transferDistance,
-  switchOrderStep } from '../../actions';
+  switchOrderStep } from '../../../actions';
 
 
 class CartWithItems extends Component {

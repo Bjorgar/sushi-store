@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { switchOrderStep } from '../../actions';
+import { switchOrderStep } from '../../../actions';
 import './order-details.css';
 
 const OrderDetails = ({
@@ -50,6 +50,7 @@ const OrderDetails = ({
           <i className="fas fa-angle-left"></i>
         </button>
         <button
+          onClick={() => switchOrderStep(3)}
           className="cart-btn-next">
           далее
         </button>

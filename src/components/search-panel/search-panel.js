@@ -6,7 +6,7 @@ import { withSushistoreService } from '../hoc';
 import { connect } from 'react-redux';
 import {
   transferValue,
-  showFoundedItems,
+  showFoundItems,
   searchError,
   showDeatailsModal,
   hideDetailsModal,
@@ -14,24 +14,31 @@ import {
   itemAddedToCart,
   searchEnded } from '../../actions';
 import { compose, onInitialPosition } from '../utils';
-import FindedItems from './finded-items';
+import FoundItems from './found-items';
 
 class SearchPanelContainer extends Component {
 
   searchingItems = (data) => {
-    const { term, showFoundedItems } = this.props;
+    const { term, showFoundItems } = this.props;
 
+    if (term === '') {
+      return
+    }
     const result = data.filter((item) => {
       return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1;
     });
-    showFoundedItems(result);
+    showFoundItems(result);
   }
 
   initialSearching = (e) => {
     const { transferValue,  getData, searchError, searchEnded } = this.props;
     const term = e.target.value;
+    
     transferValue(term);
-    if (term === '') {
+
+    const termValid = term.match(/^\S/);
+    
+    if (term === '' || !termValid) {
       searchEnded();
     } else {
       getData()
@@ -56,7 +63,7 @@ class SearchPanelContainer extends Component {
     const clazz = (isActive) ? 'searching-results' : 'hide-list';
 
     const display = (error) ? <ErrorIndicator /> :
-                    (loading) ? <Spinner /> : <FindedItems
+                    (loading) ? <Spinner /> : <FoundItems
                                                 items={items}
                                                 onShowDeatailsModal={showDeatailsModal}
                                                 onHideDetailsModal={hideDetailsModal}
@@ -95,7 +102,7 @@ const mapStateToProps = ({ itemsSearch: { items, term, loading, isActive, error 
 const mapDispatchToProps = {
   onAddedToCart: itemAddedToCart,
   transferValue,
-  showFoundedItems,
+  showFoundItems,
   searchError,
   showDeatailsModal,
   hideDetailsModal,
