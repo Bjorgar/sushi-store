@@ -13,7 +13,7 @@ import {
   SaladDetailsPage } from '../pages';
 import { Switch, Route } from 'react-router-dom';
 import IngredientsModalWindow from '../ingredients-modal-window';
-import './main.css';
+import '../../main.scss';
 import UpsaleNavigateBloc from '../upsale-navigate-block';
 import { mouseClickEvent } from '../utils';
 

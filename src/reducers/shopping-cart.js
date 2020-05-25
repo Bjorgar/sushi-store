@@ -155,7 +155,7 @@ const updateShoppingCart = (state, action) => {
     case 'CHANGED_CART_VIEWER_VISIBILITY':
       return {
         ...state.shoppingCart,
-        isCartViewerVisible: !state.shoppingCart.isCartViewerVisible
+        isCartViewerVisible: action.payload
       };
 
     case 'DISTANCE_TO_BOTTOM_TRANSFERED':

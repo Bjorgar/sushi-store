@@ -1,0 +1,77 @@
+@import '../../main.scss';
+
+@-webkit-keyframes pulsing {
+  0% {
+    color: black;
+  }
+  50% {
+    color: $neutral-color;
+  }
+  100% {
+    color: black;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    color: black;
+  }
+  50% {
+    color: $neutral-color;
+  }
+  100% {
+    color: black;
+  }
+}
+
+.cart-widget-main {
+  position: relative;
+}
+
+.cart {
+  position: relative;
+  margin-right: 50px;
+  margin-left: 10px;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: 30px 28px 55px;
+  grid-template-rows: 40px 28px;
+}
+
+.cart > * {
+  background-color: white;
+  color: $dark-text-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-icon-unactive {
+  color: rgb(206, 206, 206);
+  pointer-events: none;
+  animation: none;
+}
+
+.cart-icon {
+  font-size: 30px;
+  grid-column: 2 / 4;
+  cursor: pointer;
+  transition-duration: $anim-duration;
+  animation: pulsing 2s infinite;
+  &:hover {
+    color: rgb(48, 240, 27);
+    background-color: rgba(0, 0, 0, 0.3);
+    transition-duration: $anim-duration;
+    animation: none;
+  }
+}
+
+.total-count {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.total-price {
+  grid-column: 3;
+  grid-row: 2;
+}

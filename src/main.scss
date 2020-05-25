@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'd_Kallisto';
+  src: url(./fonts/d_Kallisto.otf);
+}
+
+//Text colors
+
+$dark-text-color: rgb(20, 20, 20);
+$light-text-color: white;
+
+// 
+
+$dark-bg-color: rgba(0, 0, 0, 0.75);
+$light-bg-color: rgba(255, 255, 255, 0.85);
+
+$positive-color: rgb(48, 240, 0);
+$neutral-color: rgb(255, 208, 0);
+$negative-color: rgb(255, 27, 27);
+
+$anim-duration: 0.2s;
+
+// scroll styles
+
+$scroll-backgound-color: rgb(44, 44, 44);
+
+%scroll-background {
+  background-color: $scroll-backgound-color;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(./images/others/fon.jpg);
+}
+
+body * { font-family: d_Kallisto, Verdana, Geneva, Tahoma, sans-serif; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: $scroll-backgound-color;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-image: url(./images/others/bars-solid.svg);
+  @extend %scroll-background;
+  background-color: rgb(228, 228, 228);
+  background-size: 80%;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+  background-image: url(./images/others/angle-up-solid.svg);
+  @extend %scroll-background;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+  background-image: url(./images/others/angle-down-solid.svg);
+  @extend %scroll-background;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+  background-image: url(./images/others/angle-left-solid.svg);
+  @extend %scroll-background;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+  background-image: url(./images/others/angle-right-solid.svg);
+  @extend %scroll-background;
+}

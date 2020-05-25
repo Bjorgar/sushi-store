@@ -229,9 +229,10 @@ const openCloseSelectList = (boolean) => {
   };
 };
 
-const showHidePopUpCartViewer = () => {
+const showHidePopUpCartViewer = (boolean) => {
   return {
-    type: 'CHANGED_CART_VIEWER_VISIBILITY'
+    type: 'CHANGED_CART_VIEWER_VISIBILITY',
+    payload: boolean
   };
 };
 

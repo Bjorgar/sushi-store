@@ -96,7 +96,7 @@ class ClientInfo extends Component {
     );
   }
 
-}
+};
 
 const mapStateToProps = ({ clientInfo: { nameField, phoneField, nameValid, phoneValid, formValid } }) => 
   ({ nameField, phoneField, nameValid, phoneValid, formValid });
