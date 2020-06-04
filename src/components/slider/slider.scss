@@ -1,0 +1,93 @@
+@import '../../main.scss';
+
+.carousel-box {
+  position: relative;
+  flex: 2;
+}
+
+.dots-box {
+  position: absolute;
+  @extend %flex-center-center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 250px;
+  height: 40px;
+  flex-flow: row;
+  background-color: $elem-dark-bg-color;
+  border-radius: 40px 40px 0px 0px;
+}
+
+.dots {
+  width: 20px;
+  height: 20px;
+  background-color: rgba($negative-color, 0.7);
+  border: 1px solid $negative-color;
+  cursor: pointer;
+  margin: 7px;
+  border-radius: 3px;
+  transition-duration: $anim-duration;
+  &:hover {
+    box-shadow: 0px 0px 7px 2px $neutral-color;
+    background-color: rgba($neutral-color, 0.7);
+    border: 1px solid $neutral-color;
+    transition-duration: $anim-duration;
+  }
+}
+
+.active-dot {
+  border: 1px solid $positive-color;
+  box-shadow: 0px 0px 7px 2px $positive-color;
+  background-color: rgba($positive-color, 0.7);
+  pointer-events: none;
+  transition-duration: $anim-duration;
+}
+
+.slider-box {
+  width: inherit;
+}
+
+.slide {
+  display: flex;
+  img {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.left-arr-slider, .right-arr-slider {
+  font-size: 50px;
+  margin: auto;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 90px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  &:active {
+    background-color: rgba(207, 207, 207, 0.4);
+    transition-duration: 0.1s;
+  }
+  i {
+    margin: 0;
+    transition-duration: $anim-duration;
+  }
+}
+
+.right-arr-slider {
+ right: 0px; 
+ &:hover i {
+  margin-right: -25px;
+  transition-duration: $anim-duration;
+ }
+}
+
+.left-arr-slider {
+  &:hover i {
+    margin-left: -25px;
+    transition-duration: $anim-duration;
+  }
+}

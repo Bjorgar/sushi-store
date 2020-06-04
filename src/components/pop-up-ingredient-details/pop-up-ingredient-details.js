@@ -1,5 +1,5 @@
 import React from 'react';
-import './pop-up-ingredient-details.css';
+import './pop-up-ingredient-details.scss';
 import { connect } from 'react-redux';
 import { itemAddedToCart, closePopUpIngredientDetails, deactivateActiveLi } from '../../actions';
 import Ingredients from '../ingredients';

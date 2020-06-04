@@ -1,3 +1,5 @@
+@import '../../../main.scss';
+
 .CI-main {
   position: relative;
   width: 100%;
@@ -29,11 +31,25 @@
   height: 30px;
   font-size: 15px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: $elem-dark-bg-color;
+  color: $light-text-color;
   outline: none;
-  border: 1px solid white;
+  border: $list-border-style;
   padding: 2px 7px;
+  &:placeholder-shown + label {
+    position: absolute;
+    top: 27px;
+    left: 10px;
+    transition-duration: $anim-duration;
+    pointer-events: none;
+    color: $light-text-color;
+  }
+  &:placeholder-shown:focus + label {
+    top: 0;
+    transition-duration: $anim-duration;
+    left: 2px;
+    color: $dark-text-color;
+  }
 }
 
 .CI-input-err {
@@ -45,24 +61,7 @@
   position: absolute;
   top: 0px;
   left: 2px;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
   pointer-events: none;
-  color: black;
+  color: $dark-text-color;
 }
-
-.CI-input:placeholder-shown:focus + label {
-  top: 0;
-  transition-duration: 0.2s;
-  left: 2px;
-  color: black;
-}
-
-.CI-input:placeholder-shown + label {
-  position: absolute;
-  top: 27px;
-  left: 10px;
-  transition-duration: 0.2s;
-  pointer-events: none;
-  color: rgb(226, 226, 226);
-}
-

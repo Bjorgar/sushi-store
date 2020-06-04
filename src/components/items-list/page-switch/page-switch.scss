@@ -1,0 +1,30 @@
+@import '../../../main.scss';
+
+.switch-box {
+  position: absolute;
+  margin: auto;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  @extend %flex-center-center;
+  flex-flow: row;
+  width: 280px;
+}
+
+.switch-buttons {
+  @extend %flex-center-center;
+  width: 25px;
+  height: 25px;
+  border: 2px solid $light-text-color;
+  border-radius: 3px;
+  margin: 3px;
+  background-color: $elem-dark-bg-color;
+  color: $light-text-color;
+  cursor: pointer;
+}
+
+.active-button {
+  color: $dark-text-color;
+  background-color: $light-text-color;
+  border-color: $dark-text-color;
+}

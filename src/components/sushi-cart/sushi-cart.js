@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import './sushi-cart.css';
+import './sushi-cart.scss';
 import { connect } from 'react-redux';
 import {
   closeShoppingCart,
@@ -43,9 +43,9 @@ class SushiCart extends Component  {
 
   render() {
 
-    const { totalCount, onClose, isOpen, orderStep } = this.props;
+    const { totalCount, onClose, isOpen, orderStep, wipeCartData } = this.props;
 
-    const display = (totalCount === 0) ? <EmptyCart closeShoppingCart={onClose} /> :
+    const display = (totalCount === 0) ? <EmptyCart closeShoppingCart={wipeCartData} /> :
       (orderStep === 0) ? <CartWithItems /> :
       (orderStep === 1) ? <ClientInfo /> : 
       (orderStep === 2) ? <OrderDetails /> : <CompletedOrder />;

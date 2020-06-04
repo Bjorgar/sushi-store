@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './upsale-navigate-bloc.css';
+import './upsale-navigate-bloc.scss';
 import Slider from '../slider';
 
 const UpsaleNavigateBloc = () => {

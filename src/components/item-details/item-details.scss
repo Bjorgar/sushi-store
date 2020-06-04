@@ -1,5 +1,7 @@
+@import '../../main.scss';
+
 .details-background {
-  background-color: rgba(184, 184, 184, 0.7);
+  background-color: $bloc-light-bg-color;
   position: fixed;
   z-index: 3;
   width: 100%;
@@ -9,10 +11,8 @@
   right: 0;
   left: 0;
   margin: auto;
-  display: flex;
+  @extend %flex-center-center;
   flex-flow: row;
-  align-items: center;
-  justify-content: center;
 }
 
 .details-body {
@@ -32,15 +32,12 @@
 
 .DP-img-div {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center-center;
   height: inherit;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.DP-img-div > img {
-  padding: 20px;
+  background-color: $elem-dark-bg-color;
+  > img {
+    padding: 20px;
+  }
 }
 
 .DP-desc-div {
@@ -52,11 +49,9 @@
 }
 
 .DP-name-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center-center;
   text-align: center;
-  color: rgb(43, 43, 43);
+  color: $dark-text-color;
   width: 100%;
   height: 80px;
   font-size: 27px;
@@ -64,9 +59,7 @@
 }
 
 .DP-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center-center;
   text-align: center;
   height: 80px;
   font-size: 27px;
@@ -75,12 +68,11 @@
 
 .DP-ing {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.DP-ing h2 {
-  text-align: center;
-  color: white;
+  background-color: $elem-dark-bg-color;
+  color: $light-text-color;
+  h2 {
+    text-align: center;
+  }
 }
 
 .DP-ul {
@@ -96,60 +88,48 @@
 
 .DP-li {
   list-style-type: none;
-  color: white;
   padding: 5px 20px;
-  border-bottom: 1px solid white;
+  border-bottom: $list-border-style;
   font-size: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.DP-ing ul li:first-child {
-  border-top: 1px solid white;
+  &:first-child {
+    border-top: $list-border-style;    
+  }
 }
 
 .DP-li-sets {
   cursor: pointer;
-  transition-duration: 0.3s;
-  background-color: rgba(0, 0, 0, 0.4)
+  transition-duration: $anim-duration;
+  background-color: transparent;
+  &:hover {
+    margin-left: -3px;
+    background-color: rgba(255, 208, 0, 0.3);
+    transition-duration: $anim-duration;
+  }
 }
 
-.DP-li-sets:hover {
-  margin-left: -3px;
-  background-color: rgba(255, 208, 0, 0.3);
-  transition-duration: 0.3s;
-}
-
-.active-li {
+.active-li, .active-li:hover {
   margin-left: -7px;
-  background-color: rgb(255, 208, 0);
-  color: rgb(20, 20, 20);
-}
-
-.active-li:hover {
-  margin-left: -7px;
-  background-color: rgb(255, 208, 0);
-  color: rgb(20, 20, 20);
+  background-color: $neutral-color;
+  color: $dark-text-color;
 }
 
 .DP-p-div {
-  display: flex;
+  @extend %flex-center-center;
+  justify-content: space-around;
   width: 100%;
   height: 50px;
   flex-flow: row;
-  align-items: center;
-  justify-content: space-around;
-  color: rgb(20, 20, 20);
+  color: $dark-text-color;
   font-size: 20px;
 }
 
 .DP-buttons {
-  display: flex;
+  @extend %flex-center-center;
+  justify-content: space-evenly;
   flex-flow: row;
   flex-grow: 1;
   width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: $elem-dark-bg-color;
 }
 
 .DP-buttons button {
@@ -158,32 +138,30 @@
   height: 95px;
   border-radius: 50%;
   font-size: 18px;
-  color: white;
+  color: $light-text-color;
   font-size: 45px;
-  border: 1px solid rgb(255, 255, 255);
+  border: $list-border-style;
   outline: none;
   cursor: pointer;
-  transition-duration: 0.3s;
+  transition-duration: $anim-duration;
 }
 
 .DP-add-to-cart-btn {
-  background-color: rgba(48, 240, 0, 0.2);
+  background-color: rgba($positive-color, 0.2);
+  &:hover {
+    background-color: transparent;
+    color: $positive-color;
+    border-color: $positive-color;
+  }
 }
 
 .DP-close-btn {
-  background-color: rgba(255, 27, 27, 0.2);
-}
-
-.DP-add-to-cart-btn:hover {
-  background-color: transparent;
-  color: rgb(48, 240, 0);
-  border-color: rgb(48, 240, 0);
-}
-
-.DP-close-btn:hover {
-  background-color: transparent;
-  color: rgb(255, 27, 27);
-  border-color: rgb(255, 27, 27);
+  background-color: rgba($negative-color, 0.2);
+  &:hover {
+    background-color: transparent;
+    color: $negative-color;
+    border-color: $negative-color;
+  }
 }
 
 .DP-buttons button:active {
@@ -199,28 +177,24 @@
   border: none;
   outline: none;
   font-size: 30px;
-}
-
-.switch-btn i {
-  transition-duration: 0.5s;
-}
-
-.switch-btn:active i {
-  color: rgb(175, 33, 33);
-}
-
-.switch-btn:hover i {
-  margin-right: -10px;
-  transition-duration: 0.5s;
+  i {
+    transition-duration: 0.5s;
+  }
+  &:active i {
+    color: rgb(175, 33, 33);
+  }
+  &:hover i {
+    margin-right: -10px;
+    transition-duration: 0.5s;
+  }
 }
 
 .switch-btn-left {
   order: -1;
   border-radius: 60px 0px 0px 60px;
-}
-
-.switch-btn-left:hover i {
-  margin-left: -20px;
+  &:hover i {
+    margin-left: -20px;
+  }
 }
 
 .details-background .loadingio-spinner-spinner-c60ali2nmpb {

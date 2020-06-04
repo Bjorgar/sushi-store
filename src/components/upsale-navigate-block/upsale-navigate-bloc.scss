@@ -1,3 +1,5 @@
+@import '../../main.scss';
+
 .upsale-navigate-bloc {
   position: relative;
   width: 100%;
@@ -14,13 +16,13 @@
   grid-template-rows: 1fr 1fr;
   grid-gap: 1px;
   margin-left: 1px;
-}
-
-.navigate-btns > a {
-  text-decoration: none;
+  > a {
+    text-decoration: none;
+  }
 }
 
 .navigate-btn {
+  @extend %flex-center-center;
   height: 100%;
   width: 100%;
   background-color: lightblue;
@@ -29,21 +31,26 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
-  transition-duration: 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition-duration: $anim-duration;
+  &:hover {
+    background-size: 110%;
+    transition-duration: $anim-duration;
+    .background-nav {
+      background-color: rgba(255, 255, 255, 0.6);
+      color: $dark-text-color;
+      height: 20%;
+      transition-duration: $anim-duration;
+    }
+  }
 }
 
 .background-nav {
+  @extend %flex-center-center;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.2s;
-  color: white;
+  transition-duration: $anim-duration;
+  color: $light-text-color;
 }
 
 .rolls {
@@ -60,16 +67,4 @@
 
 .noodles {
   background-image: url(../../images/btns/noodles.jpg);
-}
-
-.navigate-btn:hover {
-  background-size: 110%;
-  transition-duration: 0.2s;
-}
-
-.navigate-btn:hover .background-nav {
-  background-color: rgba(255, 255, 255, 0.6);
-  color: black;
-  height: 20%;
-  transition-duration: 0.2s;
 }

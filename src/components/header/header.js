@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import './header.scss';
 import { Link } from 'react-router-dom';
 import SearchPanelContainer from '../search-panel';
 import CartWidget from '../cart-widget';
@@ -11,26 +11,22 @@ const Header = ({ transferItemsType }) => {
       <SearchPanelContainer />
       <ul className="nav-panel-items">
         <Link to="/rools/">
-          <li
-            className="nav-panel-items-li">
+          <li>
             Роллы
           </li>
         </Link>
         <Link to="/sets/">
-          <li
-            className="nav-panel-items-li">
+          <li>
             Сеты
           </li>
         </Link>
         <Link to="/noodles/">
-          <li
-            className="nav-panel-items-li">
+          <li>
             Лапша
           </li>
         </Link>
         <Link to="/salads/">
-          <li
-            className="nav-panel-items-li li-last">
+          <li>
             Салаты
           </li>
         </Link>

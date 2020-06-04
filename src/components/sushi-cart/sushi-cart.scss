@@ -1,22 +1,22 @@
+@import '../../main.scss';
+
 .shopping-cart {
   position: fixed;
+  @extend %flex-center-center;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 .shopping-cart-hide {
   background: none;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
   pointer-events: none;
 }
 
@@ -26,6 +26,7 @@
 
 .help-background {
   position: absolute;
+  @extend %flex-center-center;
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -33,10 +34,7 @@
   width: 100%;
   height: 100%;
   margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 .shopping-cart-hide .help-background {
@@ -47,7 +45,7 @@
   left: 45%;
   transform: scale(0);
   opacity: 0;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 .cart-background {
@@ -58,14 +56,14 @@
   height: auto;
   background-image: url(../../images/others/dp-fon.jpg);
   background-color: rgb(231, 231, 231);
-  color: rgb(20, 20, 20);
+  color: $dark-text-color;
   padding: 10px;
-  border: 3px solid rgba(0, 0, 0, 0.623);
+  border: 3px solid rgb(20, 20, 20,);
   width: 1000px;
   max-width: 1000px;
   padding-bottom: 100px;
   max-height: 75%;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 .h2-title {
@@ -87,14 +85,13 @@
   grid-template-columns: 1fr 1fr 1fr 100px;
   justify-items: center;
   align-items: center;
-  border-bottom: 1px solid rgb(20, 20, 20);
+  border-bottom: 1px solid $dark-text-color;
   margin-bottom: 20px;
   padding-bottom: 15px;
   padding-top: 7px;
-}
-
-.row-div:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .cart-item-img {
@@ -121,14 +118,12 @@
 .btn-count {
   width: 35px;
   height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center-center;
   background: none;
-  color: rgb(20, 20, 20);
+  color: $dark-text-color;
   padding: 0;
   margin: 0;
-  border-color: rgb(20, 20, 20);
+  border-color: $dark-text-color;
   border-style: solid;
 }
 
@@ -143,40 +138,36 @@
   border-top-width: 1px;
   border-bottom-width: 1px;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 .btn-minus {
   border-left-width: 1px;
   border-right: none;
   border-radius: 37px 0px 0px 37px;
+  &:hover {
+    color: $neutral-color;
+    transition-duration: $anim-duration;
+    background-color: $elem-dark-bg-color;
+  }
 }
 
 .btn-plus {
   border-right-width: 1px;
   border-left: none;
   border-radius: 0px 37px 37px 0px;
-}
-
-.btn-minus:hover {
-  color: rgb(255, 208, 0);
-  transition-duration: 0.2s;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.btn-plus:hover {
-  color: rgb(48, 240, 0);
-  transition-duration: 0.2s;
-  background-color: rgba(0, 0, 0, 0.7);
+  &:hover {
+    color: $positive-color;
+    transition-duration: $anim-duration;
+    background-color: $elem-dark-bg-color;
+  }
 }
 
 .btn-count-total {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: $light-text-color;
+  @extend %flex-center-center;
   margin-top: 5px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: $elem-dark-bg-color;
   height: 30px;
   border-radius: 30px;
 }
@@ -186,20 +177,19 @@
   height: 45px;
   border-radius: 50%;
   cursor: pointer;
-  border: 1px solid black;
+  border: 1px solid $dark-text-color;
   outline: none;
   background: none;
-  color: black;
+  color: $dark-text-color;
   font-size: 25px;
-  transition-duration: 0.2s;
-}
-
-.delete-btn:hover {
-  color: rgb(255, 27, 27);
-  background-color: rgba(0, 0, 0, 0.7);
-  border: none;
-  transition-duration: 0.2s;
-  border-color: transparent;
+  transition-duration: $anim-duration;
+  &:hover {
+    color: $negative-color;
+    background-color: $elem-dark-bg-color;
+    border: none;
+    transition-duration: $anim-duration;
+    border-color: transparent;
+  }
 }
 
 .delivery-div {
@@ -211,13 +201,15 @@
   margin-top: 10px;
 }
 
-.delivery-check-form label {
-  width: 280px;
-  font-size: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  transition-duration: 0.2s;
+.delivery-check-form {
+  label {
+    width: 280px;
+    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    transition-duration: $anim-duration;
+  }
 }
 
 .delivery-checkbox {
@@ -231,7 +223,7 @@
   height: 1.5em;
   flex-shrink: 0;
   flex-grow: 0;
-  border: 2px solid rgb(20, 20, 20);
+  border: 2px solid $dark-text-color;
   border-radius: 0.25em;
   margin-right: 0.5em;
   background-repeat: no-repeat;
@@ -241,33 +233,33 @@
 
 .delivery-checkbox:checked + label::after {
   background-image: url(../../images/others/check-solid.svg);
-  border: 2px solid white;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition-duration: 0.2s;
+  border: 2px solid $light-text-color;
+  background-color: $elem-dark-bg-color;
+  transition-duration: $anim-duration;
   box-shadow: 0px 0px 3px 2px black;
 }
 
 .delivery-checkbox + label:hover::after {
-  border: 2px solid white;
-  background-color: rgba(0, 0, 0, 0.7);
-  transition-duration: 0.2s;
+  border: 2px solid $light-text-color;
+  background-color: $elem-dark-bg-color;
+  transition-duration: $anim-duration;
 }
 
 .delivery-checkbox + label:active::after {
-  border: 2px solid white;
+  border: 2px solid $light-text-color;
   background-color: rgba(0, 0, 0, 0.9);
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
 }
 
 /* total - items -deliery price styles */
 
 .total {
-  color: white;
+  color: $light-text-color;
   position: absolute;
   right: 0;
   bottom: 0;
   font-size: 25px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: $elem-dark-bg-color;
   width: 220px;
 }
 
@@ -276,12 +268,11 @@
   align-items: center;
   justify-content: space-between;
   height: 40px;
-  border-bottom: white 1px solid;
+  border-bottom: 1px solid $light-text-color;
   padding: 0px 15px;
-}
-
-.idt-price:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .idt-price-hide {
@@ -304,44 +295,41 @@
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $elem-dark-bg-color;
 }
 
 .hide {
-  color: rgb(255, 208, 0);
+  color: $neutral-color;
 }
 
 .wipe {
-  color: rgb(255, 27, 27);
+  color: $negative-color;
 }
 
 .back-to-shopping-div {
+  @extend %flex-center-center;
   width: inherit;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .back-to-shopping-btn {
   position: absolute;
   width: 400px;
   height: 40px;
-  color: white;
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid white;
+  color: $light-text-color;
+  background: $elem-dark-bg-color;
+  border: 2px solid $light-text-color;
   outline: none;
   font-size: 20px;
   border-radius: 5px;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
   cursor: pointer;
-}
-
-.back-to-shopping-btn:hover {
-  border-color: rgb(20, 20, 20);
-  color: rgb(20, 20, 20);
-  background-color: rgba(255, 255, 255, 0.7);
-  transition-duration: 0.2s;
+  &:hover {
+    border-color: $dark-text-color;
+    color: $dark-text-color;
+    background-color: $elem-light-bg-color;
+    transition-duration: $anim-duration;
+  }
 }
 
 /* cart next/prev btns */
@@ -359,37 +347,35 @@
 .cart-btn-back {
   font-size: 25px;
   padding: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: black;
-  border: 1px solid black;
+  background-color: $elem-light-bg-color;
+  color: $dark-text-color;
+  border: 1px solid $dark-text-color;
   outline: none;
   cursor: pointer;
-  transition-duration: 0.2s;
-}
-
-.cart-btn-back:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
+  &:hover {
+    background-color: $elem-dark-bg-color;
+    color: $light-text-color;
+    transition-duration: $anim-duration;
+  }
 }
 
 .cart-btn-next {
   height: 34px;
   align-self: center;
-  background-color: rgba(255, 255, 255, 0.85);
-  color: black;
-  border: 1px solid black;
+  background-color: $elem-light-bg-color;
+  color: $dark-text-color;
+  border: 1px solid $dark-text-color;
   outline: none;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition-duration: $anim-duration;
   font-size: 17px;
   text-transform: uppercase;
-}
-
-.cart-btn-next:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  transition-duration: 0.2s;
+  &:hover {
+    background-color: $elem-dark-bg-color;
+    color: $light-text-color;
+    transition-duration: $anim-duration;
+  }
 }
 
 .cart-btn-next-disable {

@@ -1,0 +1,82 @@
+@import '../../../main.scss';
+
+.select-place {
+  margin-top: 1px;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.select-place-hide {
+  display: none;
+}
+
+.select-div {
+  width: 230px;
+  font-size: 13px;
+  h2 {
+    color: $dark-text-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px 0 5px;
+    margin: 0;
+    height: 30px;
+    cursor: pointer;
+    background-color: $light-text-color;
+    border: 1px solid $dark-text-color;
+  }
+}
+
+.select-arrow-down {
+  transform: rotate(-180deg);
+  transition-duration: $anim-duration;
+}
+
+.select-arrow-up {
+  transform: rotate(180deg);
+  transition-duration: $anim-duration;
+}
+
+.select-form {
+  display: flex;
+  position: absolute;
+  flex-flow: column;
+  width: 100%;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition-duration: $anim-duration;
+  > input {
+    display: none;
+    &:checked + label {
+      margin-left: -8px;
+      margin-right: 8px;
+      z-index: 2;
+    }
+  }
+}
+
+.select-form-up {
+  transform-origin: bottom;
+  bottom: 30px;
+}
+
+.select-form-hide {
+  transform: scaleY(0);
+  transition-duration: $anim-duration;
+}
+
+.label-select {
+  color: $light-text-color;
+  border-bottom: $list-border-style;
+  background-color: $elem-dark-bg-color;
+  transition-duration: $anim-duration;
+  padding: 5px 10px;
+  cursor: pointer;
+  &:hover {
+    color: $dark-text-color;
+    background-color: $light-text-color;
+    transition-duration: $anim-duration;
+  }
+}

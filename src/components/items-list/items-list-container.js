@@ -4,7 +4,7 @@ import Spinner from '../spinner';
 import ItemsList from './items-list';
 import PageSwitch from './page-switch';
 import DisplaySettings from './display-settings';
-import './items-list.css';
+import './items-list.scss';
 import { withRouter } from 'react-router-dom';
 
 class ItemsListContainer extends Component {

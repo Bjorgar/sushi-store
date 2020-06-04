@@ -1,0 +1,124 @@
+@import '../../main.scss';
+
+$pop-up-border-style: 1px solid $neutral-color;
+
+.pop-up-main {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: $elem-dark-bg-color;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  box-shadow: inset -10px 0px 10px 0px $neutral-color;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition-duration: $anim-duration;
+}
+
+.pop-up-main-hide {
+  transform: scaleX(0);
+  transition-duration: $anim-duration;
+}
+
+.pop-up-name-div {
+  @extend %flex-center-center;
+  text-align: center;
+  color: $light-text-color;
+  height: 75px;
+  margin: 0;
+}
+
+.pop-up-ImDesc-div {
+  display: flex;
+  flex-flow: row;
+  width: 95%;
+  padding-top: 10px;
+}
+
+.pop-up-img-p-div {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 60%;
+  img {
+    height: 250px;
+    border: $pop-up-border-style;
+  }
+}
+
+.pop-up-p-div {
+  color: $light-text-color;
+  width: 250px;
+  padding: 0px;
+  margin: 7px;
+  border-bottom: $pop-up-border-style;
+  p {
+    padding: 0px 10px;
+    margin: 7px;
+    font-size: 20px;
+  }
+}
+
+.pop-up-desc-div {
+  width: 40%;
+  ul {
+    padding: 0;
+    margin-top: 0;
+    li {
+      list-style-type: none;
+      padding: 5px;
+      font-size: 18px;
+      color: $light-text-color;
+      border-bottom: $pop-up-border-style;
+      &:first-child {
+        border-top: $pop-up-border-style;
+      }
+    }
+  }
+}
+
+.pop-up-btn-div {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-grow: 1;
+  button {
+    outline: none;
+    background-color: transparent;
+    border: $pop-up-border-style;
+    font-size: 40px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    color: $light-text-color;
+    cursor: pointer;
+    transition-duration: $anim-duration;
+    &:first-child {
+      &:hover {
+        border-color: $positive-color;
+        color: $positive-color;
+        transition-duration: $anim-duration;
+      }
+      &:active {
+        border-style: inset;
+      }
+    }
+    &:last-child {
+      &:hover {
+        border-color: $negative-color;
+        color: $negative-color;
+        transition-duration: $anim-duration;
+      }
+      &:active {
+        border-style: inset;
+      }
+    }
+  }
+}

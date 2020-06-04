@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './display-settings.css';
+import './display-settings.scss';
 import { connect } from 'react-redux';
 import {
   transferQuantity,
@@ -33,13 +33,35 @@ class DisplaySettings extends Component {
     this.makeClickableElementsAndTransferingData(orderLi, transferOrder, openCloseOrderSettings);
   }
 
+  onOpenCloseQuantitySettings = () => {
+    const {
+      openCloseQuantitySettings,
+      isActiveQuantitySettings } = this.props;
+    
+    if (isActiveQuantitySettings) {
+      openCloseQuantitySettings(false)
+    } else {
+      openCloseQuantitySettings(true);
+    }
+  };
+
+  onOpenCloseOrderSettings = () => {
+    const {
+      openCloseOrderSettings,
+      isActiveOrderSettings } = this.props;
+
+    if (isActiveOrderSettings) {
+      openCloseOrderSettings(false)
+    } else {
+      openCloseOrderSettings(true)
+    }
+  };
+
   render() {
 
     const {
       quantity,
       order,
-      openCloseQuantitySettings,
-      openCloseOrderSettings,
       isActiveQuantitySettings,
       isActiveOrderSettings,
       itemsKind } = this.props;
@@ -55,7 +77,7 @@ class DisplaySettings extends Component {
         <h2 className="DS-h2">товара на странице:</h2>
         <div className="select-div quantity-div">
           <div
-            onClick={() => openCloseQuantitySettings(true)}
+            onClick={this.onOpenCloseQuantitySettings}
             className="button-div butd-q" >
             <h3>{quantity}</h3>
             <div className="arrow">
@@ -74,7 +96,7 @@ class DisplaySettings extends Component {
         <h2 className="DS-h2">сортировать по:</h2>
         <div className="select-div order-div">
           <div
-            onClick={() => openCloseOrderSettings(true)}
+            onClick={this.onOpenCloseOrderSettings}
             className="button-div butd-o">
             <h3>{order}</h3>
             <div className="arrow">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './pop-up-cart-viewer.css';
+import './pop-up-cart-viewer.scss';
 
 const PopUpCartViewer = ({ items, isCartViewerVisible }) => {
 

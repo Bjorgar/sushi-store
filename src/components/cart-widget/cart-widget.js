@@ -26,19 +26,17 @@ const CartWidget = ({ totalPrice, totalCount, openShoppingCart, showHidePopUpCar
   const isActive = (totalPrice === 0) ? 'cart-icon-unactive' : '';
 
   return(
-    <div className="cart-widget-main">
-      <div
-        className="cart">
-        <span
-          onClick={openShoppingCart}
-          onMouseOver={() => onShowHidePopUpCartViewer('show')}
-          onMouseOut={() => onShowHidePopUpCartViewer('hide')}
-          className={`${isActive} cart-icon`}>
-          <i className="fas fa-shopping-cart"></i>
-        </span>
-        <span className="total-count">{totalCount}</span>
-        <span className="total-price">{totalPrice}</span>
-      </div>
+    <div
+      className="cart-widget-main">
+      <span
+        onClick={openShoppingCart}
+        onMouseOver={() => onShowHidePopUpCartViewer('show')}
+        onMouseOut={() => onShowHidePopUpCartViewer('hide')}
+        className={`${isActive} cart-icon`}>
+        <i className="fas fa-shopping-cart"></i>
+      </span>
+      <span className="total-count">{totalCount}</span>
+      <span className="total-price">{totalPrice}</span>
       <PopUpCartViewer />
     </div>
   );

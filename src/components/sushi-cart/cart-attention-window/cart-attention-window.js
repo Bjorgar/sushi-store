@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './cart-attention-window.css';
+import './cart-attention-window.scss';
 import { wipeCartData, openCloseAttentionWindow } from '../../../actions';
 
 const CartAttentionWindow = ({ isAttention, openCloseAttentionWindow, wipeCartData }) => {

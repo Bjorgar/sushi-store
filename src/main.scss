@@ -10,14 +10,28 @@ $light-text-color: white;
 
 // 
 
-$dark-bg-color: rgba(0, 0, 0, 0.75);
-$light-bg-color: rgba(255, 255, 255, 0.85);
+$elem-dark-bg-color: rgba(0, 0, 0, 0.75);
+$elem-light-bg-color: rgba(255, 255, 255, 0.85);
+$bloc-dark-bg-color: rgba(0, 0, 0, 0.68);
+$bloc-light-bg-color: rgba(184, 184, 184, 0.7);
 
 $positive-color: rgb(48, 240, 0);
 $neutral-color: rgb(255, 208, 0);
 $negative-color: rgb(255, 27, 27);
 
 $anim-duration: 0.2s;
+
+// Flex center center
+
+%flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Borders 
+
+$list-border-style: 1px solid $light-text-color;
 
 // scroll styles
 

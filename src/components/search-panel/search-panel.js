@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './search-panel.css';
+import './search-panel.scss';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator'
 import { withSushistoreService } from '../hoc';
