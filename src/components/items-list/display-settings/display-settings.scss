@@ -1,9 +1,10 @@
+@import '../../../main.scss';
+
 .display-settings-main {
-  display: flex;
+  @extend %flex-center-center;
+  justify-content: flex-end;
   flex-flow: row;
   width: 100%;
-  justify-content: flex-end;
-  align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -17,7 +18,7 @@
 .DS-h2 {
   border-bottom: transparent 5px solid;
   padding: 0 3px;
-  color: rgb(20, 20, 20);
+  color: $dark-text-color;
 }
 
 .select-div {
@@ -35,7 +36,7 @@
 
 .DS-ul {
   position: absolute;
-  background-color: rgb(20, 20, 20);
+  background-color: $dark-text-color;
   z-index: 2;
   padding: 0;
   width: calc(100% + 1px);
@@ -44,6 +45,25 @@
   transform-origin: top;
   transition-duration: 0.2s;
   opacity: 1;
+  li {    
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 25px;
+    padding: 0px 10px;
+    color: white;
+    border-bottom: 1px solid white;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    &:hover {      
+      background-color: white;
+      color: rgb(20, 20, 20);
+      transition-duration: 0.3s;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 }
 
 .DS-ul-hide {
@@ -58,18 +78,18 @@
   height: 25px;
   width: 100%;
   font-size: 15px;
-  color: rgb(20, 20, 20);
-  border-top: 1px solid rgb(20, 20, 20);
-  border-left: 1px solid rgb(20, 20, 20);
-  border-bottom: rgb(20, 20, 20) 5px solid;
+  color: $dark-text-color;
+  border-top: 1px solid $dark-text-color;
+  border-left: 1px solid $dark-text-color;
+  border-bottom: 5px solid $dark-text-color;
   cursor: pointer;
 }
 
 .button-div h3 {
-  margin: 0;
   display: flex;
-  height: 100%;
   align-items: center;
+  margin: 0;
+  height: 100%;
   padding-left: 10px;
 }
 
@@ -84,10 +104,9 @@
   bottom: 0;
   color: white;
   font-size: 33px;
-}
-
-.arrow > i {
-  margin-top: 5px;
+  > i {
+    margin-top: 5px;
+  }
 }
 
 .arr-up {
@@ -98,26 +117,4 @@
 .arr-down {
   transform: scaleY(-1);
   transition-duration: 0.2s;
-}
-
-.DS-ul li {
-  display: flex;
-  align-items: center;
-  list-style-type: none;
-  height: 25px;
-  padding: 0px 10px;
-  color: white;
-  border-bottom: 1px solid white;
-  transition-duration: 0.3s;
-  cursor: pointer;
-}
-
-.DS-ul li:hover {
-  background-color: white;
-  color: rgb(20, 20, 20);
-  transition-duration: 0.3s;
-}
-
-.DS-ul li:last-child {
-  border-bottom: none;
 }

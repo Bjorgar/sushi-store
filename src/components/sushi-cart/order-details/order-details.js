@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { switchOrderStep } from '../../../actions';
-import './order-details.css';
+import './order-details.scss';
 
 const OrderDetails = ({
   items,

@@ -1,5 +1,5 @@
 import React from 'react';
-import './page-switch.css';
+import './page-switch.scss';
 
 const PageSwitch = ({ separatedItems, onPageSelected, selectedPage }) => {
 

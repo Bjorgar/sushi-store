@@ -1,8 +1,8 @@
+@import '../../../main.scss';
+
 .CO-message {
-  display: flex;
+  @extend %flex-center-center;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
 }
 
 .CO-message > p {

@@ -1,0 +1,108 @@
+@import '../../main.scss';
+
+.main-box {
+  background-color: $bloc-dark-bg-color;
+  box-shadow: 0px 0px 5px 1px black;
+  width: 100%;
+  height: 680px;
+  position: relative;
+  @extend %flex-center-center;
+  flex-direction: column;
+  overflow: hidden;
+  > * {
+    width: 260px;
+  }
+}
+
+.item-name-box {
+  @extend %flex-center-center;
+  margin: 5px 0px;
+  padding: 0;
+}
+
+.item-name {
+  @extend %flex-center-center;
+  height: 50px;
+  font-size: 20px;
+  color: $light-text-color;
+  text-align: center;
+  padding: 0 26px;
+}
+
+.image-box {
+  img {
+    width: inherit;
+  }
+}
+
+.description-box {
+  h2 {
+    color: $light-text-color;
+    font-size: 20px;
+    text-align: center;
+    margin: 3px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 163px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    background-color: rgba($bloc-dark-bg-color, 0.5);
+    li {
+      border-bottom: $list-border-style;
+      color: $light-text-color;
+      font-size: 15px;
+      padding: 3px;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
+
+.weigth-price {
+  @extend %flex-center-center;
+  flex-flow: row;
+  margin-top: 5px;
+  p {
+    margin: 10px;
+    color: $light-text-color;
+  }
+}
+
+.buttons-box {
+  height: 55px;
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.buttons {
+  outline: none;
+  padding: 7px;
+  width: 100%;
+  height: 52px;
+  cursor: pointer;
+  font-size: 27px;
+  background-color: rgba($elem-dark-bg-color, 0.5);
+  border: $list-border-style;
+  color: $light-text-color;
+  transition-duration: $anim-duration;
+}
+
+.cart-btn-add:hover {
+  color: $positive-color;
+  border-color: $positive-color;
+  background-color: rgba($elem-dark-bg-color, 0.8);
+  transition-duration: $anim-duration;
+}
+
+.cart-btn-details:hover {
+  color: $neutral-color;
+  border-color: $neutral-color;
+  background-color: rgba($elem-dark-bg-color, 0.8);
+  transition-duration: $anim-duration;
+}

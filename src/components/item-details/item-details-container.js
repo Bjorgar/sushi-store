@@ -3,7 +3,7 @@ import ItemDetails from './item-details';
 import Spinner from '../spinner';
 import { withRouter } from 'react-router-dom';
 import { routingToDetailsPage } from '../utils';
-import './item-details.css';
+import './item-details.scss';
 import ErrorIndicator from '../error-indicator';
 
 class ItemDeatailsContainer extends Component {

@@ -1,6 +1,13 @@
 .items-list-main-box {
   position: relative;
   padding-bottom: 100px;
+  .loadingio-spinner-spinner-c60ali2nmpb {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 10px;
+  }
 }
 
 main {
@@ -9,12 +16,4 @@ main {
   grid-gap: 10px;
   justify-items: center;
   justify-content: center;
-}
-
-.items-list-main-box .loadingio-spinner-spinner-c60ali2nmpb {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 10px;
 }

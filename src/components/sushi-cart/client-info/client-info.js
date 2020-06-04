@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './client-info.css';
+import './client-info.scss';
 import {
   transferUserData,
   switchOrderStep,

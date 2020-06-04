@@ -5,7 +5,7 @@ import { loadedSlides, showSlide } from '../../actions';
 import { compose } from '../utils';
 import Slide from './slide';
 import Dots from './dots';
-import './slider.css';
+import './slider.scss';
 
 class SliderContainer extends Component {
 

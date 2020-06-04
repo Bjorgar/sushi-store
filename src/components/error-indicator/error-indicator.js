@@ -1,5 +1,5 @@
 import React from 'react';
-import './error-indicator.css';
+import './error-indicator.scss';
 import rollError from '../../images/others/roll-error.png';
 
 

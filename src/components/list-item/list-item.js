@@ -1,5 +1,5 @@
 import React from 'react';
-import './list-item.css';
+import './list-item.scss';
 import Ingredients from '../ingredients';
 import { routingToDetailsPage } from '../utils';
 import { withRouter } from 'react-router-dom';

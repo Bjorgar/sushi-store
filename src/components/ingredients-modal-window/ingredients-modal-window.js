@@ -1,5 +1,5 @@
 import React from 'react';
-import './ingredients-modal-window.css';
+import './ingredients-modal-window.scss';
 import Ingredients from '../ingredients';
 import { connect } from 'react-redux';
 

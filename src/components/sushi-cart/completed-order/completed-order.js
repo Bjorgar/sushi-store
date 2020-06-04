@@ -1,5 +1,5 @@
 import React from 'react';
-import './completed-order.css';
+import './completed-order.scss';
 import { connect } from 'react-redux';
 import { wipeCartData } from '../../../actions';
 import { Link } from 'react-router-dom';
