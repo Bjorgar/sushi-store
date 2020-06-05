@@ -23,6 +23,8 @@ const OrderDetails = ({
     );
   };
 
+  const deliveryPlace = (selectedPlace === 'выберите район') ? 'без доставки' : selectedPlace;
+
   return(
     <div className="OD-main">
       <h2 className="h2-title">Оформление заказа</h2>
@@ -39,7 +41,7 @@ const OrderDetails = ({
       </div>
       <p className="OD-title">Доставка</p>
       <div className="OD-list-item OD-list-item-delivery">
-        <p className="OD-name">{selectedPlace}</p>
+        <p className="OD-name">{deliveryPlace}</p>
         <p className="OD-price">{deliveryPrice}</p>
       </div>
       <p className="OD-sum">к оплате: {totalPrice}</p>

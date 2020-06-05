@@ -2,6 +2,7 @@
 
 .CO-message {
   @extend %flex-center-center;
+  text-align: center;
   flex-direction: column;
 }
 
